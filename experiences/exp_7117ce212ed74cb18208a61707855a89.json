@@ -1,0 +1,28 @@
+{
+  "completed_at": "2026-08-17T03:48:53.168531+00:00",
+  "created_at": "2026-08-17T03:48:53.168531+00:00",
+  "environment": {
+    "language": "python"
+  },
+  "experience_id": "exp_7117ce212ed74cb18208a61707855a89",
+  "files_changed": [
+    "calculator.py"
+  ],
+  "patch": "--- a/calculator.py\n+++ b/calculator.py\n@@ -2,4 +2,4 @@\n \n \n def divide(a, b):\n-    return a * b\n+    return a / b\n",
+  "problem": "The divide function in calculator.py is incorrect. Fix it so the supplied tests pass.",
+  "producer_model": "mock",
+  "started_at": "2026-08-17T03:48:50.703860+00:00",
+  "successful": true,
+  "task_id": "task01_exact",
+  "verification": {
+    "command": [
+      "python",
+      "-m",
+      "pytest",
+      "-q",
+      "test_calculator.py"
+    ],
+    "failed": 0,
+    "passed": 3
+  }
+}

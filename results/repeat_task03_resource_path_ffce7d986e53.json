@@ -1,0 +1,61 @@
+{
+  "aggregate_id": "repeat_task03_resource_path_ffce7d986e53",
+  "average_agent_steps": 6.4,
+  "average_elapsed_seconds": 113.189477,
+  "average_input_tokens": 3271.4,
+  "average_output_tokens": 432.4,
+  "average_tool_calls": 6.4,
+  "average_total_tokens": 3703.8,
+  "context_mode": "transfer_knowledge",
+  "created_at": "2026-08-18T05:00:49.909029+00:00",
+  "failed_runs": 5,
+  "failure_type_counts": {
+    "max_steps_exhausted": 4,
+    "timeout": 1
+  },
+  "individual_runs": [
+    {
+      "failure_type": "timeout",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task03_resource_path_ffce7d986e53-run-01.json",
+      "run_id": "repeat_task03_resource_path_ffce7d986e53-run-01",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task03_resource_path_ffce7d986e53-run-02.json",
+      "run_id": "repeat_task03_resource_path_ffce7d986e53-run-02",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task03_resource_path_ffce7d986e53-run-03.json",
+      "run_id": "repeat_task03_resource_path_ffce7d986e53-run-03",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task03_resource_path_ffce7d986e53-run-04.json",
+      "run_id": "repeat_task03_resource_path_ffce7d986e53-run-04",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task03_resource_path_ffce7d986e53-run-05.json",
+      "run_id": "repeat_task03_resource_path_ffce7d986e53-run-05",
+      "success": false
+    }
+  ],
+  "max_elapsed_seconds": 214.438985,
+  "max_steps": 8,
+  "min_elapsed_seconds": 72.885859,
+  "model_name": "qwen2.5:3b",
+  "model_provider": "ollama",
+  "recipe_id": null,
+  "source_experience_id": null,
+  "source_recipe_id": "recipe_98832e7c414d8cb42300e4dbc80d7535",
+  "success_rate": 0.0,
+  "successful_runs": 0,
+  "task_id": "task03_resource_path",
+  "total_runs": 5,
+  "transfer_knowledge_id": "transfer_a4142b399f8684e6a75fda4a625ed4d8"
+}

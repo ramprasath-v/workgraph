@@ -1,0 +1,59 @@
+{
+  "aggregate_id": "repeat_task02_config_path_3f3c74e22225",
+  "average_agent_steps": 3.2,
+  "average_elapsed_seconds": 215.771044,
+  "average_input_tokens": 2176.0,
+  "average_output_tokens": 205.2,
+  "average_tool_calls": 3.2,
+  "average_total_tokens": 2381.2,
+  "context_mode": "none",
+  "created_at": "2026-08-18T03:35:24.270312+00:00",
+  "failed_runs": 5,
+  "failure_type_counts": {
+    "max_steps_exhausted": 2,
+    "timeout": 3
+  },
+  "individual_runs": [
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task02_config_path_3f3c74e22225-run-01.json",
+      "run_id": "repeat_task02_config_path_3f3c74e22225-run-01",
+      "success": false
+    },
+    {
+      "failure_type": "timeout",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task02_config_path_3f3c74e22225-run-02.json",
+      "run_id": "repeat_task02_config_path_3f3c74e22225-run-02",
+      "success": false
+    },
+    {
+      "failure_type": "timeout",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task02_config_path_3f3c74e22225-run-03.json",
+      "run_id": "repeat_task02_config_path_3f3c74e22225-run-03",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task02_config_path_3f3c74e22225-run-04.json",
+      "run_id": "repeat_task02_config_path_3f3c74e22225-run-04",
+      "success": false
+    },
+    {
+      "failure_type": "timeout",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task02_config_path_3f3c74e22225-run-05.json",
+      "run_id": "repeat_task02_config_path_3f3c74e22225-run-05",
+      "success": false
+    }
+  ],
+  "max_elapsed_seconds": 267.413824,
+  "max_steps": 8,
+  "min_elapsed_seconds": 111.771091,
+  "model_name": "qwen2.5:3b",
+  "model_provider": "ollama",
+  "recipe_id": null,
+  "source_experience_id": null,
+  "success_rate": 0.0,
+  "successful_runs": 0,
+  "task_id": "task02_config_path",
+  "total_runs": 5
+}

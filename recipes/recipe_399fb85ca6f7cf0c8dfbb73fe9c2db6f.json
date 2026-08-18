@@ -1,0 +1,33 @@
+{
+  "problem": "Default configuration loading depends on the process working directory.",
+  "recipe_id": "recipe_399fb85ca6f7cf0c8dfbb73fe9c2db6f",
+  "recipe_version": "0.1",
+  "source_experience_id": "exp_aedf873f3b13471ea3e0145e4a4c7c2d",
+  "steps": [
+    {
+      "instruction": "Inspect app.py and locate the default configuration-path logic.",
+      "step": 1
+    },
+    {
+      "instruction": "Preserve caller-supplied config_path behavior.",
+      "step": 2
+    },
+    {
+      "instruction": "When config_path is not supplied, resolve config/settings.json relative to the directory containing app.py rather than the process working directory.",
+      "step": 3
+    },
+    {
+      "instruction": "Run the task test suite after modifying app.py.",
+      "step": 4
+    }
+  ],
+  "target_files": [
+    "app.py"
+  ],
+  "task_id": "task02_config_path",
+  "task_type": "config_path_fix",
+  "verification": {
+    "previously_failed": 0,
+    "previously_passed": 4
+  }
+}

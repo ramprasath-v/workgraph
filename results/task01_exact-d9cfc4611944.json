@@ -1,0 +1,29 @@
+{
+  "agent_steps": 5,
+  "elapsed_seconds": 5.419117,
+  "end_time": "2026-08-17T04:22:21.779150+00:00",
+  "estimated_cost_usd": null,
+  "experience_id": "exp_7117ce212ed74cb18208a61707855a89",
+  "experience_used": true,
+  "generated_experience_id": "exp_c4aa3189ca074ec2a0df40f11e11bcc1",
+  "generated_experience_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/experiences/exp_c4aa3189ca074ec2a0df40f11e11bcc1.json",
+  "input_tokens": 3024,
+  "model_name": "gemini-2.5-flash",
+  "model_provider": "vertex",
+  "output_tokens": 203,
+  "run_id": "task01_exact-d9cfc4611944",
+  "start_time": "2026-08-17T04:22:16.359855+00:00",
+  "success": true,
+  "task_id": "task01_exact",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "test_calculator.py"
+  ],
+  "tests_failed": 0,
+  "tests_passed": 3,
+  "tool_calls": 4,
+  "total_tokens": 3420
+}

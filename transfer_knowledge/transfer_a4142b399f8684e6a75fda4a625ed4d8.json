@@ -1,0 +1,11 @@
+{
+  "implementation_concepts": [
+    "For a path relative to the Python module rather than the current working directory, use __file__ as the path anchor."
+  ],
+  "principles": [
+    "Relative resource paths can fail when the process working directory changes."
+  ],
+  "source_recipe_id": "recipe_98832e7c414d8cb42300e4dbc80d7535",
+  "transfer_knowledge_id": "transfer_a4142b399f8684e6a75fda4a625ed4d8",
+  "transfer_version": "0.1"
+}

@@ -1,0 +1,61 @@
+{
+  "agent_steps": 2,
+  "context_mode": "recipe",
+  "elapsed_seconds": 26.818046,
+  "end_time": "2026-08-17T06:57:54.250027+00:00",
+  "estimated_cost_usd": 0.0,
+  "experience_id": "exp_aedf873f3b13471ea3e0145e4a4c7c2d",
+  "experience_used": true,
+  "failure_message": "Agent did not complete the task within 2 steps.",
+  "failure_type": "max_steps_exhausted",
+  "generated_experience_id": null,
+  "generated_experience_path": null,
+  "input_tokens": 937,
+  "max_steps": 2,
+  "model_name": "llama3.2:1b",
+  "model_provider": "ollama",
+  "output_tokens": 226,
+  "recipe_id": "recipe_399fb85ca6f7cf0c8dfbb73fe9c2db6f",
+  "run_id": "task02_config_path-72beb6a98340",
+  "source_experience_id": "exp_aedf873f3b13471ea3e0145e4a4c7c2d",
+  "start_time": "2026-08-17T06:57:27.431300+00:00",
+  "success": false,
+  "task_id": "task02_config_path",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "test_app.py"
+  ],
+  "tests_failed": 3,
+  "tests_passed": 1,
+  "tool_calls": 2,
+  "total_tokens": 1163,
+  "trajectory": [
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 1,
+      "target": "app.py"
+    },
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 2,
+      "target": "app.py"
+    }
+  ],
+  "trajectory_diagnostics": {
+    "file_reads": 2,
+    "file_writes": 0,
+    "most_repeated_action": {
+      "action": "read_file",
+      "count": 2,
+      "target": "app.py"
+    },
+    "repeated_identical_actions": 1,
+    "test_runs": 0,
+    "unique_actions": 1
+  }
+}

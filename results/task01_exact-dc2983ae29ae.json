@@ -1,0 +1,24 @@
+{
+  "agent_steps": 6,
+  "elapsed_seconds": 1.934742,
+  "end_time": "2026-08-17T03:41:27.558317+00:00",
+  "estimated_cost_usd": 0.0,
+  "input_tokens": 0,
+  "model_name": "mock",
+  "output_tokens": 0,
+  "run_id": "task01_exact-dc2983ae29ae",
+  "start_time": "2026-08-17T03:41:25.623354+00:00",
+  "success": true,
+  "task_id": "task01_exact",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "test_calculator.py"
+  ],
+  "tests_failed": 0,
+  "tests_passed": 3,
+  "tool_calls": 5,
+  "total_tokens": 0
+}

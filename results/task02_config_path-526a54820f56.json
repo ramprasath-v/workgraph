@@ -1,0 +1,97 @@
+{
+  "agent_steps": 8,
+  "context_mode": "recipe",
+  "elapsed_seconds": 151.224555,
+  "end_time": "2026-08-17T06:45:58.124279+00:00",
+  "estimated_cost_usd": 0.0,
+  "experience_id": "exp_aedf873f3b13471ea3e0145e4a4c7c2d",
+  "experience_used": true,
+  "failure_message": "Agent did not complete the task within 8 steps.",
+  "failure_type": "max_steps_exhausted",
+  "generated_experience_id": null,
+  "generated_experience_path": null,
+  "input_tokens": 8420,
+  "max_steps": 8,
+  "model_name": "llama3.2:1b",
+  "model_provider": "ollama",
+  "output_tokens": 576,
+  "recipe_id": "recipe_399fb85ca6f7cf0c8dfbb73fe9c2db6f",
+  "run_id": "task02_config_path-526a54820f56",
+  "source_experience_id": "exp_aedf873f3b13471ea3e0145e4a4c7c2d",
+  "start_time": "2026-08-17T06:43:26.896619+00:00",
+  "success": false,
+  "task_id": "task02_config_path",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "test_app.py"
+  ],
+  "tests_failed": 3,
+  "tests_passed": 1,
+  "tool_calls": 8,
+  "total_tokens": 8996,
+  "trajectory": [
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 1,
+      "target": "app.py"
+    },
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 2,
+      "target": "app.py"
+    },
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 3,
+      "target": "app.py"
+    },
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 4,
+      "target": "app.py"
+    },
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 5,
+      "target": "app.py"
+    },
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 6,
+      "target": "app.py"
+    },
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 7,
+      "target": "app.py"
+    },
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 8,
+      "target": "app.py"
+    }
+  ],
+  "trajectory_diagnostics": {
+    "file_reads": 8,
+    "file_writes": 0,
+    "most_repeated_action": {
+      "action": "read_file",
+      "count": 8,
+      "target": "app.py"
+    },
+    "repeated_identical_actions": 7,
+    "test_runs": 0,
+    "unique_actions": 1
+  }
+}

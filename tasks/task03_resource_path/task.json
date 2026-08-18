@@ -1,0 +1,8 @@
+{
+  "task_id": "task03_resource_path",
+  "description": "Bundled template loading is unreliable when the application runs from different working directories. Fix the implementation so the supplied tests pass.",
+  "environment": {
+    "language": "python"
+  },
+  "test_command": ["python", "-m", "pytest", "-q", "test_template_loader.py"]
+}

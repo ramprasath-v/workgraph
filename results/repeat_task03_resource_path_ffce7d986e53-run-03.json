@@ -1,0 +1,99 @@
+{
+  "agent_steps": 8,
+  "context_mode": "transfer_knowledge",
+  "elapsed_seconds": 86.655475,
+  "end_time": "2026-08-18T04:58:18.362490+00:00",
+  "estimated_cost_usd": 0.0,
+  "experience_id": null,
+  "experience_used": true,
+  "failure_message": "Agent did not complete the task within 8 steps.",
+  "failure_type": "max_steps_exhausted",
+  "generated_experience_id": null,
+  "generated_experience_path": null,
+  "input_tokens": 4089,
+  "max_steps": 8,
+  "model_name": "qwen2.5:3b",
+  "model_provider": "ollama",
+  "output_tokens": 567,
+  "recipe_id": null,
+  "run_id": "repeat_task03_resource_path_ffce7d986e53-run-03",
+  "source_experience_id": null,
+  "source_recipe_id": "recipe_98832e7c414d8cb42300e4dbc80d7535",
+  "start_time": "2026-08-18T04:56:51.705483+00:00",
+  "success": false,
+  "task_id": "task03_resource_path",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "test_template_loader.py"
+  ],
+  "tests_failed": 3,
+  "tests_passed": 1,
+  "tool_calls": 8,
+  "total_tokens": 4656,
+  "trajectory": [
+    {
+      "action": "read_file",
+      "outcome": "error: file does not exist: __file__",
+      "step": 1,
+      "target": "__file__"
+    },
+    {
+      "action": "run_command",
+      "outcome": "error: command is not allowlisted",
+      "step": 2,
+      "target": "command=['python', '-c', 'import os; print(os.path.realpath(__file__))']"
+    },
+    {
+      "action": "run_command",
+      "outcome": "error: command is not allowlisted",
+      "step": 3,
+      "target": "python -c import os; print(os.path.realpath(__file__))"
+    },
+    {
+      "action": "read_file",
+      "outcome": "error: file does not exist: os.path.realpath(__file__)",
+      "step": 4,
+      "target": "os.path.realpath(__file__)"
+    },
+    {
+      "action": "run_command",
+      "outcome": "error: command is not allowlisted",
+      "step": 5,
+      "target": "python -c import os; print(os.path.realpath(__file__))"
+    },
+    {
+      "action": "run_command",
+      "outcome": "error: invalid fields for run_command: ['action']",
+      "step": 6,
+      "target": null
+    },
+    {
+      "action": "run_command",
+      "outcome": "error: command is not allowlisted",
+      "step": 7,
+      "target": "python -c $(python -c 'import sys; print(sys.path[0])'); import os; print(os.path.realpath(__file__))"
+    },
+    {
+      "action": "run_command",
+      "outcome": "error: command is not allowlisted",
+      "step": 8,
+      "target": "-c import sys; print(sys.path[0]); import os; print(os.path.realpath(__file__)); print(os.path.dirname(__file__)); print(os.path.abspath(__file__)); print(os..."
+    }
+  ],
+  "trajectory_diagnostics": {
+    "file_reads": 2,
+    "file_writes": 0,
+    "most_repeated_action": {
+      "action": "run_command",
+      "count": 2,
+      "target": "python -c import os; print(os.path.realpath(__file__))"
+    },
+    "repeated_identical_actions": 1,
+    "test_runs": 0,
+    "unique_actions": 2
+  },
+  "transfer_knowledge_id": "transfer_a4142b399f8684e6a75fda4a625ed4d8"
+}

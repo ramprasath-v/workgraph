@@ -1,0 +1,8 @@
+{
+  "environment": "benchmark",
+  "features": {
+    "audit_log": true
+  },
+  "retry_limit": 3,
+  "service_name": "experience-lab"
+}

@@ -1,0 +1,8 @@
+{
+  "task_id": "task02_config_path",
+  "description": "Application configuration loading is unreliable across execution contexts. Fix the implementation so the supplied tests pass while preserving support for an explicit configuration path.",
+  "environment": {
+    "language": "python"
+  },
+  "test_command": ["python", "-m", "pytest", "-q", "test_app.py"]
+}

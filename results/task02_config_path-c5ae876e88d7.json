@@ -1,0 +1,97 @@
+{
+  "agent_steps": 8,
+  "context_mode": "recipe",
+  "elapsed_seconds": 347.752695,
+  "end_time": "2026-08-18T02:39:10.082132+00:00",
+  "estimated_cost_usd": 0.0,
+  "experience_id": "exp_aedf873f3b13471ea3e0145e4a4c7c2d",
+  "experience_used": true,
+  "failure_message": null,
+  "failure_type": null,
+  "generated_experience_id": "exp_41882c9958ac40059820a45034e2d25f",
+  "generated_experience_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/experiences/exp_41882c9958ac40059820a45034e2d25f.json",
+  "input_tokens": 7393,
+  "max_steps": 8,
+  "model_name": "qwen2.5:3b",
+  "model_provider": "ollama",
+  "output_tokens": 1420,
+  "recipe_id": "recipe_98832e7c414d8cb42300e4dbc80d7535",
+  "run_id": "task02_config_path-c5ae876e88d7",
+  "source_experience_id": "exp_aedf873f3b13471ea3e0145e4a4c7c2d",
+  "start_time": "2026-08-18T02:33:22.324776+00:00",
+  "success": true,
+  "task_id": "task02_config_path",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "test_app.py"
+  ],
+  "tests_failed": 0,
+  "tests_passed": 4,
+  "tool_calls": 8,
+  "total_tokens": 8813,
+  "trajectory": [
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 1,
+      "target": "app.py"
+    },
+    {
+      "action": "write_file",
+      "outcome": "success",
+      "step": 2,
+      "target": "app.py"
+    },
+    {
+      "action": "run_tests",
+      "outcome": "4 passed / 0 failed",
+      "step": 3,
+      "target": null
+    },
+    {
+      "action": "run_tests",
+      "outcome": "4 passed / 0 failed",
+      "step": 4,
+      "target": null
+    },
+    {
+      "action": "run_tests",
+      "outcome": "4 passed / 0 failed",
+      "step": 5,
+      "target": null
+    },
+    {
+      "action": "write_file",
+      "outcome": "success",
+      "step": 6,
+      "target": "app.py"
+    },
+    {
+      "action": "run_tests",
+      "outcome": "4 passed / 0 failed",
+      "step": 7,
+      "target": null
+    },
+    {
+      "action": "write_file",
+      "outcome": "success",
+      "step": 8,
+      "target": "app.py"
+    }
+  ],
+  "trajectory_diagnostics": {
+    "file_reads": 1,
+    "file_writes": 3,
+    "most_repeated_action": {
+      "action": "run_tests",
+      "count": 4,
+      "target": null
+    },
+    "repeated_identical_actions": 5,
+    "test_runs": 4,
+    "unique_actions": 3
+  }
+}

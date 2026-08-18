@@ -1,0 +1,26 @@
+{
+  "agent_steps": 6,
+  "elapsed_seconds": 2.464547,
+  "end_time": "2026-08-17T03:48:53.168531+00:00",
+  "estimated_cost_usd": 0.0,
+  "experience_id": "exp_7117ce212ed74cb18208a61707855a89",
+  "experience_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/experiences/exp_7117ce212ed74cb18208a61707855a89.json",
+  "input_tokens": 0,
+  "model_name": "mock",
+  "output_tokens": 0,
+  "run_id": "task01_exact-27afe6b36d3a",
+  "start_time": "2026-08-17T03:48:50.703860+00:00",
+  "success": true,
+  "task_id": "task01_exact",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "test_calculator.py"
+  ],
+  "tests_failed": 0,
+  "tests_passed": 3,
+  "tool_calls": 5,
+  "total_tokens": 0
+}

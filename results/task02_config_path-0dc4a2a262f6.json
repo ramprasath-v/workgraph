@@ -1,0 +1,118 @@
+{
+  "agent_steps": 12,
+  "elapsed_seconds": 199.447513,
+  "end_time": "2026-08-17T05:47:59.716807+00:00",
+  "estimated_cost_usd": 0.0,
+  "experience_id": "exp_aedf873f3b13471ea3e0145e4a4c7c2d",
+  "experience_used": true,
+  "failure_message": "Agent did not complete the task within 12 steps.",
+  "failure_type": "max_steps_exhausted",
+  "generated_experience_id": null,
+  "generated_experience_path": null,
+  "input_tokens": 11994,
+  "max_steps": 12,
+  "model_name": "llama3.2:1b",
+  "model_provider": "ollama",
+  "output_tokens": 549,
+  "run_id": "task02_config_path-0dc4a2a262f6",
+  "start_time": "2026-08-17T05:44:40.264283+00:00",
+  "success": false,
+  "task_id": "task02_config_path",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "test_app.py"
+  ],
+  "tests_failed": 3,
+  "tests_passed": 1,
+  "tool_calls": 12,
+  "total_tokens": 12543,
+  "trajectory": [
+    {
+      "action": "run_command",
+      "outcome": "error: invalid fields for run_command: ['action', 'content', 'path']",
+      "step": 1,
+      "target": null
+    },
+    {
+      "action": "run_tests",
+      "outcome": "error: invalid fields for run_tests: ['action', 'content', 'path']",
+      "step": 2,
+      "target": null
+    },
+    {
+      "action": "run_tests",
+      "outcome": "error: invalid fields for run_tests: ['action', 'content', 'path']",
+      "step": 3,
+      "target": null
+    },
+    {
+      "action": "run_command",
+      "outcome": "error: invalid fields for run_command: ['action', 'content', 'path']",
+      "step": 4,
+      "target": null
+    },
+    {
+      "action": "run_command",
+      "outcome": "error: invalid fields for run_command: ['action', 'command', 'content', 'path']",
+      "step": 5,
+      "target": "pytest -q test_app.py"
+    },
+    {
+      "action": "run_command",
+      "outcome": "error: invalid fields for run_command: ['action', 'command', 'content', 'path']",
+      "step": 6,
+      "target": "pytest -q test_app.py"
+    },
+    {
+      "action": "read_file",
+      "outcome": "error: invalid fields for read_file: ['action', 'command', 'content', 'path']",
+      "step": 7,
+      "target": "config/settings.json"
+    },
+    {
+      "action": "read_file",
+      "outcome": "error: invalid fields for read_file: ['action', 'command', 'content', 'path']",
+      "step": 8,
+      "target": "config/settings.json"
+    },
+    {
+      "action": "read_file",
+      "outcome": "error: invalid fields for read_file: ['action', 'command', 'content', 'path']",
+      "step": 9,
+      "target": "config/settings.json"
+    },
+    {
+      "action": "read_file",
+      "outcome": "error: invalid fields for read_file: ['action', 'command', 'content', 'path']",
+      "step": 10,
+      "target": "config/settings.json"
+    },
+    {
+      "action": "read_file",
+      "outcome": "error: invalid fields for read_file: ['action', 'command', 'content', 'path']",
+      "step": 11,
+      "target": "config/settings.json"
+    },
+    {
+      "action": "read_file",
+      "outcome": "error: invalid fields for read_file: ['action', 'command', 'content', 'path']",
+      "step": 12,
+      "target": "config/settings.json"
+    }
+  ],
+  "trajectory_diagnostics": {
+    "file_reads": 6,
+    "file_writes": 0,
+    "most_repeated_action": {
+      "action": "read_file",
+      "count": 6,
+      "target": "config/settings.json"
+    },
+    "repeated_identical_actions": 8,
+    "test_runs": 2,
+    "unique_actions": 3
+  }
+}

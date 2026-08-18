@@ -1,0 +1,61 @@
+{
+  "aggregate_id": "repeat_task03_resource_path_3492df2661db",
+  "average_agent_steps": 3.2,
+  "average_elapsed_seconds": 414.726378,
+  "average_input_tokens": 7208.0,
+  "average_output_tokens": 901.2,
+  "average_tool_calls": 3.2,
+  "average_total_tokens": 8109.2,
+  "context_mode": "none",
+  "created_at": "2026-08-18T04:51:04.062861+00:00",
+  "failed_runs": 5,
+  "failure_type_counts": {
+    "max_steps_exhausted": 2,
+    "timeout": 3
+  },
+  "individual_runs": [
+    {
+      "failure_type": "timeout",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task03_resource_path_3492df2661db-run-01.json",
+      "run_id": "repeat_task03_resource_path_3492df2661db-run-01",
+      "success": false
+    },
+    {
+      "failure_type": "timeout",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task03_resource_path_3492df2661db-run-02.json",
+      "run_id": "repeat_task03_resource_path_3492df2661db-run-02",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task03_resource_path_3492df2661db-run-03.json",
+      "run_id": "repeat_task03_resource_path_3492df2661db-run-03",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task03_resource_path_3492df2661db-run-04.json",
+      "run_id": "repeat_task03_resource_path_3492df2661db-run-04",
+      "success": false
+    },
+    {
+      "failure_type": "timeout",
+      "result_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/results/repeat_task03_resource_path_3492df2661db-run-05.json",
+      "run_id": "repeat_task03_resource_path_3492df2661db-run-05",
+      "success": false
+    }
+  ],
+  "max_elapsed_seconds": 985.509341,
+  "max_steps": 8,
+  "min_elapsed_seconds": 187.340899,
+  "model_name": "qwen2.5:3b",
+  "model_provider": "ollama",
+  "recipe_id": null,
+  "source_experience_id": null,
+  "source_recipe_id": null,
+  "success_rate": 0.0,
+  "successful_runs": 0,
+  "task_id": "task03_resource_path",
+  "total_runs": 5,
+  "transfer_knowledge_id": null
+}

@@ -1,0 +1,8 @@
+{
+  "task_id": "task01_exact",
+  "description": "The divide function in calculator.py is incorrect. Fix it so the supplied tests pass.",
+  "environment": {
+    "language": "python"
+  },
+  "test_command": ["python", "-m", "pytest", "-q", "test_calculator.py"]
+}

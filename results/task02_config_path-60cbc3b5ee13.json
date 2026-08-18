@@ -1,0 +1,97 @@
+{
+  "agent_steps": 8,
+  "context_mode": "recipe",
+  "elapsed_seconds": 502.92889,
+  "end_time": "2026-08-18T02:24:31.265726+00:00",
+  "estimated_cost_usd": 0.0,
+  "experience_id": "exp_aedf873f3b13471ea3e0145e4a4c7c2d",
+  "experience_used": true,
+  "failure_message": "Agent did not complete the task within 8 steps.",
+  "failure_type": "max_steps_exhausted",
+  "generated_experience_id": null,
+  "generated_experience_path": null,
+  "input_tokens": 13944,
+  "max_steps": 8,
+  "model_name": "qwen2.5:3b",
+  "model_provider": "ollama",
+  "output_tokens": 1048,
+  "recipe_id": "recipe_399fb85ca6f7cf0c8dfbb73fe9c2db6f",
+  "run_id": "task02_config_path-60cbc3b5ee13",
+  "source_experience_id": "exp_aedf873f3b13471ea3e0145e4a4c7c2d",
+  "start_time": "2026-08-18T02:16:08.329932+00:00",
+  "success": false,
+  "task_id": "task02_config_path",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "test_app.py"
+  ],
+  "tests_failed": 3,
+  "tests_passed": 1,
+  "tool_calls": 8,
+  "total_tokens": 14992,
+  "trajectory": [
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 1,
+      "target": "app.py"
+    },
+    {
+      "action": "write_file",
+      "outcome": "success",
+      "step": 2,
+      "target": "app.py"
+    },
+    {
+      "action": "run_tests",
+      "outcome": "1 passed / 3 failed",
+      "step": 3,
+      "target": null
+    },
+    {
+      "action": "write_file",
+      "outcome": "success",
+      "step": 4,
+      "target": "app.py"
+    },
+    {
+      "action": "run_tests",
+      "outcome": "1 passed / 3 failed",
+      "step": 5,
+      "target": null
+    },
+    {
+      "action": "run_tests",
+      "outcome": "1 passed / 3 failed",
+      "step": 6,
+      "target": null
+    },
+    {
+      "action": "run_tests",
+      "outcome": "1 passed / 3 failed",
+      "step": 7,
+      "target": null
+    },
+    {
+      "action": "run_tests",
+      "outcome": "1 passed / 3 failed",
+      "step": 8,
+      "target": null
+    }
+  ],
+  "trajectory_diagnostics": {
+    "file_reads": 1,
+    "file_writes": 2,
+    "most_repeated_action": {
+      "action": "run_tests",
+      "count": 5,
+      "target": null
+    },
+    "repeated_identical_actions": 5,
+    "test_runs": 5,
+    "unique_actions": 3
+  }
+}
