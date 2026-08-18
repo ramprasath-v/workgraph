@@ -1,0 +1,8 @@
+{
+  "footer": "WorkGraph Report",
+  "heading_marker": "##",
+  "status_labels": {
+    "complete": "Complete",
+    "draft": "Draft"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "task_id": "task04_report_resources",
+  "description": "Report rendering succeeds when launched from the project workspace but fails in other execution contexts. Fix bundled rendering-resource loading while preserving support for caller-supplied resource directories and existing report output.",
+  "environment": {
+    "language": "python"
+  },
+  "test_command": ["python", "-m", "pytest", "-q", "test_report_renderer.py"]
+}
