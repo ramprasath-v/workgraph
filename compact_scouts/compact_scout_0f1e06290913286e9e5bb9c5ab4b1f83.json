@@ -1,0 +1,17 @@
+{
+  "compact_scout_id": "compact_scout_0f1e06290913286e9e5bb9c5ab4b1f83",
+  "compact_scout_version": "0.1",
+  "implementation_concepts": [
+    "Use a package-relative lookup for bundled defaults while preserving explicit caller-provided location overrides and existing output behavior."
+  ],
+  "principles": [
+    "Bundled resource lookup should remain independent of the process working directory."
+  ],
+  "scout_elapsed_seconds": 23.132513,
+  "scout_input_tokens": 8536,
+  "scout_model": "gemini-2.5-flash",
+  "scout_output_tokens": 626,
+  "scout_provider": "vertex",
+  "scout_total_tokens": 11630,
+  "source_scout_handoff_id": "scout_78cdb2504c4636ff8b007f24762e2f9f"
+}

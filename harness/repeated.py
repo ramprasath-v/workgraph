@@ -36,6 +36,9 @@ class RepeatedRunSummary:
     scout_output_tokens: int
     scout_total_tokens: int
     scout_elapsed_seconds: float
+    source_scout_handoff_id: str | None
+    compact_scout_id: str | None
+    scout_accounting_mode: str | None
     max_steps: int
     created_at: str
     total_runs: int
@@ -50,6 +53,10 @@ class RepeatedRunSummary:
     average_total_inference_tokens: float
     average_elapsed_seconds: float
     average_total_inference_elapsed_seconds: float
+    frozen_experiment_total_inference_tokens: int
+    frozen_experiment_total_inference_elapsed_seconds: float
+    estimated_deployment_total_inference_tokens: int
+    estimated_deployment_total_inference_elapsed_seconds: float
     min_elapsed_seconds: float
     max_elapsed_seconds: float
     failure_type_counts: dict[str, int]
@@ -96,6 +103,9 @@ def aggregate_results(
         first.scout_output_tokens,
         first.scout_total_tokens,
         first.scout_elapsed_seconds,
+        first.source_scout_handoff_id,
+        first.compact_scout_id,
+        first.scout_accounting_mode,
         first.max_steps,
     )
     if any(
@@ -114,6 +124,9 @@ def aggregate_results(
             result.scout_output_tokens,
             result.scout_total_tokens,
             result.scout_elapsed_seconds,
+            result.source_scout_handoff_id,
+            result.compact_scout_id,
+            result.scout_accounting_mode,
             result.max_steps,
         )
         != identity
@@ -144,6 +157,9 @@ def aggregate_results(
         scout_output_tokens=first.scout_output_tokens,
         scout_total_tokens=first.scout_total_tokens,
         scout_elapsed_seconds=first.scout_elapsed_seconds,
+        source_scout_handoff_id=first.source_scout_handoff_id,
+        compact_scout_id=first.compact_scout_id,
+        scout_accounting_mode=first.scout_accounting_mode,
         max_steps=first.max_steps,
         created_at=created_at,
         total_runs=len(results),
@@ -159,8 +175,24 @@ def aggregate_results(
             [result.total_inference_tokens() for result in results]
         ),
         average_elapsed_seconds=_average(elapsed),
-        average_total_inference_elapsed_seconds=_average(
-            [result.total_inference_elapsed_seconds() for result in results]
+        average_total_inference_elapsed_seconds=round(
+            _average(elapsed) + first.scout_elapsed_seconds, 6
+        ),
+        frozen_experiment_total_inference_tokens=(
+            sum(result.total_tokens for result in results)
+            + first.scout_total_tokens
+        ),
+        frozen_experiment_total_inference_elapsed_seconds=round(
+            sum(result.elapsed_seconds for result in results)
+            + first.scout_elapsed_seconds,
+            6,
+        ),
+        estimated_deployment_total_inference_tokens=sum(
+            result.total_inference_tokens() for result in results
+        ),
+        estimated_deployment_total_inference_elapsed_seconds=round(
+            sum(result.total_inference_elapsed_seconds() for result in results),
+            6,
         ),
         min_elapsed_seconds=min(elapsed),
         max_elapsed_seconds=max(elapsed),

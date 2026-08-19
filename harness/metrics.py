@@ -46,6 +46,9 @@ class RunResult:
     scout_output_tokens: int = 0
     scout_total_tokens: int = 0
     scout_elapsed_seconds: float = 0.0
+    source_scout_handoff_id: str | None = None
+    compact_scout_id: str | None = None
+    scout_accounting_mode: str | None = None
 
     def to_dict(self) -> dict[str, object]:
         data = asdict(self)

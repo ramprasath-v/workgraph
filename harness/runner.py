@@ -11,6 +11,9 @@ from pathlib import Path
 from time import perf_counter
 from typing import Any
 
+from compact_scout.compiler import compile_compact_scout
+from compact_scout.schema import CompactScoutKnowledge, load_compact_scout
+
 from experience.capture import capture_experience
 from experience.schema import ExperienceRecord, load_experience
 from recipe.compiler import compile_recipe
@@ -77,13 +80,20 @@ def run_benchmark(
     recipe: ExperienceRecipe | None = None,
     transfer_knowledge: TransferKnowledge | None = None,
     scout_handoff: ScoutHandoff | None = None,
+    compact_scout: CompactScoutKnowledge | None = None,
     max_steps: int = 20,
 ) -> tuple[RunResult, Path]:
     if max_steps < 1:
         raise ValueError("max_steps must be positive")
     if sum(
         context is not None
-        for context in (experience, recipe, transfer_knowledge, scout_handoff)
+        for context in (
+            experience,
+            recipe,
+            transfer_knowledge,
+            scout_handoff,
+            compact_scout,
+        )
     ) > 1:
         raise ValueError("benchmark contexts are mutually exclusive")
     repo_root = repo_root.resolve()
@@ -91,6 +101,7 @@ def run_benchmark(
     prior_recipe = recipe
     prior_transfer = transfer_knowledge
     prior_scout = scout_handoff
+    prior_compact_scout = compact_scout
     if prior_recipe is not None and prior_recipe.task_id != task_id:
         raise ValueError("recipe task_id does not match the benchmark task")
     if prior_scout is not None and prior_scout.task_id != task_id:
@@ -104,6 +115,8 @@ def run_benchmark(
         if prior_transfer is not None
         else "scout_handoff"
         if prior_scout is not None
+        else "compact_scout"
+        if prior_compact_scout is not None
         else "none"
     )
     source_experience_id = (
@@ -134,6 +147,8 @@ def run_benchmark(
                 if prior_transfer
                 else prior_scout.to_dict()
                 if prior_scout
+                else prior_compact_scout.to_dict()
+                if prior_compact_scout
                 else None
             ),
         )
@@ -237,11 +252,50 @@ def run_benchmark(
         scout_handoff_id=(
             prior_scout.scout_handoff_id if prior_scout else None
         ),
-        scout_model=prior_scout.producer_model if prior_scout else None,
-        scout_input_tokens=prior_scout.input_tokens if prior_scout else 0,
-        scout_output_tokens=prior_scout.output_tokens if prior_scout else 0,
-        scout_total_tokens=prior_scout.total_tokens if prior_scout else 0,
-        scout_elapsed_seconds=(prior_scout.elapsed_seconds if prior_scout else 0.0),
+        scout_model=(
+            prior_scout.producer_model
+            if prior_scout
+            else prior_compact_scout.scout_model if prior_compact_scout else None
+        ),
+        scout_input_tokens=(
+            prior_scout.input_tokens
+            if prior_scout
+            else prior_compact_scout.scout_input_tokens
+            if prior_compact_scout
+            else 0
+        ),
+        scout_output_tokens=(
+            prior_scout.output_tokens
+            if prior_scout
+            else prior_compact_scout.scout_output_tokens
+            if prior_compact_scout
+            else 0
+        ),
+        scout_total_tokens=(
+            prior_scout.total_tokens
+            if prior_scout
+            else prior_compact_scout.scout_total_tokens
+            if prior_compact_scout
+            else 0
+        ),
+        scout_elapsed_seconds=(
+            prior_scout.elapsed_seconds
+            if prior_scout
+            else prior_compact_scout.scout_elapsed_seconds
+            if prior_compact_scout
+            else 0.0
+        ),
+        source_scout_handoff_id=(
+            prior_compact_scout.source_scout_handoff_id
+            if prior_compact_scout
+            else None
+        ),
+        compact_scout_id=(
+            prior_compact_scout.compact_scout_id if prior_compact_scout else None
+        ),
+        scout_accounting_mode=(
+            "frozen_handoff_amortized" if prior_compact_scout else None
+        ),
     )
     result_path = result.write_json(repo_root / "results")
     return result, result_path
@@ -315,6 +369,7 @@ def run_repeated_benchmark(
     recipe: ExperienceRecipe | None = None,
     transfer_knowledge: TransferKnowledge | None = None,
     scout_handoff: ScoutHandoff | None = None,
+    compact_scout: CompactScoutKnowledge | None = None,
     max_steps: int = 20,
 ) -> tuple[RepeatedRunSummary, Path]:
     """Repeat one unchanged benchmark condition from pristine workspaces."""
@@ -334,6 +389,7 @@ def run_repeated_benchmark(
                 recipe=recipe,
                 transfer_knowledge=transfer_knowledge,
                 scout_handoff=scout_handoff,
+                compact_scout=compact_scout,
                 max_steps=max_steps,
             )
         )
@@ -470,6 +526,9 @@ def print_repeated_summary(summary: RepeatedRunSummary) -> None:
         failure = f" failure_type={run.failure_type}" if not run.success else ""
         print(f"{index:02d}  {run.run_id}  {status}{failure}")
     rows = (
+        ("Scout accounting mode", summary.scout_accounting_mode),
+        ("Frozen scout total tokens", summary.scout_total_tokens),
+        ("Frozen scout elapsed seconds", summary.scout_elapsed_seconds),
         ("Total runs", summary.total_runs),
         ("Successful runs", summary.successful_runs),
         ("Failed runs", summary.failed_runs),
@@ -484,6 +543,22 @@ def print_repeated_summary(summary: RepeatedRunSummary) -> None:
         (
             "Average total inference elapsed",
             summary.average_total_inference_elapsed_seconds,
+        ),
+        (
+            "Frozen experiment total tokens",
+            summary.frozen_experiment_total_inference_tokens,
+        ),
+        (
+            "Frozen experiment total elapsed",
+            summary.frozen_experiment_total_inference_elapsed_seconds,
+        ),
+        (
+            "Per-new-task deployment total tokens",
+            summary.estimated_deployment_total_inference_tokens,
+        ),
+        (
+            "Per-new-task deployment elapsed",
+            summary.estimated_deployment_total_inference_elapsed_seconds,
         ),
         ("Min elapsed seconds", summary.min_elapsed_seconds),
         ("Max elapsed seconds", summary.max_elapsed_seconds),
@@ -589,10 +664,12 @@ def main() -> int:
     parser.add_argument("--recipe", type=Path)
     parser.add_argument("--transfer-knowledge", type=Path)
     parser.add_argument("--scout-handoff", type=Path)
+    parser.add_argument("--compact-scout", type=Path)
     parser.add_argument("--generate-scout-handoff", action="store_true")
     parser.add_argument("--compare-representations", action="store_true")
     parser.add_argument("--compile-recipe", type=Path)
     parser.add_argument("--compile-transfer-knowledge", type=Path)
+    parser.add_argument("--compile-compact-scout", type=Path)
     parser.add_argument("--input-cost-per-million", type=float)
     parser.add_argument("--output-cost-per-million", type=float)
     parser.add_argument("--diagnose-ollama", action="store_true")
@@ -603,6 +680,7 @@ def main() -> int:
         not args.diagnose_ollama
         and not args.compile_recipe
         and not args.compile_transfer_knowledge
+        and not args.compile_compact_scout
         and not args.generate_scout_handoff
         and not args.task
     ):
@@ -616,6 +694,7 @@ def main() -> int:
     if args.repeat != 1 and (
         args.compile_recipe
         or args.compile_transfer_knowledge
+        or args.compile_compact_scout
         or args.diagnose_ollama
         or args.generate_scout_handoff
         or args.compare_experience
@@ -654,6 +733,19 @@ def main() -> int:
             )
         )
         return 0
+    if args.compile_compact_scout:
+        source_path = args.compile_compact_scout
+        if not source_path.is_absolute():
+            source_path = args.root / source_path
+        try:
+            source_handoff = load_scout_handoff(source_path)
+            compiled_compact = compile_compact_scout(source_handoff)
+        except ValueError as exc:
+            parser.error(str(exc))
+        compact_path = compiled_compact.write_json(args.root / "compact_scouts")
+        print(f"compact_scout={compact_path}")
+        print(json.dumps(compiled_compact.to_dict(), indent=2, sort_keys=True))
+        return 0
     if args.compare_representations:
         if args.experience is None or args.recipe is None:
             parser.error(
@@ -671,6 +763,10 @@ def main() -> int:
             parser.error(
                 "--compare-representations cannot use --scout-handoff"
             )
+        if args.compact_scout is not None:
+            parser.error(
+                "--compare-representations cannot use --compact-scout"
+            )
     elif sum(
         context is not None
         for context in (
@@ -678,6 +774,7 @@ def main() -> int:
             args.recipe,
             args.transfer_knowledge,
             args.scout_handoff,
+            args.compact_scout,
         )
     ) > 1:
         parser.error("benchmark context options are mutually exclusive")
@@ -685,6 +782,7 @@ def main() -> int:
         args.recipe is not None
         or args.transfer_knowledge is not None
         or args.scout_handoff is not None
+        or args.compact_scout is not None
     ):
         parser.error(
             "--compare-experience cannot be combined with another context"
@@ -713,6 +811,7 @@ def main() -> int:
                 args.recipe,
                 args.transfer_knowledge,
                 args.scout_handoff,
+                args.compact_scout,
             )
         ):
             parser.error("scout generation cannot use benchmark context")
@@ -764,6 +863,15 @@ def main() -> int:
             scout_handoff = load_scout_handoff(scout_path)
         except ValueError as exc:
             parser.error(str(exc))
+    compact_scout = None
+    if args.compact_scout:
+        compact_path = args.compact_scout
+        if not compact_path.is_absolute():
+            compact_path = args.root / compact_path
+        try:
+            compact_scout = load_compact_scout(compact_path)
+        except ValueError as exc:
+            parser.error(str(exc))
     if args.compare_representations:
         assert experience is not None and recipe is not None
         try:
@@ -792,6 +900,7 @@ def main() -> int:
             recipe=recipe,
             transfer_knowledge=transfer_knowledge,
             scout_handoff=scout_handoff,
+            compact_scout=compact_scout,
             max_steps=args.max_steps,
         )
         print_repeated_summary(summary)
@@ -818,6 +927,7 @@ def main() -> int:
         recipe=recipe,
         transfer_knowledge=transfer_knowledge,
         scout_handoff=scout_handoff,
+        compact_scout=compact_scout,
         max_steps=args.max_steps,
     )
     status = "PASS" if result.success else "FAIL"

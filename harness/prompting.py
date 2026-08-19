@@ -192,6 +192,25 @@ def format_scout_handoff(handoff: dict[str, Any]) -> str:
     )
 
 
+def format_compact_scout(knowledge: dict[str, Any]) -> str:
+    principles = "\n".join(
+        f"- {principle}" for principle in knowledge["principles"]
+    )
+    concepts = "\n".join(
+        f"- {concept}" for concept in knowledge["implementation_concepts"]
+    )
+    return (
+        "COMPACT CURRENT-TASK SCOUT KNOWLEDGE\n\n"
+        "A read-only scout inspected this current task and its findings were "
+        "compacted into general guidance.\n\n"
+        f"Principles:\n{principles}\n\n"
+        f"Implementation concepts:\n{concepts}\n\n"
+        "This is guidance only.\n"
+        "Inspect the workspace and determine whether and where it applies.\n"
+        "Choose ONLY the next single tool action."
+    )
+
+
 def build_model_prompt(context: AgentContext) -> str:
     tools = {
         name: TOOL_DEFINITIONS[name]
@@ -209,7 +228,9 @@ def build_model_prompt(context: AgentContext) -> str:
         ),
     ]
     if context.prior_experience is not None:
-        if "scout_handoff_version" in context.prior_experience:
+        if "compact_scout_version" in context.prior_experience:
+            sections.append(format_compact_scout(context.prior_experience))
+        elif "scout_handoff_version" in context.prior_experience:
             sections.append(format_scout_handoff(context.prior_experience))
         elif "transfer_version" in context.prior_experience:
             sections.append(
