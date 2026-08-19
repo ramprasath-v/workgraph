@@ -1,0 +1,110 @@
+{
+  "agent_steps": 8,
+  "compact_scout_id": null,
+  "context_mode": "none",
+  "elapsed_seconds": 78.563115,
+  "end_time": "2026-08-19T02:59:55.008961+00:00",
+  "estimated_cost_usd": null,
+  "experience_id": null,
+  "experience_used": false,
+  "failure_message": null,
+  "failure_type": null,
+  "generated_experience_id": "exp_101aa9645ab34d46ad1d3fbf4f7dcae7",
+  "generated_experience_path": "/Users/ramprasath/Documents/ChatGPT/WorkGraph/experiences/exp_101aa9645ab34d46ad1d3fbf4f7dcae7.json",
+  "input_tokens": 10653,
+  "max_steps": 8,
+  "model_name": "gemini-2.5-flash",
+  "model_provider": "vertex",
+  "output_tokens": 1464,
+  "recipe_id": null,
+  "run_id": "task06_retry_idempotency-4a67af377dc7",
+  "scout_accounting_mode": null,
+  "scout_elapsed_seconds": 0.0,
+  "scout_handoff_id": null,
+  "scout_input_tokens": 0,
+  "scout_model": null,
+  "scout_output_tokens": 0,
+  "scout_total_tokens": 0,
+  "source_experience_id": null,
+  "source_recipe_id": null,
+  "source_scout_handoff_id": null,
+  "start_time": "2026-08-19T02:58:36.444497+00:00",
+  "success": true,
+  "task_id": "task06_retry_idempotency",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "test_payment_processor.py"
+  ],
+  "tests_failed": 0,
+  "tests_passed": 6,
+  "tool_calls": 7,
+  "total_inference_elapsed_seconds": 78.563115,
+  "total_inference_tokens": 25844,
+  "total_tokens": 25844,
+  "trajectory": [
+    {
+      "action": "list_files",
+      "outcome": "success (4 files)",
+      "step": 1,
+      "target": null
+    },
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 2,
+      "target": "payment_processor.py"
+    },
+    {
+      "action": "write_file",
+      "outcome": "success",
+      "step": 3,
+      "target": "payment_processor.py"
+    },
+    {
+      "action": "run_tests",
+      "outcome": "5 passed / 1 failed",
+      "step": 4,
+      "target": null
+    },
+    {
+      "action": "write_file",
+      "outcome": "success",
+      "step": 5,
+      "target": "payment_processor.py"
+    },
+    {
+      "action": "write_file",
+      "outcome": "success",
+      "step": 6,
+      "target": "payment_processor.py"
+    },
+    {
+      "action": "run_tests",
+      "outcome": "6 passed / 0 failed",
+      "step": 7,
+      "target": null
+    },
+    {
+      "action": "finish",
+      "outcome": "success",
+      "step": 8,
+      "target": null
+    }
+  ],
+  "trajectory_diagnostics": {
+    "file_reads": 1,
+    "file_writes": 3,
+    "most_repeated_action": {
+      "action": "write_file",
+      "count": 3,
+      "target": "payment_processor.py"
+    },
+    "repeated_identical_actions": 3,
+    "test_runs": 2,
+    "unique_actions": 5
+  },
+  "transfer_knowledge_id": null
+}

@@ -1,0 +1,8 @@
+{
+  "task_id": "task07_retry_transfer",
+  "description": "A fulfillment webhook can be delivered repeatedly, causing one delivery to create multiple shipments. Make redelivery safe while preserving validation, independent deliveries, response shape, and shipment-service behavior.",
+  "environment": {
+    "language": "python"
+  },
+  "test_command": ["python", "-m", "pytest", "-q", "test_delivery_receiver.py"]
+}

@@ -1,0 +1,11 @@
+{
+  "implementation_concepts": [
+    "Record completed logical-operation identities and outcomes; on retry, reuse the recorded outcome before repeating the side effect."
+  ],
+  "principles": [
+    "Retry delivery can invoke the same logical operation more than once, so repeated execution must not duplicate its side effect."
+  ],
+  "source_recipe_id": "recipe_da7d5db67724045643eb513a5c8192e4",
+  "transfer_knowledge_id": "transfer_93a42588ddd62085a6289d9b12613079",
+  "transfer_version": "0.1"
+}

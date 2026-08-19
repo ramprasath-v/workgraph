@@ -23,6 +23,10 @@ def compile_transfer_knowledge(recipe: ExperienceRecipe) -> TransferKnowledge:
             "before equality comparison or persistence when the contract "
             "defines equivalent textual forms."
         ),
+        "retry_idempotency": (
+            "Retry delivery can invoke the same logical operation more than "
+            "once, so repeated execution must not duplicate its side effect."
+        ),
     }
     try:
         principle = principles[recipe.task_type]

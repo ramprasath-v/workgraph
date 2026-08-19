@@ -1,0 +1,36 @@
+{
+  "implementation_concepts": [
+    "Record completed logical-operation identities and outcomes; on retry, reuse the recorded outcome before repeating the side effect."
+  ],
+  "problem": "Retried delivery repeats a logical operation and its side effect.",
+  "recipe_id": "recipe_da7d5db67724045643eb513a5c8192e4",
+  "recipe_version": "0.2",
+  "source_experience_id": "exp_101aa9645ab34d46ad1d3fbf4f7dcae7",
+  "steps": [
+    {
+      "instruction": "Inspect payment-event processing and its externally visible result.",
+      "step": 1
+    },
+    {
+      "instruction": "Preserve input validation and first-delivery public behavior.",
+      "step": 2
+    },
+    {
+      "instruction": "Use stable delivery identity to recognize a completed logical operation and reuse its outcome without repeating the side effect.",
+      "step": 3
+    },
+    {
+      "instruction": "Run the task test suite after modifying the implementation.",
+      "step": 4
+    }
+  ],
+  "target_files": [
+    "payment_processor.py"
+  ],
+  "task_id": "task06_retry_idempotency",
+  "task_type": "retry_idempotency",
+  "verification": {
+    "previously_failed": 0,
+    "previously_passed": 6
+  }
+}

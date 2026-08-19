@@ -1,0 +1,28 @@
+{
+  "completed_at": "2026-08-19T02:59:55.008961+00:00",
+  "created_at": "2026-08-19T02:59:55.008961+00:00",
+  "environment": {
+    "language": "python"
+  },
+  "experience_id": "exp_101aa9645ab34d46ad1d3fbf4f7dcae7",
+  "files_changed": [
+    "payment_processor.py"
+  ],
+  "patch": "--- a/payment_processor.py\n+++ b/payment_processor.py\n@@ -4,6 +4,8 @@\n     def __init__(self):\n         self.total_charged = 0.0\n         self.applied_events = []\n+        # Stores the total_charged *before* the event was processed for the first time\n+        self._processed_event_ids = {}\n \n     @staticmethod\n     def _validate(event_id, amount):\n@@ -19,6 +21,15 @@\n     def process_event(self, event_id, amount):\n         self._validate(event_id, amount)\n         numeric_amount = float(amount)\n+\n+        if event_id in self._processed_event_ids:\n+            # Event already processed, return the total charged at the time it was first processed\n+            # This is the total_charged *before* this event was processed, plus this event's amount\n+            return self._processed_event_ids[event_id] + numeric_amount\n+\n+        # Store the total_charged *before* adding the current event's amount\n+        self._processed_event_ids[event_id] = self.total_charged\n+\n         self.total_charged += numeric_amount\n         self.applied_events.append((event_id, numeric_amount))\n         return self.total_charged\n",
+  "problem": "Retried payment-event deliveries currently apply the same logical charge more than once. Make repeated delivery safe while preserving validation, independent event processing, and the existing public API behavior.",
+  "producer_model": "gemini-2.5-flash",
+  "started_at": "2026-08-19T02:58:36.444497+00:00",
+  "successful": true,
+  "task_id": "task06_retry_idempotency",
+  "verification": {
+    "command": [
+      "python",
+      "-m",
+      "pytest",
+      "-q",
+      "test_payment_processor.py"
+    ],
+    "failed": 0,
+    "passed": 6
+  }
+}

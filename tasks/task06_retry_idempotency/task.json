@@ -1,0 +1,8 @@
+{
+  "task_id": "task06_retry_idempotency",
+  "description": "Retried payment-event deliveries currently apply the same logical charge more than once. Make repeated delivery safe while preserving validation, independent event processing, and the existing public API behavior.",
+  "environment": {
+    "language": "python"
+  },
+  "test_command": ["python", "-m", "pytest", "-q", "test_payment_processor.py"]
+}
