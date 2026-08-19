@@ -1,0 +1,8 @@
+{
+  "task_id": "task05_identifier_normalization",
+  "description": "User registration currently treats equivalent textual identifiers as different users. Normalize externally supplied identifiers consistently while preserving the existing validation contract and public behavior.",
+  "environment": {
+    "language": "python"
+  },
+  "test_command": ["python", "-m", "pytest", "-q", "test_user_registry.py"]
+}

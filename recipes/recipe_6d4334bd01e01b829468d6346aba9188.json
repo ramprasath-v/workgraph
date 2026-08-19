@@ -1,0 +1,36 @@
+{
+  "implementation_concepts": [
+    "Apply identifier normalization at the input boundary while preserving existing validation behavior."
+  ],
+  "problem": "Equivalent externally supplied textual identifiers are treated as different logical users.",
+  "recipe_id": "recipe_6d4334bd01e01b829468d6346aba9188",
+  "recipe_version": "0.2",
+  "source_experience_id": "exp_c574c2b4effe41f181c8129b62f4ffb5",
+  "steps": [
+    {
+      "instruction": "Inspect the identifier registration and lookup behavior.",
+      "step": 1
+    },
+    {
+      "instruction": "Preserve the existing invalid-identifier validation contract.",
+      "step": 2
+    },
+    {
+      "instruction": "Normalize surrounding whitespace and letter casing consistently before identifier comparison or persistence.",
+      "step": 3
+    },
+    {
+      "instruction": "Run the task test suite after modifying the implementation.",
+      "step": 4
+    }
+  ],
+  "target_files": [
+    "user_registry.py"
+  ],
+  "task_id": "task05_identifier_normalization",
+  "task_type": "identifier_normalization",
+  "verification": {
+    "previously_failed": 0,
+    "previously_passed": 6
+  }
+}

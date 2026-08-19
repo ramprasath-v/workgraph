@@ -1,0 +1,11 @@
+{
+  "implementation_concepts": [
+    "Apply identifier normalization at the input boundary while preserving existing validation behavior."
+  ],
+  "principles": [
+    "Externally supplied identifiers should be normalized consistently before equality comparison or persistence when the contract defines equivalent textual forms."
+  ],
+  "source_recipe_id": "recipe_6d4334bd01e01b829468d6346aba9188",
+  "transfer_knowledge_id": "transfer_56c07e702add42b7a04b9c7f7a4a7230",
+  "transfer_version": "0.1"
+}

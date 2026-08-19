@@ -13,15 +13,25 @@ from .schema import TransferKnowledge
 def compile_transfer_knowledge(recipe: ExperienceRecipe) -> TransferKnowledge:
     if not recipe.implementation_concepts:
         raise ValueError("source recipe has no implementation concepts to transfer")
+    principles = {
+        "config_path_fix": (
+            "Relative resource paths can fail when the process working "
+            "directory changes."
+        ),
+        "identifier_normalization": (
+            "Externally supplied identifiers should be normalized consistently "
+            "before equality comparison or persistence when the contract "
+            "defines equivalent textual forms."
+        ),
+    }
+    try:
+        principle = principles[recipe.task_type]
+    except KeyError as exc:
+        raise ValueError("unsupported recipe task type for transfer") from exc
     semantic_payload = {
         "transfer_version": "0.1",
         "source_recipe_id": recipe.recipe_id,
-        "principles": [
-            (
-                "Relative resource paths can fail when the process working "
-                "directory changes."
-            )
-        ],
+        "principles": [principle],
         "implementation_concepts": list(recipe.implementation_concepts),
     }
     canonical = json.dumps(

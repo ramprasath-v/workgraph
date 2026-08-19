@@ -1,0 +1,28 @@
+{
+  "completed_at": "2026-08-19T01:38:27.927368+00:00",
+  "created_at": "2026-08-19T01:38:27.927368+00:00",
+  "environment": {
+    "language": "python"
+  },
+  "experience_id": "exp_c574c2b4effe41f181c8129b62f4ffb5",
+  "files_changed": [
+    "user_registry.py"
+  ],
+  "patch": "--- a/user_registry.py\n+++ b/user_registry.py\n@@ -5,22 +5,24 @@\n         self._users = {}\n \n     @staticmethod\n-    def _validate(identifier):\n+    def _normalize_identifier(identifier):\n         if not isinstance(identifier, str):\n             raise TypeError(\"identifier must be a string\")\n-        if not identifier.strip():\n-            raise ValueError(\"identifier must not be empty\")\n+        normalized = identifier.strip().lower()\n+        if not normalized:\n+            raise ValueError(\"identifier must not be empty after normalization\")\n+        return normalized\n \n     def register(self, identifier, display_name):\n-        self._validate(identifier)\n-        if identifier in self._users:\n+        normalized_identifier = self._normalize_identifier(identifier)\n+        if normalized_identifier in self._users:\n             return False\n-        self._users[identifier] = display_name\n+        self._users[normalized_identifier] = display_name\n         return True\n \n     def display_name_for(self, identifier):\n-        self._validate(identifier)\n-        return self._users.get(identifier)\n+        normalized_identifier = self._normalize_identifier(identifier)\n+        return self._users.get(normalized_identifier)\n \n     def __len__(self):\n         return len(self._users)\n",
+  "problem": "User registration currently treats equivalent textual identifiers as different users. Normalize externally supplied identifiers consistently while preserving the existing validation contract and public behavior.",
+  "producer_model": "gemini-2.5-flash",
+  "started_at": "2026-08-19T01:38:13.435298+00:00",
+  "successful": true,
+  "task_id": "task05_identifier_normalization",
+  "verification": {
+    "command": [
+      "python",
+      "-m",
+      "pytest",
+      "-q",
+      "test_user_registry.py"
+    ],
+    "failed": 0,
+    "passed": 6
+  }
+}
