@@ -40,31 +40,78 @@ def compile_compact_scout(handoff: ScoutHandoff) -> CompactScoutKnowledge:
         "existing report output" in semantic_source
         or "output format and content" in semantic_source
     )
-    if not (has_bundled_resources and has_relative_location and has_cwd_failure):
-        raise ValueError(
-            "scout handoff lacks bundled-resource working-directory evidence"
-        )
-    if not (has_package_location and has_explicit_override and has_output_constraint):
-        raise ValueError(
-            "scout handoff lacks package-location, override, or output evidence"
-        )
+    resource_profile = (
+        has_bundled_resources
+        and has_relative_location
+        and has_cwd_failure
+        and has_package_location
+        and has_explicit_override
+        and has_output_constraint
+    )
 
-    semantic_payload = {
-        "compact_scout_version": "0.1",
-        "source_scout_handoff_id": handoff.scout_handoff_id,
-        "principles": [
+    has_retry_delivery = "redelivery" in semantic_source or "retry" in semantic_source
+    has_completed_identity = (
+        "previously processed" in semantic_source
+        or "has been processed" in semantic_source
+    )
+    has_recorded_outcome = (
+        "previously stored response" in semantic_source
+        or "corresponding responses" in semantic_source
+        or "associated responses" in semantic_source
+    )
+    has_duplicate_side_effect = (
+        "new shipment" in semantic_source
+        and ("redelivery" in semantic_source or "same" in semantic_source)
+    )
+    has_preserved_contracts = (
+        "validation" in semantic_source
+        and "response shape" in semantic_source
+        and "distinct" in semantic_source
+    )
+    retry_profile = (
+        has_retry_delivery
+        and has_completed_identity
+        and has_recorded_outcome
+        and has_duplicate_side_effect
+        and has_preserved_contracts
+    )
+
+    if resource_profile:
+        principles = [
             (
                 "Bundled resource lookup should remain independent of the "
                 "process working directory."
             )
-        ],
-        "implementation_concepts": [
+        ]
+        implementation_concepts = [
             (
                 "Use a package-relative lookup for bundled defaults while "
                 "preserving explicit caller-provided location overrides and "
                 "existing output behavior."
             )
-        ],
+        ]
+    elif retry_profile:
+        principles = [
+            (
+                "Repeated delivery of the same logical operation should not "
+                "duplicate its externally visible side effect."
+            )
+        ]
+        implementation_concepts = [
+            (
+                "Associate a stable operation identity with its completed "
+                "outcome; on retry, reuse that outcome before executing the "
+                "side effect again."
+            )
+        ]
+    else:
+        raise ValueError("scout handoff lacks supported compacting evidence")
+
+    semantic_payload = {
+        "compact_scout_version": "0.1",
+        "source_scout_handoff_id": handoff.scout_handoff_id,
+        "principles": principles,
+        "implementation_concepts": implementation_concepts,
         "scout_provider": handoff.producer_provider,
         "scout_model": handoff.producer_model,
         "scout_input_tokens": handoff.input_tokens,

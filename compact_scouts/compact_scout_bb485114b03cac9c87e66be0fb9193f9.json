@@ -1,0 +1,17 @@
+{
+  "compact_scout_id": "compact_scout_bb485114b03cac9c87e66be0fb9193f9",
+  "compact_scout_version": "0.1",
+  "implementation_concepts": [
+    "Associate a stable operation identity with its completed outcome; on retry, reuse that outcome before executing the side effect again."
+  ],
+  "principles": [
+    "Repeated delivery of the same logical operation should not duplicate its externally visible side effect."
+  ],
+  "scout_elapsed_seconds": 19.862172,
+  "scout_input_tokens": 8335,
+  "scout_model": "gemini-2.5-flash",
+  "scout_output_tokens": 647,
+  "scout_provider": "vertex",
+  "scout_total_tokens": 10871,
+  "source_scout_handoff_id": "scout_48f5448a867bd43b2b1fc4ae427ed5ab"
+}

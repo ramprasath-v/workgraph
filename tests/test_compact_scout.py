@@ -109,7 +109,7 @@ def test_missing_source_evidence_is_rejected_without_inventing_advice():
     data["recommended_investigation"] = ["Inspect the component."]
     data["constraints"] = ["Preserve behavior."]
 
-    with pytest.raises(ValueError, match="lacks bundled-resource"):
+    with pytest.raises(ValueError, match="lacks supported compacting evidence"):
         compile_compact_scout(type(handoff).from_dict(data))
 
 
