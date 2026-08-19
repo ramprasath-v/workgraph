@@ -30,6 +30,12 @@ class RepeatedRunSummary:
     recipe_id: str | None
     source_recipe_id: str | None
     transfer_knowledge_id: str | None
+    scout_handoff_id: str | None
+    scout_model: str | None
+    scout_input_tokens: int
+    scout_output_tokens: int
+    scout_total_tokens: int
+    scout_elapsed_seconds: float
     max_steps: int
     created_at: str
     total_runs: int
@@ -41,7 +47,9 @@ class RepeatedRunSummary:
     average_input_tokens: float
     average_output_tokens: float
     average_total_tokens: float
+    average_total_inference_tokens: float
     average_elapsed_seconds: float
+    average_total_inference_elapsed_seconds: float
     min_elapsed_seconds: float
     max_elapsed_seconds: float
     failure_type_counts: dict[str, int]
@@ -82,6 +90,12 @@ def aggregate_results(
         first.recipe_id,
         first.source_recipe_id,
         first.transfer_knowledge_id,
+        first.scout_handoff_id,
+        first.scout_model,
+        first.scout_input_tokens,
+        first.scout_output_tokens,
+        first.scout_total_tokens,
+        first.scout_elapsed_seconds,
         first.max_steps,
     )
     if any(
@@ -94,6 +108,12 @@ def aggregate_results(
             result.recipe_id,
             result.source_recipe_id,
             result.transfer_knowledge_id,
+            result.scout_handoff_id,
+            result.scout_model,
+            result.scout_input_tokens,
+            result.scout_output_tokens,
+            result.scout_total_tokens,
+            result.scout_elapsed_seconds,
             result.max_steps,
         )
         != identity
@@ -118,6 +138,12 @@ def aggregate_results(
         recipe_id=first.recipe_id,
         source_recipe_id=first.source_recipe_id,
         transfer_knowledge_id=first.transfer_knowledge_id,
+        scout_handoff_id=first.scout_handoff_id,
+        scout_model=first.scout_model,
+        scout_input_tokens=first.scout_input_tokens,
+        scout_output_tokens=first.scout_output_tokens,
+        scout_total_tokens=first.scout_total_tokens,
+        scout_elapsed_seconds=first.scout_elapsed_seconds,
         max_steps=first.max_steps,
         created_at=created_at,
         total_runs=len(results),
@@ -129,7 +155,13 @@ def aggregate_results(
         average_input_tokens=_average([result.input_tokens for result in results]),
         average_output_tokens=_average([result.output_tokens for result in results]),
         average_total_tokens=_average([result.total_tokens for result in results]),
+        average_total_inference_tokens=_average(
+            [result.total_inference_tokens() for result in results]
+        ),
         average_elapsed_seconds=_average(elapsed),
+        average_total_inference_elapsed_seconds=_average(
+            [result.total_inference_elapsed_seconds() for result in results]
+        ),
         min_elapsed_seconds=min(elapsed),
         max_elapsed_seconds=max(elapsed),
         failure_type_counts=dict(sorted(failures.items())),

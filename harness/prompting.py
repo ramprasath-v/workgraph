@@ -171,6 +171,27 @@ def format_transfer_knowledge(
     )
 
 
+def format_scout_handoff(handoff: dict[str, Any]) -> str:
+    files = "\n".join(f"- {path}" for path in handoff["files_inspected"])
+    observations = "\n".join(f"- {item}" for item in handoff["observations"])
+    investigation = "\n".join(
+        f"- {item}" for item in handoff["recommended_investigation"]
+    )
+    constraints = "\n".join(f"- {item}" for item in handoff["constraints"])
+    return (
+        "CURRENT-TASK SCOUT HANDOFF\n\n"
+        "A scout inspected this current task before you started.\n\n"
+        f"Observed files/areas:\n{files or '- (none)'}\n\n"
+        f"Diagnosis / useful observations:\n{observations}\n"
+        f"- Suspected area: {handoff['suspected_area']}\n\n"
+        f"Recommended investigation:\n{investigation}\n\n"
+        f"Constraints:\n{constraints}\n\n"
+        "This is guidance only. You must still inspect, edit, and verify using "
+        "normal tools.\n"
+        "Choose ONLY the next single tool action."
+    )
+
+
 def build_model_prompt(context: AgentContext) -> str:
     tools = {
         name: TOOL_DEFINITIONS[name]
@@ -188,7 +209,9 @@ def build_model_prompt(context: AgentContext) -> str:
         ),
     ]
     if context.prior_experience is not None:
-        if "transfer_version" in context.prior_experience:
+        if "scout_handoff_version" in context.prior_experience:
+            sections.append(format_scout_handoff(context.prior_experience))
+        elif "transfer_version" in context.prior_experience:
             sections.append(
                 format_transfer_knowledge(
                     context.prior_experience, history=context.history

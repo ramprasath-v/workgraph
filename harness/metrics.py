@@ -40,9 +40,26 @@ class RunResult:
     recipe_id: str | None = None
     source_recipe_id: str | None = None
     transfer_knowledge_id: str | None = None
+    scout_handoff_id: str | None = None
+    scout_model: str | None = None
+    scout_input_tokens: int = 0
+    scout_output_tokens: int = 0
+    scout_total_tokens: int = 0
+    scout_elapsed_seconds: float = 0.0
 
     def to_dict(self) -> dict[str, object]:
-        return asdict(self)
+        data = asdict(self)
+        data["total_inference_tokens"] = self.total_inference_tokens()
+        data["total_inference_elapsed_seconds"] = (
+            self.total_inference_elapsed_seconds()
+        )
+        return data
+
+    def total_inference_tokens(self) -> int:
+        return self.total_tokens + self.scout_total_tokens
+
+    def total_inference_elapsed_seconds(self) -> float:
+        return round(self.elapsed_seconds + self.scout_elapsed_seconds, 6)
 
     def write_json(self, results_dir: Path) -> Path:
         results_dir.mkdir(parents=True, exist_ok=True)

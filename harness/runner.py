@@ -15,6 +15,8 @@ from experience.capture import capture_experience
 from experience.schema import ExperienceRecord, load_experience
 from recipe.compiler import compile_recipe
 from recipe.schema import ExperienceRecipe, load_recipe
+from scout.runner import VertexHandoffGenerator, run_scout
+from scout.schema import ScoutHandoff, load_scout_handoff
 from transfer.compiler import compile_transfer_knowledge
 from transfer.schema import TransferKnowledge, load_transfer_knowledge
 
@@ -74,21 +76,25 @@ def run_benchmark(
     experience: ExperienceRecord | None = None,
     recipe: ExperienceRecipe | None = None,
     transfer_knowledge: TransferKnowledge | None = None,
+    scout_handoff: ScoutHandoff | None = None,
     max_steps: int = 20,
 ) -> tuple[RunResult, Path]:
     if max_steps < 1:
         raise ValueError("max_steps must be positive")
     if sum(
         context is not None
-        for context in (experience, recipe, transfer_knowledge)
+        for context in (experience, recipe, transfer_knowledge, scout_handoff)
     ) > 1:
         raise ValueError("benchmark contexts are mutually exclusive")
     repo_root = repo_root.resolve()
     prior_experience = experience
     prior_recipe = recipe
     prior_transfer = transfer_knowledge
+    prior_scout = scout_handoff
     if prior_recipe is not None and prior_recipe.task_id != task_id:
         raise ValueError("recipe task_id does not match the benchmark task")
+    if prior_scout is not None and prior_scout.task_id != task_id:
+        raise ValueError("scout handoff task_id does not match the benchmark task")
     context_mode = (
         "raw_experience"
         if prior_experience is not None
@@ -96,6 +102,8 @@ def run_benchmark(
         if prior_recipe is not None
         else "transfer_knowledge"
         if prior_transfer is not None
+        else "scout_handoff"
+        if prior_scout is not None
         else "none"
     )
     source_experience_id = (
@@ -124,6 +132,8 @@ def run_benchmark(
                 if prior_recipe
                 else prior_transfer.to_dict()
                 if prior_transfer
+                else prior_scout.to_dict()
+                if prior_scout
                 else None
             ),
         )
@@ -224,6 +234,14 @@ def run_benchmark(
         transfer_knowledge_id=(
             prior_transfer.transfer_knowledge_id if prior_transfer else None
         ),
+        scout_handoff_id=(
+            prior_scout.scout_handoff_id if prior_scout else None
+        ),
+        scout_model=prior_scout.producer_model if prior_scout else None,
+        scout_input_tokens=prior_scout.input_tokens if prior_scout else 0,
+        scout_output_tokens=prior_scout.output_tokens if prior_scout else 0,
+        scout_total_tokens=prior_scout.total_tokens if prior_scout else 0,
+        scout_elapsed_seconds=(prior_scout.elapsed_seconds if prior_scout else 0.0),
     )
     result_path = result.write_json(repo_root / "results")
     return result, result_path
@@ -296,6 +314,7 @@ def run_repeated_benchmark(
     experience: ExperienceRecord | None = None,
     recipe: ExperienceRecipe | None = None,
     transfer_knowledge: TransferKnowledge | None = None,
+    scout_handoff: ScoutHandoff | None = None,
     max_steps: int = 20,
 ) -> tuple[RepeatedRunSummary, Path]:
     """Repeat one unchanged benchmark condition from pristine workspaces."""
@@ -314,6 +333,7 @@ def run_repeated_benchmark(
                 experience=experience,
                 recipe=recipe,
                 transfer_knowledge=transfer_knowledge,
+                scout_handoff=scout_handoff,
                 max_steps=max_steps,
             )
         )
@@ -459,7 +479,12 @@ def print_repeated_summary(summary: RepeatedRunSummary) -> None:
         ("Average input tokens", summary.average_input_tokens),
         ("Average output tokens", summary.average_output_tokens),
         ("Average total tokens", summary.average_total_tokens),
+        ("Average total inference tokens", summary.average_total_inference_tokens),
         ("Average elapsed seconds", summary.average_elapsed_seconds),
+        (
+            "Average total inference elapsed",
+            summary.average_total_inference_elapsed_seconds,
+        ),
         ("Min elapsed seconds", summary.min_elapsed_seconds),
         ("Max elapsed seconds", summary.max_elapsed_seconds),
         (
@@ -563,6 +588,8 @@ def main() -> int:
     experience_group.add_argument("--compare-experience", type=Path)
     parser.add_argument("--recipe", type=Path)
     parser.add_argument("--transfer-knowledge", type=Path)
+    parser.add_argument("--scout-handoff", type=Path)
+    parser.add_argument("--generate-scout-handoff", action="store_true")
     parser.add_argument("--compare-representations", action="store_true")
     parser.add_argument("--compile-recipe", type=Path)
     parser.add_argument("--compile-transfer-knowledge", type=Path)
@@ -576,6 +603,7 @@ def main() -> int:
         not args.diagnose_ollama
         and not args.compile_recipe
         and not args.compile_transfer_knowledge
+        and not args.generate_scout_handoff
         and not args.task
     ):
         parser.error("--task is required")
@@ -589,6 +617,7 @@ def main() -> int:
         args.compile_recipe
         or args.compile_transfer_knowledge
         or args.diagnose_ollama
+        or args.generate_scout_handoff
         or args.compare_experience
         or args.compare_representations
     ):
@@ -638,13 +667,24 @@ def main() -> int:
             parser.error(
                 "--compare-representations cannot use --transfer-knowledge"
             )
+        if args.scout_handoff is not None:
+            parser.error(
+                "--compare-representations cannot use --scout-handoff"
+            )
     elif sum(
         context is not None
-        for context in (args.experience, args.recipe, args.transfer_knowledge)
+        for context in (
+            args.experience,
+            args.recipe,
+            args.transfer_knowledge,
+            args.scout_handoff,
+        )
     ) > 1:
         parser.error("benchmark context options are mutually exclusive")
     if args.compare_experience is not None and (
-        args.recipe is not None or args.transfer_knowledge is not None
+        args.recipe is not None
+        or args.transfer_knowledge is not None
+        or args.scout_handoff is not None
     ):
         parser.error(
             "--compare-experience cannot be combined with another context"
@@ -663,6 +703,31 @@ def main() -> int:
         diagnostic_task = args.task or "task02_config_path"
         results = run_ollama_diagnostics(args.root, diagnostic_task, model)
         return 0 if all(result.success for _, result in results) else 1
+    if args.generate_scout_handoff:
+        if args.provider != "vertex":
+            parser.error("--generate-scout-handoff requires --provider vertex")
+        if any(
+            context is not None
+            for context in (
+                args.experience,
+                args.recipe,
+                args.transfer_knowledge,
+                args.scout_handoff,
+            )
+        ):
+            parser.error("scout generation cannot use benchmark context")
+        task = load_task(args.root.resolve(), args.task)
+        handoff, handoff_path = run_scout(
+            args.root,
+            args.task,
+            task,
+            model,
+            VertexHandoffGenerator(model),
+            max_steps=args.max_steps,
+        )
+        print(f"scout_handoff={handoff_path}")
+        print(json.dumps(handoff.to_dict(), indent=2, sort_keys=True))
+        return 0
     selected_path = args.experience or args.compare_experience
     experience = None
     if selected_path:
@@ -688,6 +753,15 @@ def main() -> int:
             transfer_path = args.root / transfer_path
         try:
             transfer_knowledge = load_transfer_knowledge(transfer_path)
+        except ValueError as exc:
+            parser.error(str(exc))
+    scout_handoff = None
+    if args.scout_handoff:
+        scout_path = args.scout_handoff
+        if not scout_path.is_absolute():
+            scout_path = args.root / scout_path
+        try:
+            scout_handoff = load_scout_handoff(scout_path)
         except ValueError as exc:
             parser.error(str(exc))
     if args.compare_representations:
@@ -717,6 +791,7 @@ def main() -> int:
             experience=experience,
             recipe=recipe,
             transfer_knowledge=transfer_knowledge,
+            scout_handoff=scout_handoff,
             max_steps=args.max_steps,
         )
         print_repeated_summary(summary)
@@ -742,6 +817,7 @@ def main() -> int:
         experience=experience,
         recipe=recipe,
         transfer_knowledge=transfer_knowledge,
+        scout_handoff=scout_handoff,
         max_steps=args.max_steps,
     )
     status = "PASS" if result.success else "FAIL"
