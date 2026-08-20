@@ -1,0 +1,529 @@
+{
+  "checkpoint_version": "0.1",
+  "falsified_naive_hypothesis": "If retrieved guidance is relevant and correct, injecting it cannot hurt.",
+  "families": [
+    {
+      "conditions": [
+        {
+          "condition_id": "baseline",
+          "evidence": null,
+          "label": "Baseline / no context",
+          "outcome": null,
+          "persisted_total_inference_accounting": null,
+          "qwen_only_efficiency": null,
+          "retention_status": "raw_results_not_retained",
+          "trajectory_metrics": null
+        },
+        {
+          "condition_id": "relevant_historical_transfer",
+          "evidence": null,
+          "label": "Relevant Task 02 historical transfer",
+          "outcome": null,
+          "persisted_total_inference_accounting": null,
+          "qwen_only_efficiency": null,
+          "retention_status": "raw_results_not_retained",
+          "trajectory_metrics": null
+        },
+        {
+          "condition_id": "irrelevant_historical_transfer",
+          "evidence": null,
+          "label": "Irrelevant Task 05 historical transfer",
+          "outcome": null,
+          "persisted_total_inference_accounting": null,
+          "qwen_only_efficiency": null,
+          "retention_status": "raw_results_not_retained",
+          "trajectory_metrics": null
+        },
+        {
+          "condition_id": "detailed_current_task_scout",
+          "evidence": null,
+          "label": "Detailed current-task scout",
+          "outcome": null,
+          "persisted_total_inference_accounting": null,
+          "qwen_only_efficiency": null,
+          "retention_status": "raw_results_not_retained",
+          "trajectory_metrics": null
+        },
+        {
+          "condition_id": "compact_current_task_scout",
+          "evidence": null,
+          "label": "Compact current-task scout",
+          "outcome": null,
+          "persisted_total_inference_accounting": null,
+          "qwen_only_efficiency": null,
+          "retention_status": "raw_results_not_retained",
+          "trajectory_metrics": null
+        }
+      ],
+      "domain": "resource/path transfer",
+      "evidence_level": "historical_observation_without_raw_results",
+      "family_id": "family_1",
+      "historical_observation": {
+        "machine_derived": false,
+        "outcome_class": "capability_enabling_assistance",
+        "statement": "The frozen project record classifies Task 04 as baseline failure with successful relevant and compact assistance. Original per-run Kaggle evidence was not retained, so this checkpoint reports no numerical or trajectory metrics for that claim."
+      },
+      "task_id": "task04_report_resources"
+    },
+    {
+      "conditions": [
+        {
+          "condition_id": "baseline",
+          "evidence": null,
+          "label": "Baseline / no context",
+          "outcome": null,
+          "persisted_total_inference_accounting": null,
+          "qwen_only_efficiency": null,
+          "retention_status": "raw_results_not_retained",
+          "trajectory_metrics": null
+        },
+        {
+          "condition_id": "relevant_historical_transfer",
+          "evidence": null,
+          "label": "Relevant Task 06 historical transfer",
+          "outcome": null,
+          "persisted_total_inference_accounting": null,
+          "qwen_only_efficiency": null,
+          "retention_status": "raw_results_not_retained",
+          "trajectory_metrics": null
+        },
+        {
+          "condition_id": "irrelevant_historical_transfer",
+          "evidence": null,
+          "label": "Irrelevant Task 05 historical transfer",
+          "outcome": null,
+          "persisted_total_inference_accounting": null,
+          "qwen_only_efficiency": null,
+          "retention_status": "raw_results_not_retained",
+          "trajectory_metrics": null
+        },
+        {
+          "condition_id": "detailed_current_task_scout",
+          "evidence": null,
+          "label": "Detailed current-task scout",
+          "outcome": null,
+          "persisted_total_inference_accounting": null,
+          "qwen_only_efficiency": null,
+          "retention_status": "raw_results_not_retained",
+          "trajectory_metrics": null
+        },
+        {
+          "condition_id": "compact_current_task_scout",
+          "evidence": null,
+          "label": "Compact current-task scout",
+          "outcome": null,
+          "persisted_total_inference_accounting": null,
+          "qwen_only_efficiency": null,
+          "retention_status": "raw_results_not_retained",
+          "trajectory_metrics": null
+        }
+      ],
+      "domain": "retry/idempotency",
+      "evidence_level": "historical_observation_without_raw_results",
+      "family_id": "family_2",
+      "historical_observation": {
+        "machine_derived": false,
+        "outcome_class": "assistance_insufficient",
+        "statement": "The frozen project record classifies Task 07 as baseline and assistance failure, with some assisted trajectories described as more task-directed. Original per-run Kaggle evidence was not retained, so this checkpoint reports no numerical or trajectory metrics for that claim."
+      },
+      "task_id": "task07_retry_transfer"
+    },
+    {
+      "conditions": [
+        {
+          "condition_id": "baseline",
+          "evidence": {
+            "aggregate_result": "results/repeat_task09_role_changes_696038d25c92.json",
+            "run_results": [
+              "results/repeat_task09_role_changes_696038d25c92-run-01.json",
+              "results/repeat_task09_role_changes_696038d25c92-run-02.json",
+              "results/repeat_task09_role_changes_696038d25c92-run-03.json",
+              "results/repeat_task09_role_changes_696038d25c92-run-04.json",
+              "results/repeat_task09_role_changes_696038d25c92-run-05.json"
+            ],
+            "sha256": {
+              "results/repeat_task09_role_changes_696038d25c92-run-01.json": "9a989add35cadb8447c4805b05f19849307cd305e8841fb9311084724a04a9c2",
+              "results/repeat_task09_role_changes_696038d25c92-run-02.json": "1d0a7f415456398bb5627cfb6c2c092b1e6da1c8410b2e6a1503ccb0e1e83189",
+              "results/repeat_task09_role_changes_696038d25c92-run-03.json": "5ce9eb7a7cc90d7497b3ff93726919fe0c7f2cc25a35f6a2fb4b36a5db503510",
+              "results/repeat_task09_role_changes_696038d25c92-run-04.json": "a299644c277fe3dd397d32d2f15a3222cd5243044c0ce8399979657324c07fae",
+              "results/repeat_task09_role_changes_696038d25c92-run-05.json": "3f94afe4c05692e94aa2eb345a917811f6a61a30c942ec7a82d5682bd29ef782",
+              "results/repeat_task09_role_changes_696038d25c92.json": "ee474ee6b9b787b3d1561412a31009e9149263e5c713cf6c73d8ffc1faee41f4"
+            }
+          },
+          "label": "Baseline / no context",
+          "outcome": {
+            "failed_runs": 0,
+            "success_rate": 1.0,
+            "successful_runs": 5,
+            "total_runs": 5
+          },
+          "persisted_total_inference_accounting": {
+            "average_total_inference_elapsed_seconds": 106.09911,
+            "average_total_inference_tokens": 5510.0,
+            "estimated_deployment_total_inference_elapsed_seconds": 530.495552,
+            "estimated_deployment_total_inference_tokens": 27550,
+            "frozen_experiment_total_inference_elapsed_seconds": 530.495552,
+            "frozen_experiment_total_inference_tokens": 27550,
+            "scout_elapsed_seconds": 0.0,
+            "scout_input_tokens": 0,
+            "scout_output_tokens": 0,
+            "scout_total_tokens": 0
+          },
+          "qwen_only_efficiency": {
+            "mean_elapsed_seconds": 106.09911,
+            "mean_input_tokens": 4978,
+            "mean_output_tokens": 532,
+            "mean_total_tokens": 5510
+          },
+          "retention_status": "complete_raw_and_aggregate",
+          "trajectory_metrics": {
+            "invalid_tool_action_rate": 1.0,
+            "malformed_output_rate": 1.0,
+            "max_step_exhaustion_rate": 0.0,
+            "mean_agent_steps": 8,
+            "mean_elapsed_seconds": 106.09911,
+            "mean_final_tests_failed": 0,
+            "mean_final_tests_passed": 6,
+            "mean_input_tokens": 4978,
+            "mean_output_tokens": 532,
+            "mean_passing_test_regression_count": 0,
+            "mean_repeated_identical_actions": 1,
+            "mean_tool_calls": 6,
+            "mean_total_tokens": 5510,
+            "median_final_tests_failed": 0.0,
+            "median_final_tests_passed": 6.0,
+            "median_passing_test_regression_count": 0.0,
+            "number_of_runs": 5,
+            "relevant_source_read_rate": 1.0,
+            "relevant_source_write_rate": 1.0,
+            "revision_after_failure_rate": 0.0,
+            "success_rate": 1.0,
+            "unexpected_file_created_or_written_rate": 0.0,
+            "verification_after_revision_rate": 0.0,
+            "verification_use_rate": 1.0
+          }
+        },
+        {
+          "condition_id": "relevant_historical_transfer",
+          "evidence": {
+            "aggregate_result": "results/repeat_task09_role_changes_d826c0ae1567.json",
+            "run_results": [
+              "results/repeat_task09_role_changes_d826c0ae1567-run-01.json",
+              "results/repeat_task09_role_changes_d826c0ae1567-run-02.json",
+              "results/repeat_task09_role_changes_d826c0ae1567-run-03.json",
+              "results/repeat_task09_role_changes_d826c0ae1567-run-04.json",
+              "results/repeat_task09_role_changes_d826c0ae1567-run-05.json"
+            ],
+            "sha256": {
+              "results/repeat_task09_role_changes_d826c0ae1567-run-01.json": "b887038afd3d425693dd105106caf1e1e58951d957fca55321973f10607b2a61",
+              "results/repeat_task09_role_changes_d826c0ae1567-run-02.json": "03384c33b2cafcde8a049e99b8fd12a2455789ebb7a1dc8509f6b363b846ff41",
+              "results/repeat_task09_role_changes_d826c0ae1567-run-03.json": "329ce20e3c4e1b1476c832dc0754e0cd08458886b1e577f5fb2c8f65e35f5ce5",
+              "results/repeat_task09_role_changes_d826c0ae1567-run-04.json": "d18e6558327ee10d2b5de0344d488a28e18eb7a1ba81ce6b60033b198a882cf6",
+              "results/repeat_task09_role_changes_d826c0ae1567-run-05.json": "a61b9dcbe09514a9571e20266bc0b84bbf3b4caa326d1fa0663c5f4a758aa13e",
+              "results/repeat_task09_role_changes_d826c0ae1567.json": "47a4e8f09e1cf7abaf35c7267f3e4f84dedc065f86407ae251bf118492d1e80c"
+            }
+          },
+          "label": "Relevant Task 08 historical transfer",
+          "outcome": {
+            "failed_runs": 5,
+            "success_rate": 0.0,
+            "successful_runs": 0,
+            "total_runs": 5
+          },
+          "persisted_total_inference_accounting": {
+            "average_total_inference_elapsed_seconds": 166.59947,
+            "average_total_inference_tokens": 10452.2,
+            "estimated_deployment_total_inference_elapsed_seconds": 832.997349,
+            "estimated_deployment_total_inference_tokens": 52261,
+            "frozen_experiment_total_inference_elapsed_seconds": 832.997349,
+            "frozen_experiment_total_inference_tokens": 52261,
+            "scout_elapsed_seconds": 0.0,
+            "scout_input_tokens": 0,
+            "scout_output_tokens": 0,
+            "scout_total_tokens": 0
+          },
+          "qwen_only_efficiency": {
+            "mean_elapsed_seconds": 166.59947,
+            "mean_input_tokens": 9303.6,
+            "mean_output_tokens": 1148.6,
+            "mean_total_tokens": 10452.2
+          },
+          "retention_status": "complete_raw_and_aggregate",
+          "trajectory_metrics": {
+            "invalid_tool_action_rate": 0.0,
+            "malformed_output_rate": 1.0,
+            "max_step_exhaustion_rate": 1.0,
+            "mean_agent_steps": 8,
+            "mean_elapsed_seconds": 166.59947,
+            "mean_final_tests_failed": 1,
+            "mean_final_tests_passed": 0,
+            "mean_input_tokens": 9303.6,
+            "mean_output_tokens": 1148.6,
+            "mean_passing_test_regression_count": 4,
+            "mean_repeated_identical_actions": 1,
+            "mean_tool_calls": 7,
+            "mean_total_tokens": 10452.2,
+            "median_final_tests_failed": 1.0,
+            "median_final_tests_passed": 0.0,
+            "median_passing_test_regression_count": 4.0,
+            "number_of_runs": 5,
+            "relevant_source_read_rate": 1.0,
+            "relevant_source_write_rate": 1.0,
+            "revision_after_failure_rate": 1.0,
+            "success_rate": 0.0,
+            "unexpected_file_created_or_written_rate": 1.0,
+            "verification_after_revision_rate": 1.0,
+            "verification_use_rate": 1.0
+          }
+        },
+        {
+          "condition_id": "irrelevant_historical_transfer",
+          "evidence": {
+            "aggregate_result": "results/repeat_task09_role_changes_4e7bcf6529bb.json",
+            "run_results": [
+              "results/repeat_task09_role_changes_4e7bcf6529bb-run-01.json",
+              "results/repeat_task09_role_changes_4e7bcf6529bb-run-02.json",
+              "results/repeat_task09_role_changes_4e7bcf6529bb-run-03.json",
+              "results/repeat_task09_role_changes_4e7bcf6529bb-run-04.json",
+              "results/repeat_task09_role_changes_4e7bcf6529bb-run-05.json"
+            ],
+            "sha256": {
+              "results/repeat_task09_role_changes_4e7bcf6529bb-run-01.json": "3494604207ae3ee5aeace8f90495c8f570a5004a39508b4a8a069b67b5b2c605",
+              "results/repeat_task09_role_changes_4e7bcf6529bb-run-02.json": "ad5be939c700ba3ba338d5949b1a3c874df4500ada943958ac0d9966a4e1d39f",
+              "results/repeat_task09_role_changes_4e7bcf6529bb-run-03.json": "4ecf608f4fc17fda639dc05231bc639c33833dd954abc21dba61db8ff0ad4166",
+              "results/repeat_task09_role_changes_4e7bcf6529bb-run-04.json": "169efe5f15f8e99e9f6d0ae5edd54a02f30f9927baceb3c573b6a4a406665793",
+              "results/repeat_task09_role_changes_4e7bcf6529bb-run-05.json": "91fca8800d11858cce6502f76cf6b1eadfe2147912f96e4cea50fec58796c26a",
+              "results/repeat_task09_role_changes_4e7bcf6529bb.json": "6d27a2acbfb4622861d0d651279c3c59a21f3277fe763ffdc63702f3f9d3b382"
+            }
+          },
+          "label": "Irrelevant Task 05 historical transfer",
+          "outcome": {
+            "failed_runs": 5,
+            "success_rate": 0.0,
+            "successful_runs": 0,
+            "total_runs": 5
+          },
+          "persisted_total_inference_accounting": {
+            "average_total_inference_elapsed_seconds": 152.373046,
+            "average_total_inference_tokens": 6499.0,
+            "estimated_deployment_total_inference_elapsed_seconds": 761.865229,
+            "estimated_deployment_total_inference_tokens": 32495,
+            "frozen_experiment_total_inference_elapsed_seconds": 761.865229,
+            "frozen_experiment_total_inference_tokens": 32495,
+            "scout_elapsed_seconds": 0.0,
+            "scout_input_tokens": 0,
+            "scout_output_tokens": 0,
+            "scout_total_tokens": 0
+          },
+          "qwen_only_efficiency": {
+            "mean_elapsed_seconds": 152.373046,
+            "mean_input_tokens": 5878,
+            "mean_output_tokens": 621,
+            "mean_total_tokens": 6499
+          },
+          "retention_status": "complete_raw_and_aggregate",
+          "trajectory_metrics": {
+            "invalid_tool_action_rate": 1.0,
+            "malformed_output_rate": 1.0,
+            "max_step_exhaustion_rate": 1.0,
+            "mean_agent_steps": 8,
+            "mean_elapsed_seconds": 152.373046,
+            "mean_final_tests_failed": 2,
+            "mean_final_tests_passed": 4,
+            "mean_input_tokens": 5878,
+            "mean_output_tokens": 621,
+            "mean_passing_test_regression_count": 0,
+            "mean_repeated_identical_actions": 1,
+            "mean_tool_calls": 6,
+            "mean_total_tokens": 6499,
+            "median_final_tests_failed": 2.0,
+            "median_final_tests_passed": 4.0,
+            "median_passing_test_regression_count": 0.0,
+            "number_of_runs": 5,
+            "relevant_source_read_rate": 1.0,
+            "relevant_source_write_rate": 1.0,
+            "revision_after_failure_rate": 0.0,
+            "success_rate": 0.0,
+            "unexpected_file_created_or_written_rate": 0.0,
+            "verification_after_revision_rate": 0.0,
+            "verification_use_rate": 1.0
+          }
+        },
+        {
+          "condition_id": "detailed_current_task_scout",
+          "evidence": {
+            "aggregate_result": "results/repeat_task09_role_changes_8af1270fb575.json",
+            "run_results": [
+              "results/repeat_task09_role_changes_8af1270fb575-run-01.json",
+              "results/repeat_task09_role_changes_8af1270fb575-run-02.json",
+              "results/repeat_task09_role_changes_8af1270fb575-run-03.json",
+              "results/repeat_task09_role_changes_8af1270fb575-run-04.json",
+              "results/repeat_task09_role_changes_8af1270fb575-run-05.json"
+            ],
+            "sha256": {
+              "results/repeat_task09_role_changes_8af1270fb575-run-01.json": "25af0033efb117f90efe0617537007427c6b22e7d5d533c4cae47fb991c45c61",
+              "results/repeat_task09_role_changes_8af1270fb575-run-02.json": "6d1bd0270f390965c7009ccc1f8126c328a44f8701d4154b1cfe9b5a4d5010c0",
+              "results/repeat_task09_role_changes_8af1270fb575-run-03.json": "d7661ed7a608231236446f1020059628e2ae538db3921c5acb765e991757fb64",
+              "results/repeat_task09_role_changes_8af1270fb575-run-04.json": "f5c3ae513aeeee3b2c9b6e3524d93280dad588101ad7fe9eccb3d7387cb9631a",
+              "results/repeat_task09_role_changes_8af1270fb575-run-05.json": "6bc3333eee350f94d5909d6ccf99cd02e472ccf56e7436fb4cbaec3a10345054",
+              "results/repeat_task09_role_changes_8af1270fb575.json": "a550ae1e20435334ed11370c72d99463ef889cf77716f98697aea436192653e3"
+            }
+          },
+          "label": "Detailed Task 09 current-task scout",
+          "outcome": {
+            "failed_runs": 5,
+            "success_rate": 0.0,
+            "successful_runs": 0,
+            "total_runs": 5
+          },
+          "persisted_total_inference_accounting": {
+            "average_total_inference_elapsed_seconds": 196.241585,
+            "average_total_inference_tokens": 24557.0,
+            "estimated_deployment_total_inference_elapsed_seconds": 981.207923,
+            "estimated_deployment_total_inference_tokens": 122785,
+            "frozen_experiment_total_inference_elapsed_seconds": 891.523319,
+            "frozen_experiment_total_inference_tokens": 74033,
+            "scout_elapsed_seconds": 22.421151,
+            "scout_input_tokens": 9525,
+            "scout_output_tokens": 570,
+            "scout_total_tokens": 12188
+          },
+          "qwen_only_efficiency": {
+            "mean_elapsed_seconds": 173.820434,
+            "mean_input_tokens": 11544,
+            "mean_output_tokens": 825,
+            "mean_total_tokens": 12369
+          },
+          "retention_status": "complete_raw_and_aggregate",
+          "trajectory_metrics": {
+            "invalid_tool_action_rate": 0.0,
+            "malformed_output_rate": 1.0,
+            "max_step_exhaustion_rate": 0.0,
+            "mean_agent_steps": 7,
+            "mean_elapsed_seconds": 173.820434,
+            "mean_final_tests_failed": 6,
+            "mean_final_tests_passed": 0,
+            "mean_input_tokens": 11544,
+            "mean_output_tokens": 825,
+            "mean_passing_test_regression_count": 4,
+            "mean_repeated_identical_actions": 2,
+            "mean_tool_calls": 5,
+            "mean_total_tokens": 12369,
+            "median_final_tests_failed": 6.0,
+            "median_final_tests_passed": 0.0,
+            "median_passing_test_regression_count": 4.0,
+            "number_of_runs": 5,
+            "relevant_source_read_rate": 0.0,
+            "relevant_source_write_rate": 1.0,
+            "revision_after_failure_rate": 1.0,
+            "success_rate": 0.0,
+            "unexpected_file_created_or_written_rate": 0.0,
+            "verification_after_revision_rate": 1.0,
+            "verification_use_rate": 1.0
+          }
+        },
+        {
+          "condition_id": "compact_current_task_scout",
+          "evidence": {
+            "aggregate_result": "results/repeat_task09_role_changes_482e71e10fe0.json",
+            "run_results": [
+              "results/repeat_task09_role_changes_482e71e10fe0-run-01.json",
+              "results/repeat_task09_role_changes_482e71e10fe0-run-02.json",
+              "results/repeat_task09_role_changes_482e71e10fe0-run-03.json",
+              "results/repeat_task09_role_changes_482e71e10fe0-run-04.json",
+              "results/repeat_task09_role_changes_482e71e10fe0-run-05.json"
+            ],
+            "sha256": {
+              "results/repeat_task09_role_changes_482e71e10fe0-run-01.json": "886b1c9cf0deb8390981a5693c140a9ff6d61da99b90929a38a9606a38982dd1",
+              "results/repeat_task09_role_changes_482e71e10fe0-run-02.json": "5cba56ac4ad5c9fc161b6c85d9a568681345a5546cd9cfe50fcc02ebcd64b663",
+              "results/repeat_task09_role_changes_482e71e10fe0-run-03.json": "adb797caa8bd6ea7a46d48ae0ab621c90af9ee8bed166d974697d95e29d67ddd",
+              "results/repeat_task09_role_changes_482e71e10fe0-run-04.json": "a75107649750b3e33fb87425176247f37c11f63b95a60b3d5eecda9841223923",
+              "results/repeat_task09_role_changes_482e71e10fe0-run-05.json": "4bdf4ee49d634df08e03c4ed4cab6067dfb8afb7406b4e6e362e0f37f677824b",
+              "results/repeat_task09_role_changes_482e71e10fe0.json": "7fd8163c4fd82de583061cc6628d0ac612388d343444e3f1ab415dae4251e8e6"
+            }
+          },
+          "label": "Compact Task 09 current-task scout",
+          "outcome": {
+            "failed_runs": 5,
+            "success_rate": 0.0,
+            "successful_runs": 0,
+            "total_runs": 5
+          },
+          "persisted_total_inference_accounting": {
+            "average_total_inference_elapsed_seconds": 219.268098,
+            "average_total_inference_tokens": 17687.0,
+            "estimated_deployment_total_inference_elapsed_seconds": 1096.340492,
+            "estimated_deployment_total_inference_tokens": 88435,
+            "frozen_experiment_total_inference_elapsed_seconds": 1006.655888,
+            "frozen_experiment_total_inference_tokens": 39683,
+            "scout_elapsed_seconds": 22.421151,
+            "scout_input_tokens": 9525,
+            "scout_output_tokens": 570,
+            "scout_total_tokens": 12188
+          },
+          "qwen_only_efficiency": {
+            "mean_elapsed_seconds": 196.846947,
+            "mean_input_tokens": 4954,
+            "mean_output_tokens": 545,
+            "mean_total_tokens": 5499
+          },
+          "retention_status": "complete_raw_and_aggregate",
+          "trajectory_metrics": {
+            "invalid_tool_action_rate": 1.0,
+            "malformed_output_rate": 1.0,
+            "max_step_exhaustion_rate": 1.0,
+            "mean_agent_steps": 8,
+            "mean_elapsed_seconds": 196.846947,
+            "mean_final_tests_failed": 6,
+            "mean_final_tests_passed": 0,
+            "mean_input_tokens": 4954,
+            "mean_output_tokens": 545,
+            "mean_passing_test_regression_count": 4,
+            "mean_repeated_identical_actions": 2,
+            "mean_tool_calls": 5,
+            "mean_total_tokens": 5499,
+            "median_final_tests_failed": 6.0,
+            "median_final_tests_passed": 0.0,
+            "median_passing_test_regression_count": 4.0,
+            "number_of_runs": 5,
+            "relevant_source_read_rate": 1.0,
+            "relevant_source_write_rate": 1.0,
+            "revision_after_failure_rate": 0.0,
+            "success_rate": 0.0,
+            "unexpected_file_created_or_written_rate": 0.0,
+            "verification_after_revision_rate": 0.0,
+            "verification_use_rate": 0.0
+          }
+        }
+      ],
+      "domain": "state/cache consistency",
+      "evidence_level": "complete_raw_and_aggregate",
+      "family_id": "family_3",
+      "historical_observation": null,
+      "task_id": "task09_role_changes"
+    }
+  ],
+  "observed_outcome_classes": [
+    {
+      "class": "capability_enabling_assistance",
+      "evidence_limitation": "original Task 04 raw results not retained",
+      "family_id": "family_1",
+      "machine_derived": false
+    },
+    {
+      "class": "assistance_insufficient",
+      "evidence_limitation": "original Task 07 raw results not retained",
+      "family_id": "family_2",
+      "machine_derived": false
+    },
+    {
+      "class": "assistance_induced_interference",
+      "evidence_limitation": null,
+      "family_id": "family_3",
+      "machine_derived": true
+    }
+  ],
+  "predeclared_next_hypothesis": "A policy that decides whether to use no assistance, historical verified experience, current-task scouting, or model escalation can outperform unconditional experience injection in reliability and/or resource efficiency.",
+  "source_manifest": "analysis/cross_family_manifest.json",
+  "source_manifest_sha256": "f0b519c380d6eb8112cb117a768bda672b92e5280aa91f898029622ca3b5ce25"
+}

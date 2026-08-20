@@ -163,7 +163,6 @@ def test_task09_analysis_contract_is_predeclared_and_not_prompt_visible():
 
 def test_task09_has_only_the_authorized_scout_artifacts():
     prohibited_artifact_directories = (
-        "results",
         "experiences",
         "recipes",
         "transfer_knowledge",
@@ -172,6 +171,27 @@ def test_task09_has_only_the_authorized_scout_artifacts():
         for path in (REPO_ROOT / directory).glob("*.json"):
             assert TASK09_ID not in path.name
             assert TASK09_ID not in path.read_text(encoding="utf-8")
+    aggregate_suffixes = (
+        "696038d25c92",
+        "d826c0ae1567",
+        "4e7bcf6529bb",
+        "8af1270fb575",
+        "482e71e10fe0",
+    )
+    expected_results = {
+        f"repeat_task09_role_changes_{suffix}.json"
+        for suffix in aggregate_suffixes
+    } | {
+        f"repeat_task09_role_changes_{suffix}-run-{run:02d}.json"
+        for suffix in aggregate_suffixes
+        for run in range(1, 6)
+    }
+    actual_results = {
+        path.name
+        for path in (REPO_ROOT / "results").glob("*.json")
+        if TASK09_ID in path.name
+    }
+    assert actual_results == expected_results
     task09_scouts = []
     for path in (REPO_ROOT / "scout_handoffs").glob("*.json"):
         artifact = json.loads(path.read_text(encoding="utf-8"))
@@ -215,8 +235,12 @@ def test_current_artifacts_and_frozen_analysis_are_frozen():
         "transfer_knowledge": "57efab4d8f4dd226db3f07ee2a3fedf01494bd38bd2bc3d83402c4f89af2224f",
         "scout_handoffs": "768763b5c460f41946bd9b790be7bceaed322a9209b5036f0c53440ab9227b62",
         "compact_scouts": "4ec85c19412d83decb6ecd788b6e2a077f1a5f2bedb4afc015b6eb97ff176770",
-        "results": "15680c57bd26e79a614b0f0d5c026fba0766803843d7ca606d07a624296c611b",
-        "analysis": "b15c10e72549ee6b73bcd79894acfbfbcc5104d58047628793e325869226f9be",
+        "results": "a8fb5853898e0f486c11c44a1f4aed64a10f94afc8023c0bd7fc0108801a50f9",
     }
     for directory, expected_hash in expected.items():
         assert _tree_hash(REPO_ROOT / directory) == expected_hash
+    assert hashlib.sha256(
+        (REPO_ROOT / "analysis" / "trajectory_metrics.py").read_bytes()
+    ).hexdigest() == (
+        "8f0e67fb1fcf166b769d0de102664eaf1aae61a6aea41dbaeff6a2091362c741"
+    )

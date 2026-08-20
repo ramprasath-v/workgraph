@@ -1,0 +1,220 @@
+{
+  "checkpoint_version": "0.1",
+  "families": [
+    {
+      "analysis_contract": null,
+      "domain": "resource/path transfer",
+      "family_id": "family_1",
+      "historical_observation": {
+        "machine_derived": false,
+        "outcome_class": "capability_enabling_assistance",
+        "statement": "The frozen project record classifies Task 04 as baseline failure with successful relevant and compact assistance. Original per-run Kaggle evidence was not retained, so this checkpoint reports no numerical or trajectory metrics for that claim."
+      },
+      "task_id": "task04_report_resources",
+      "conditions": [
+        {
+          "aggregate_result": null,
+          "condition_id": "baseline",
+          "label": "Baseline / no context",
+          "retention_status": "raw_results_not_retained",
+          "run_results": []
+        },
+        {
+          "aggregate_result": null,
+          "condition_id": "relevant_historical_transfer",
+          "label": "Relevant Task 02 historical transfer",
+          "retention_status": "raw_results_not_retained",
+          "run_results": []
+        },
+        {
+          "aggregate_result": null,
+          "condition_id": "irrelevant_historical_transfer",
+          "label": "Irrelevant Task 05 historical transfer",
+          "retention_status": "raw_results_not_retained",
+          "run_results": []
+        },
+        {
+          "aggregate_result": null,
+          "condition_id": "detailed_current_task_scout",
+          "label": "Detailed current-task scout",
+          "retention_status": "raw_results_not_retained",
+          "run_results": []
+        },
+        {
+          "aggregate_result": null,
+          "condition_id": "compact_current_task_scout",
+          "label": "Compact current-task scout",
+          "retention_status": "raw_results_not_retained",
+          "run_results": []
+        }
+      ]
+    },
+    {
+      "analysis_contract": null,
+      "domain": "retry/idempotency",
+      "family_id": "family_2",
+      "historical_observation": {
+        "machine_derived": false,
+        "outcome_class": "assistance_insufficient",
+        "statement": "The frozen project record classifies Task 07 as baseline and assistance failure, with some assisted trajectories described as more task-directed. Original per-run Kaggle evidence was not retained, so this checkpoint reports no numerical or trajectory metrics for that claim."
+      },
+      "task_id": "task07_retry_transfer",
+      "conditions": [
+        {
+          "aggregate_result": null,
+          "condition_id": "baseline",
+          "label": "Baseline / no context",
+          "retention_status": "raw_results_not_retained",
+          "run_results": []
+        },
+        {
+          "aggregate_result": null,
+          "condition_id": "relevant_historical_transfer",
+          "label": "Relevant Task 06 historical transfer",
+          "retention_status": "raw_results_not_retained",
+          "run_results": []
+        },
+        {
+          "aggregate_result": null,
+          "condition_id": "irrelevant_historical_transfer",
+          "label": "Irrelevant Task 05 historical transfer",
+          "retention_status": "raw_results_not_retained",
+          "run_results": []
+        },
+        {
+          "aggregate_result": null,
+          "condition_id": "detailed_current_task_scout",
+          "label": "Detailed current-task scout",
+          "retention_status": "raw_results_not_retained",
+          "run_results": []
+        },
+        {
+          "aggregate_result": null,
+          "condition_id": "compact_current_task_scout",
+          "label": "Compact current-task scout",
+          "retention_status": "raw_results_not_retained",
+          "run_results": []
+        }
+      ]
+    },
+    {
+      "analysis_contract": "tasks/task09_role_changes/task.json",
+      "domain": "state/cache consistency",
+      "family_id": "family_3",
+      "historical_observation": null,
+      "task_id": "task09_role_changes",
+      "conditions": [
+        {
+          "aggregate_result": "results/repeat_task09_role_changes_696038d25c92.json",
+          "condition_id": "baseline",
+          "expected_identity": {
+            "compact_scout_id": null,
+            "context_mode": "none",
+            "model_name": "Qwen/Qwen2.5-7B-Instruct",
+            "model_provider": "transformers",
+            "scout_handoff_id": null,
+            "task_id": "task09_role_changes",
+            "transfer_knowledge_id": null
+          },
+          "label": "Baseline / no context",
+          "retention_status": "complete_raw_and_aggregate",
+          "run_results": [
+            "results/repeat_task09_role_changes_696038d25c92-run-01.json",
+            "results/repeat_task09_role_changes_696038d25c92-run-02.json",
+            "results/repeat_task09_role_changes_696038d25c92-run-03.json",
+            "results/repeat_task09_role_changes_696038d25c92-run-04.json",
+            "results/repeat_task09_role_changes_696038d25c92-run-05.json"
+          ]
+        },
+        {
+          "aggregate_result": "results/repeat_task09_role_changes_d826c0ae1567.json",
+          "condition_id": "relevant_historical_transfer",
+          "expected_identity": {
+            "compact_scout_id": null,
+            "context_mode": "transfer_knowledge",
+            "model_name": "Qwen/Qwen2.5-7B-Instruct",
+            "model_provider": "transformers",
+            "scout_handoff_id": null,
+            "task_id": "task09_role_changes",
+            "transfer_knowledge_id": "transfer_6b80e8c84cf89a2f7ceec3a2278cf531"
+          },
+          "label": "Relevant Task 08 historical transfer",
+          "retention_status": "complete_raw_and_aggregate",
+          "run_results": [
+            "results/repeat_task09_role_changes_d826c0ae1567-run-01.json",
+            "results/repeat_task09_role_changes_d826c0ae1567-run-02.json",
+            "results/repeat_task09_role_changes_d826c0ae1567-run-03.json",
+            "results/repeat_task09_role_changes_d826c0ae1567-run-04.json",
+            "results/repeat_task09_role_changes_d826c0ae1567-run-05.json"
+          ]
+        },
+        {
+          "aggregate_result": "results/repeat_task09_role_changes_4e7bcf6529bb.json",
+          "condition_id": "irrelevant_historical_transfer",
+          "expected_identity": {
+            "compact_scout_id": null,
+            "context_mode": "transfer_knowledge",
+            "model_name": "Qwen/Qwen2.5-7B-Instruct",
+            "model_provider": "transformers",
+            "scout_handoff_id": null,
+            "task_id": "task09_role_changes",
+            "transfer_knowledge_id": "transfer_56c07e702add42b7a04b9c7f7a4a7230"
+          },
+          "label": "Irrelevant Task 05 historical transfer",
+          "retention_status": "complete_raw_and_aggregate",
+          "run_results": [
+            "results/repeat_task09_role_changes_4e7bcf6529bb-run-01.json",
+            "results/repeat_task09_role_changes_4e7bcf6529bb-run-02.json",
+            "results/repeat_task09_role_changes_4e7bcf6529bb-run-03.json",
+            "results/repeat_task09_role_changes_4e7bcf6529bb-run-04.json",
+            "results/repeat_task09_role_changes_4e7bcf6529bb-run-05.json"
+          ]
+        },
+        {
+          "aggregate_result": "results/repeat_task09_role_changes_8af1270fb575.json",
+          "condition_id": "detailed_current_task_scout",
+          "expected_identity": {
+            "compact_scout_id": null,
+            "context_mode": "scout_handoff",
+            "model_name": "Qwen/Qwen2.5-7B-Instruct",
+            "model_provider": "transformers",
+            "scout_handoff_id": "scout_ed6739707d4474f82577cd4d5da3c82b",
+            "task_id": "task09_role_changes",
+            "transfer_knowledge_id": null
+          },
+          "label": "Detailed Task 09 current-task scout",
+          "retention_status": "complete_raw_and_aggregate",
+          "run_results": [
+            "results/repeat_task09_role_changes_8af1270fb575-run-01.json",
+            "results/repeat_task09_role_changes_8af1270fb575-run-02.json",
+            "results/repeat_task09_role_changes_8af1270fb575-run-03.json",
+            "results/repeat_task09_role_changes_8af1270fb575-run-04.json",
+            "results/repeat_task09_role_changes_8af1270fb575-run-05.json"
+          ]
+        },
+        {
+          "aggregate_result": "results/repeat_task09_role_changes_482e71e10fe0.json",
+          "condition_id": "compact_current_task_scout",
+          "expected_identity": {
+            "compact_scout_id": "compact_scout_2dafc6a6e899b8423c3c76376f9a0dfb",
+            "context_mode": "compact_scout",
+            "model_name": "Qwen/Qwen2.5-7B-Instruct",
+            "model_provider": "transformers",
+            "scout_handoff_id": null,
+            "task_id": "task09_role_changes",
+            "transfer_knowledge_id": null
+          },
+          "label": "Compact Task 09 current-task scout",
+          "retention_status": "complete_raw_and_aggregate",
+          "run_results": [
+            "results/repeat_task09_role_changes_482e71e10fe0-run-01.json",
+            "results/repeat_task09_role_changes_482e71e10fe0-run-02.json",
+            "results/repeat_task09_role_changes_482e71e10fe0-run-03.json",
+            "results/repeat_task09_role_changes_482e71e10fe0-run-04.json",
+            "results/repeat_task09_role_changes_482e71e10fe0-run-05.json"
+          ]
+        }
+      ]
+    }
+  ]
+}
