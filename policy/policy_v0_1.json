@@ -1,0 +1,52 @@
+{
+  "allowed_decisions": [
+    "NO_ASSISTANCE",
+    "HISTORICAL_TRANSFER",
+    "COMPACT_CURRENT_TASK_SCOUT",
+    "ESCALATE"
+  ],
+  "policy_version": "0.1",
+  "rules_in_order": [
+    {
+      "decision": "ESCALATE",
+      "rationale_code": "TARGET_LANGUAGE_UNSUPPORTED",
+      "rule": "The public task language is absent from the target model profile's supported languages."
+    },
+    {
+      "decision": "NO_ASSISTANCE",
+      "rationale_code": "HIGH_CAPABILITY_PRESERVE_UNAIDED",
+      "rule": "The target model has a predeclared high capability tier and supports the task language."
+    },
+    {
+      "decision": "HISTORICAL_TRANSFER",
+      "rationale_code": "VERIFIED_TRANSFER_HIGH_PUBLIC_OVERLAP",
+      "rule": "A verified portable transfer is available, its public-text overlap meets the threshold, and its estimated context share is within budget."
+    },
+    {
+      "decision": "COMPACT_CURRENT_TASK_SCOUT",
+      "rationale_code": "COMPACT_SCOUT_ALREADY_ACQUIRED",
+      "rule": "A schema-valid compact current-task scout is already acquired, its use is explicitly permitted, and its estimated context share is within budget."
+    },
+    {
+      "decision": "ESCALATE",
+      "rationale_code": "LOW_CAPABILITY_WITHOUT_QUALIFIED_ASSISTANCE",
+      "rule": "The target model has a predeclared low capability tier and no earlier assistance rule qualified."
+    },
+    {
+      "decision": "ESCALATE",
+      "rationale_code": "HIGH_STRUCTURAL_UNCERTAINTY",
+      "rule": "The deterministic workspace profile has high structural uncertainty and no earlier assistance rule qualified."
+    },
+    {
+      "decision": "NO_ASSISTANCE",
+      "rationale_code": "DEFAULT_PRESERVE_UNAIDED",
+      "rule": "No assistance or escalation rule qualified, so preserve an unaided target-model attempt."
+    }
+  ],
+  "thresholds": {
+    "high_source_file_count": 9,
+    "max_assistance_context_ratio": 0.15,
+    "medium_source_file_count": 4,
+    "minimum_transfer_public_overlap": 0.35
+  }
+}
