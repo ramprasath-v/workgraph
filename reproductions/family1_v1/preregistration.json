@@ -1,0 +1,158 @@
+{
+  "classification_rule": {
+    "FULL_REPRODUCTION": "baseline 0/5 and relevant transfer 5/5",
+    "NON_REPRODUCTION": "no meaningful success improvement",
+    "PARTIAL_REPRODUCTION": "relevant transfer materially improves success without the exact 0/5 to 5/5 pattern",
+    "thresholds_frozen_before_execution": true
+  },
+  "conditions_in_execution_order": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "harness.runner",
+        "--task",
+        "task04_report_resources",
+        "--provider",
+        "transformers",
+        "--model",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "--max-steps",
+        "8",
+        "--repeat",
+        "5"
+      ],
+      "condition_id": "F1R_BASELINE",
+      "context_mode": "none",
+      "transfer_knowledge_id": null
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "harness.runner",
+        "--task",
+        "task04_report_resources",
+        "--provider",
+        "transformers",
+        "--model",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "--max-steps",
+        "8",
+        "--repeat",
+        "5",
+        "--transfer-knowledge",
+        "transfer_knowledge/transfer_a4142b399f8684e6a75fda4a625ed4d8.json"
+      ],
+      "condition_id": "F1R_RELEVANT_TRANSFER",
+      "context_mode": "transfer_knowledge",
+      "transfer_knowledge_id": "transfer_a4142b399f8684e6a75fda4a625ed4d8"
+    }
+  ],
+  "consumer_task": "task04_report_resources",
+  "evidence_status": "new_retained_evidence_reproduction_not_original_recovery",
+  "forbidden_conditions": [
+    "irrelevant transfer",
+    "detailed scout",
+    "compact scout",
+    "new scout acquisition",
+    "new transfer generation",
+    "Family 4 execution"
+  ],
+  "frozen_inputs": {
+    "harness": {
+      "combined_sha256": "929a52289dbaee9e0424db4c40a0a9a0d4a5ab28b3df32f56f15592d69de349f",
+      "files": {
+        "harness/action_normalization.py": "925f8a08aad7a5103497fe503045185f68c7348175e44ece0277561fc402c667",
+        "harness/agent.py": "3f727311fcc45e4649b790c697ceee712768762b594e47837ea14beff622fce4",
+        "harness/prompting.py": "6a660e9115cd931a9a84af57ba44717cabdb149c96d2f5296c55ae03eba19515",
+        "harness/runner.py": "5c1992650a6f1ce11d49787b36d8b24e24157aff0d65f4b533b462fe1aca3c33",
+        "harness/tools.py": "f872524937b338fb8cc6c87f23c8547f4e94461cefb0c3c6e9e6cac64c61cf14",
+        "harness/transformers_adapter.py": "8550cd89bacb39eba85e61190bbaa35c35a5061000c6446519190657d2e15404"
+      }
+    },
+    "task_hash": "f8bd943eabc383371a17af7de97e83ec6850f43d9686b7b7454fa58742d6f91d",
+    "transfer": {
+      "path": "transfer_knowledge/transfer_a4142b399f8684e6a75fda4a625ed4d8.json",
+      "sha256": "3f75b116a400961ee5897bdc5f72e01bec1579034d4718b578a0d426a5290587",
+      "source_experience_id": "exp_aedf873f3b13471ea3e0145e4a4c7c2d",
+      "source_experience_path": "experiences/exp_aedf873f3b13471ea3e0145e4a4c7c2d.json",
+      "source_experience_sha256": "6935bb49710bd54fd56ce55bb405428d176802513ded1988e003fd5c3e7cabbf",
+      "source_experience_verified": true,
+      "source_recipe_id": "recipe_98832e7c414d8cb42300e4dbc80d7535",
+      "source_recipe_path": "recipes/recipe_98832e7c414d8cb42300e4dbc80d7535.json",
+      "source_recipe_sha256": "1aaf891d7c1beaa34f0722b0ed216b31c6f9b6e926e5c66a854786e88405b581",
+      "transfer_knowledge_id": "transfer_a4142b399f8684e6a75fda4a625ed4d8"
+    }
+  },
+  "generation_settings": {
+    "TRANSFORMERS_MAX_NEW_TOKENS": "512",
+    "TRANSFORMERS_TEMPERATURE": "0",
+    "do_sample": false,
+    "max_new_tokens": 512,
+    "replication_note": "Repeated trajectories may be identical and are not assumed to be statistically independent.",
+    "seed": "not passed or used because sampling is disabled",
+    "temperature": 0,
+    "top_k": "not passed",
+    "top_p": "not passed"
+  },
+  "historical_observation": {
+    "baseline_successes": 0,
+    "machine_recomputed": false,
+    "original_raw_evidence_retained": false,
+    "relevant_transfer_successes": 5,
+    "repetitions": 5
+  },
+  "no_adaptation_rule": "After baseline execution, do not change the task, transfer, prompt, harness, generation settings, max steps, repetitions, or condition order.",
+  "offline_analysis": {
+    "analyzer": "analysis.trajectory_metrics",
+    "metrics": [
+      "success_rate",
+      "final_tests_passed_failed",
+      "verification_use_rate",
+      "revision_after_failure_rate",
+      "max_step_exhaustion_rate",
+      "malformed_output_rate",
+      "invalid_tool_action_rate",
+      "repeated_identical_actions",
+      "agent_steps",
+      "tool_calls",
+      "input_output_total_tokens",
+      "elapsed_seconds"
+    ],
+    "retroactive_analysis_contract": false
+  },
+  "pristine_reset": {
+    "fresh_reset_before_every_repetition": true,
+    "source": "exact frozen Task 04 workspace",
+    "state_carryover_allowed": false,
+    "task_hash_check_after_reproduction": true,
+    "task_hash_check_before_reproduction": true
+  },
+  "reproduction_id": "f1r_task04_core_v1",
+  "reproduction_version": "0.1",
+  "retention": {
+    "expected_primary_files_per_condition": {
+      "aggregate_json": 1,
+      "individual_result_json": 5
+    },
+    "immutability_rule": "Do not rename or rewrite result JSON after creation. Retain and hash any generated experience, but do not compile or inject it.",
+    "manifest_fields": [
+      "condition identity and exact aggregate/run paths",
+      "SHA-256 for every aggregate and run JSON",
+      "task hash before and after",
+      "transfer and harness hashes",
+      "generation settings",
+      "any normally generated verified-experience side artifacts"
+    ],
+    "postexecution_manifest": "reproductions/family1_v1/evidence_manifest.json",
+    "result_location": "results/"
+  },
+  "source_family": "family_1",
+  "target": {
+    "max_steps": 8,
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "provider": "transformers",
+    "repetitions": 5
+  }
+}
