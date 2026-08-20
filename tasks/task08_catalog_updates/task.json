@@ -1,0 +1,8 @@
+{
+  "task_id": "task08_catalog_updates",
+  "description": "Catalog price updates are accepted and visible through direct price lookups, but customer-facing catalog views can continue showing earlier values. Correct this inconsistency while preserving validation, update return values, initial formatting, and the existing public API.",
+  "environment": {
+    "language": "python"
+  },
+  "test_command": ["python", "-m", "pytest", "-q", "test_catalog.py"]
+}

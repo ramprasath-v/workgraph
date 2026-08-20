@@ -1,0 +1,20 @@
+{
+  "task_id": "task09_role_changes",
+  "description": "Team role changes are accepted and visible through direct membership lookups, but role-based views can continue reporting the previous assignment. Correct this inconsistency while preserving validation, change return values, initial summaries, and the existing public API.",
+  "environment": {
+    "language": "python"
+  },
+  "test_command": ["python", "-m", "pytest", "-q", "test_role_index.py"],
+  "analysis_contract": {
+    "relevant_source_files": [
+      "membership_registry.py",
+      "role_index.py"
+    ],
+    "allowed_output_files": [
+      "membership_registry.py",
+      "role_index.py"
+    ],
+    "pristine_tests_passed": 4,
+    "pristine_tests_failed": 2
+  }
+}
