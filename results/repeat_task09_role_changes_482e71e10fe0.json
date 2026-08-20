@@ -1,0 +1,75 @@
+{
+  "aggregate_id": "repeat_task09_role_changes_482e71e10fe0",
+  "average_agent_steps": 8.0,
+  "average_elapsed_seconds": 196.846947,
+  "average_input_tokens": 4954.0,
+  "average_output_tokens": 545.0,
+  "average_tool_calls": 5.0,
+  "average_total_inference_elapsed_seconds": 219.268098,
+  "average_total_inference_tokens": 17687.0,
+  "average_total_tokens": 5499.0,
+  "compact_scout_id": "compact_scout_2dafc6a6e899b8423c3c76376f9a0dfb",
+  "context_mode": "compact_scout",
+  "created_at": "2026-08-20T05:31:01.112422+00:00",
+  "estimated_deployment_total_inference_elapsed_seconds": 1096.340492,
+  "estimated_deployment_total_inference_tokens": 88435,
+  "failed_runs": 5,
+  "failure_type_counts": {
+    "max_steps_exhausted": 5
+  },
+  "frozen_experiment_total_inference_elapsed_seconds": 1006.655888,
+  "frozen_experiment_total_inference_tokens": 39683,
+  "individual_runs": [
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_482e71e10fe0-run-01.json",
+      "run_id": "repeat_task09_role_changes_482e71e10fe0-run-01",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_482e71e10fe0-run-02.json",
+      "run_id": "repeat_task09_role_changes_482e71e10fe0-run-02",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_482e71e10fe0-run-03.json",
+      "run_id": "repeat_task09_role_changes_482e71e10fe0-run-03",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_482e71e10fe0-run-04.json",
+      "run_id": "repeat_task09_role_changes_482e71e10fe0-run-04",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_482e71e10fe0-run-05.json",
+      "run_id": "repeat_task09_role_changes_482e71e10fe0-run-05",
+      "success": false
+    }
+  ],
+  "max_elapsed_seconds": 206.199659,
+  "max_steps": 8,
+  "min_elapsed_seconds": 194.377381,
+  "model_name": "Qwen/Qwen2.5-7B-Instruct",
+  "model_provider": "transformers",
+  "recipe_id": null,
+  "scout_accounting_mode": "frozen_handoff_amortized",
+  "scout_elapsed_seconds": 22.421151,
+  "scout_handoff_id": null,
+  "scout_input_tokens": 9525,
+  "scout_model": "gemini-2.5-flash",
+  "scout_output_tokens": 570,
+  "scout_total_tokens": 12188,
+  "source_experience_id": null,
+  "source_recipe_id": null,
+  "source_scout_handoff_id": "scout_ed6739707d4474f82577cd4d5da3c82b",
+  "success_rate": 0.0,
+  "successful_runs": 0,
+  "task_id": "task09_role_changes",
+  "total_runs": 5,
+  "transfer_knowledge_id": null
+}

@@ -1,0 +1,75 @@
+{
+  "aggregate_id": "repeat_task09_role_changes_4e7bcf6529bb",
+  "average_agent_steps": 8.0,
+  "average_elapsed_seconds": 152.373046,
+  "average_input_tokens": 5878.0,
+  "average_output_tokens": 621.0,
+  "average_tool_calls": 6.0,
+  "average_total_inference_elapsed_seconds": 152.373046,
+  "average_total_inference_tokens": 6499.0,
+  "average_total_tokens": 6499.0,
+  "compact_scout_id": null,
+  "context_mode": "transfer_knowledge",
+  "created_at": "2026-08-20T04:35:07.087493+00:00",
+  "estimated_deployment_total_inference_elapsed_seconds": 761.865229,
+  "estimated_deployment_total_inference_tokens": 32495,
+  "failed_runs": 5,
+  "failure_type_counts": {
+    "max_steps_exhausted": 5
+  },
+  "frozen_experiment_total_inference_elapsed_seconds": 761.865229,
+  "frozen_experiment_total_inference_tokens": 32495,
+  "individual_runs": [
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_4e7bcf6529bb-run-01.json",
+      "run_id": "repeat_task09_role_changes_4e7bcf6529bb-run-01",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_4e7bcf6529bb-run-02.json",
+      "run_id": "repeat_task09_role_changes_4e7bcf6529bb-run-02",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_4e7bcf6529bb-run-03.json",
+      "run_id": "repeat_task09_role_changes_4e7bcf6529bb-run-03",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_4e7bcf6529bb-run-04.json",
+      "run_id": "repeat_task09_role_changes_4e7bcf6529bb-run-04",
+      "success": false
+    },
+    {
+      "failure_type": "max_steps_exhausted",
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_4e7bcf6529bb-run-05.json",
+      "run_id": "repeat_task09_role_changes_4e7bcf6529bb-run-05",
+      "success": false
+    }
+  ],
+  "max_elapsed_seconds": 161.745832,
+  "max_steps": 8,
+  "min_elapsed_seconds": 149.667422,
+  "model_name": "Qwen/Qwen2.5-7B-Instruct",
+  "model_provider": "transformers",
+  "recipe_id": null,
+  "scout_accounting_mode": null,
+  "scout_elapsed_seconds": 0.0,
+  "scout_handoff_id": null,
+  "scout_input_tokens": 0,
+  "scout_model": null,
+  "scout_output_tokens": 0,
+  "scout_total_tokens": 0,
+  "source_experience_id": null,
+  "source_recipe_id": "recipe_6d4334bd01e01b829468d6346aba9188",
+  "source_scout_handoff_id": null,
+  "success_rate": 0.0,
+  "successful_runs": 0,
+  "task_id": "task09_role_changes",
+  "total_runs": 5,
+  "transfer_knowledge_id": "transfer_56c07e702add42b7a04b9c7f7a4a7230"
+}

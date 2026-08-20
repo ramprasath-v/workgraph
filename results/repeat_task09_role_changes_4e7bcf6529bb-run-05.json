@@ -1,0 +1,110 @@
+{
+  "agent_steps": 8,
+  "compact_scout_id": null,
+  "context_mode": "transfer_knowledge",
+  "elapsed_seconds": 150.206374,
+  "end_time": "2026-08-20T04:35:07.086655+00:00",
+  "estimated_cost_usd": 0.0,
+  "experience_id": null,
+  "experience_used": true,
+  "failure_message": "Agent did not complete the task within 8 steps.",
+  "failure_type": "max_steps_exhausted",
+  "generated_experience_id": null,
+  "generated_experience_path": null,
+  "input_tokens": 5878,
+  "max_steps": 8,
+  "model_name": "Qwen/Qwen2.5-7B-Instruct",
+  "model_provider": "transformers",
+  "output_tokens": 621,
+  "recipe_id": null,
+  "run_id": "repeat_task09_role_changes_4e7bcf6529bb-run-05",
+  "scout_accounting_mode": null,
+  "scout_elapsed_seconds": 0.0,
+  "scout_handoff_id": null,
+  "scout_input_tokens": 0,
+  "scout_model": null,
+  "scout_output_tokens": 0,
+  "scout_total_tokens": 0,
+  "source_experience_id": null,
+  "source_recipe_id": "recipe_6d4334bd01e01b829468d6346aba9188",
+  "source_scout_handoff_id": null,
+  "start_time": "2026-08-20T04:32:36.880273+00:00",
+  "success": false,
+  "task_id": "task09_role_changes",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "test_role_index.py"
+  ],
+  "tests_failed": 2,
+  "tests_passed": 4,
+  "tool_calls": 6,
+  "total_inference_elapsed_seconds": 150.206374,
+  "total_inference_tokens": 6499,
+  "total_tokens": 6499,
+  "trajectory": [
+    {
+      "action": "model_output_error",
+      "outcome": "malformed model output",
+      "step": 1,
+      "target": null
+    },
+    {
+      "action": "list_files",
+      "outcome": "success (3 files)",
+      "step": 2,
+      "target": null
+    },
+    {
+      "action": "read_file",
+      "outcome": "error: invalid fields for read_file: ['action']",
+      "step": 3,
+      "target": null
+    },
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 4,
+      "target": "membership_registry.py"
+    },
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 5,
+      "target": "role_index.py"
+    },
+    {
+      "action": "model_output_error",
+      "outcome": "malformed model output",
+      "step": 6,
+      "target": null
+    },
+    {
+      "action": "write_file",
+      "outcome": "success",
+      "step": 7,
+      "target": "role_index.py"
+    },
+    {
+      "action": "run_tests",
+      "outcome": "4 passed / 2 failed",
+      "step": 8,
+      "target": null
+    }
+  ],
+  "trajectory_diagnostics": {
+    "file_reads": 3,
+    "file_writes": 1,
+    "most_repeated_action": {
+      "action": "model_output_error",
+      "count": 2,
+      "target": null
+    },
+    "repeated_identical_actions": 1,
+    "test_runs": 1,
+    "unique_actions": 5
+  },
+  "transfer_knowledge_id": "transfer_56c07e702add42b7a04b9c7f7a4a7230"
+}

@@ -1,0 +1,75 @@
+{
+  "aggregate_id": "repeat_task09_role_changes_8af1270fb575",
+  "average_agent_steps": 7.0,
+  "average_elapsed_seconds": 173.820434,
+  "average_input_tokens": 11544.0,
+  "average_output_tokens": 825.0,
+  "average_tool_calls": 5.0,
+  "average_total_inference_elapsed_seconds": 196.241585,
+  "average_total_inference_tokens": 24557.0,
+  "average_total_tokens": 12369.0,
+  "compact_scout_id": null,
+  "context_mode": "scout_handoff",
+  "created_at": "2026-08-20T05:06:47.312976+00:00",
+  "estimated_deployment_total_inference_elapsed_seconds": 981.207923,
+  "estimated_deployment_total_inference_tokens": 122785,
+  "failed_runs": 5,
+  "failure_type_counts": {
+    "unspecified": 5
+  },
+  "frozen_experiment_total_inference_elapsed_seconds": 891.523319,
+  "frozen_experiment_total_inference_tokens": 74033,
+  "individual_runs": [
+    {
+      "failure_type": null,
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_8af1270fb575-run-01.json",
+      "run_id": "repeat_task09_role_changes_8af1270fb575-run-01",
+      "success": false
+    },
+    {
+      "failure_type": null,
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_8af1270fb575-run-02.json",
+      "run_id": "repeat_task09_role_changes_8af1270fb575-run-02",
+      "success": false
+    },
+    {
+      "failure_type": null,
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_8af1270fb575-run-03.json",
+      "run_id": "repeat_task09_role_changes_8af1270fb575-run-03",
+      "success": false
+    },
+    {
+      "failure_type": null,
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_8af1270fb575-run-04.json",
+      "run_id": "repeat_task09_role_changes_8af1270fb575-run-04",
+      "success": false
+    },
+    {
+      "failure_type": null,
+      "result_path": "/kaggle/working/workgraph/results/repeat_task09_role_changes_8af1270fb575-run-05.json",
+      "run_id": "repeat_task09_role_changes_8af1270fb575-run-05",
+      "success": false
+    }
+  ],
+  "max_elapsed_seconds": 184.790844,
+  "max_steps": 8,
+  "min_elapsed_seconds": 170.940297,
+  "model_name": "Qwen/Qwen2.5-7B-Instruct",
+  "model_provider": "transformers",
+  "recipe_id": null,
+  "scout_accounting_mode": null,
+  "scout_elapsed_seconds": 22.421151,
+  "scout_handoff_id": "scout_ed6739707d4474f82577cd4d5da3c82b",
+  "scout_input_tokens": 9525,
+  "scout_model": "gemini-2.5-flash",
+  "scout_output_tokens": 570,
+  "scout_total_tokens": 12188,
+  "source_experience_id": null,
+  "source_recipe_id": null,
+  "source_scout_handoff_id": null,
+  "success_rate": 0.0,
+  "successful_runs": 0,
+  "task_id": "task09_role_changes",
+  "total_runs": 5,
+  "transfer_knowledge_id": null
+}
