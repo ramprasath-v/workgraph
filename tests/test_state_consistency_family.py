@@ -161,19 +161,26 @@ def test_task09_analysis_contract_is_predeclared_and_not_prompt_visible():
     assert "role_index.py" not in prompt
 
 
-def test_task09_has_no_experimental_artifact():
-    artifact_directories = (
+def test_task09_has_only_the_authorized_detailed_scout_artifact():
+    prohibited_artifact_directories = (
         "results",
         "experiences",
         "recipes",
         "transfer_knowledge",
-        "scout_handoffs",
         "compact_scouts",
     )
-    for directory in artifact_directories:
+    for directory in prohibited_artifact_directories:
         for path in (REPO_ROOT / directory).glob("*.json"):
             assert TASK09_ID not in path.name
             assert TASK09_ID not in path.read_text(encoding="utf-8")
+    task09_scouts = []
+    for path in (REPO_ROOT / "scout_handoffs").glob("*.json"):
+        artifact = json.loads(path.read_text(encoding="utf-8"))
+        if artifact.get("task_id") == TASK09_ID:
+            task09_scouts.append(path.name)
+    assert task09_scouts == [
+        "scout_ed6739707d4474f82577cd4d5da3c82b.json"
+    ]
 
 
 def test_tasks_01_through_09_remain_frozen():
@@ -197,7 +204,7 @@ def test_current_artifacts_and_frozen_analysis_are_frozen():
         "experiences": "77cc9dcce5e35b3f091fe76c1d239ef465d54bc925ed177db67d33f7eec40f2c",
         "recipes": "65126b6652aff3ef87564efa601d94512cb456cd55a39d1befdeb4fbf4518eac",
         "transfer_knowledge": "57efab4d8f4dd226db3f07ee2a3fedf01494bd38bd2bc3d83402c4f89af2224f",
-        "scout_handoffs": "ec6b59715d943ddac0ed96e96b1a06db5088bccaba1bad2791bd41b2a45d403d",
+        "scout_handoffs": "768763b5c460f41946bd9b790be7bceaed322a9209b5036f0c53440ab9227b62",
         "compact_scouts": "4a338d750d9354e93dfc0b3c0c4a7c8345406cc87438793f0259504d223fcfd1",
         "results": "15680c57bd26e79a614b0f0d5c026fba0766803843d7ca606d07a624296c611b",
         "analysis": "b15c10e72549ee6b73bcd79894acfbfbcc5104d58047628793e325869226f9be",
