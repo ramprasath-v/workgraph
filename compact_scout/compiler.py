@@ -76,6 +76,42 @@ def compile_compact_scout(handoff: ScoutHandoff) -> CompactScoutKnowledge:
         and has_preserved_contracts
     )
 
+    has_authoritative_mutation = (
+        "updates the underlying" in semantic_source
+        and "role assignment" in semantic_source
+    )
+    has_dependent_representation = (
+        "initializ" in semantic_source
+        and "cach" in semantic_source
+        and "stale" in semantic_source
+    )
+    has_dependent_reads = (
+        "role-based views" in semantic_source
+        and (
+            "role counts" in semantic_source
+            or "role_counts" in semantic_source
+        )
+    )
+    has_consistency_repair = (
+        "updated after" in semantic_source
+        and (
+            "re-calling" in semantic_source
+            or "incremental update" in semantic_source
+        )
+    )
+    has_preserved_state_contracts = (
+        "validation" in semantic_source
+        and "return values" in semantic_source
+        and "public api" in semantic_source
+    )
+    state_consistency_profile = (
+        has_authoritative_mutation
+        and has_dependent_representation
+        and has_dependent_reads
+        and has_consistency_repair
+        and has_preserved_state_contracts
+    )
+
     if resource_profile:
         principles = [
             (
@@ -102,6 +138,20 @@ def compile_compact_scout(handoff: ScoutHandoff) -> CompactScoutKnowledge:
                 "Associate a stable operation identity with its completed "
                 "outcome; on retry, reuse that outcome before executing the "
                 "side effect again."
+            )
+        ]
+    elif state_consistency_profile:
+        principles = [
+            (
+                "When authoritative state changes, dependent derived "
+                "representations must not continue serving stale information."
+            )
+        ]
+        implementation_concepts = [
+            (
+                "After an authoritative mutation, refresh or invalidate "
+                "dependent derived state before subsequent reads, while "
+                "preserving validation, mutation return values, and public behavior."
             )
         ]
     else:

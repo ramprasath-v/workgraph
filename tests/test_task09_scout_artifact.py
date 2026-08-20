@@ -76,14 +76,18 @@ def test_task09_and_compact_scout_freezes_hold():
         "c46bfd946da1242b031af87c3419686022ed43560d261bd15733a6ad7c33b437"
     )
     assert _tree_hash(REPO_ROOT / "compact_scouts") == (
-        "4a338d750d9354e93dfc0b3c0c4a7c8345406cc87438793f0259504d223fcfd1"
+        "4ec85c19412d83decb6ecd788b6e2a077f1a5f2bedb4afc015b6eb97ff176770"
     )
     task09_compact = []
     for path in (REPO_ROOT / "compact_scouts").glob("*.json"):
         data = json.loads(path.read_text(encoding="utf-8"))
-        if data.get("task_id") == "task09_role_changes":
+        if data.get("source_scout_handoff_id") == (
+            "scout_ed6739707d4474f82577cd4d5da3c82b"
+        ):
             task09_compact.append(path)
-    assert task09_compact == []
+    assert [path.name for path in task09_compact] == [
+        "compact_scout_2dafc6a6e899b8423c3c76376f9a0dfb.json"
+    ]
 
 
 def test_task09_scout_file_sha256_is_frozen():
