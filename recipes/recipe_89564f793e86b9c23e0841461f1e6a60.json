@@ -1,0 +1,36 @@
+{
+  "implementation_concepts": [
+    "After mutating authoritative state, refresh or invalidate any dependent derived representation before it can serve later reads."
+  ],
+  "problem": "An accepted authoritative-state mutation leaves a dependent read representation stale.",
+  "recipe_id": "recipe_89564f793e86b9c23e0841461f1e6a60",
+  "recipe_version": "0.2",
+  "source_experience_id": "exp_c40ab9d4b52044919162d16cddd99d05",
+  "steps": [
+    {
+      "instruction": "Inspect the authoritative mutation and dependent read behavior.",
+      "step": 1
+    },
+    {
+      "instruction": "Preserve validation, mutation return values, and existing public behavior.",
+      "step": 2
+    },
+    {
+      "instruction": "Ensure an authoritative mutation leaves dependent derived state consistent for future reads.",
+      "step": 3
+    },
+    {
+      "instruction": "Run the task test suite after modifying the implementation.",
+      "step": 4
+    }
+  ],
+  "target_files": [
+    "catalog.py"
+  ],
+  "task_id": "task08_catalog_updates",
+  "task_type": "derived_state_consistency",
+  "verification": {
+    "previously_failed": 0,
+    "previously_passed": 6
+  }
+}

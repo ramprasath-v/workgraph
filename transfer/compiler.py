@@ -27,6 +27,10 @@ def compile_transfer_knowledge(recipe: ExperienceRecipe) -> TransferKnowledge:
             "Retry delivery can invoke the same logical operation more than "
             "once, so repeated execution must not duplicate its side effect."
         ),
+        "derived_state_consistency": (
+            "When authoritative state changes, dependent derived representations "
+            "must not continue serving stale information."
+        ),
     }
     try:
         principle = principles[recipe.task_type]

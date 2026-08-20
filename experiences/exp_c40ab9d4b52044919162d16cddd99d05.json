@@ -1,0 +1,28 @@
+{
+  "completed_at": "2026-08-20T03:33:17.954994+00:00",
+  "created_at": "2026-08-20T03:33:17.954994+00:00",
+  "environment": {
+    "language": "python"
+  },
+  "experience_id": "exp_c40ab9d4b52044919162d16cddd99d05",
+  "files_changed": [
+    "catalog.py"
+  ],
+  "patch": "--- a/catalog.py\n+++ b/catalog.py\n@@ -11,10 +11,6 @@\n         for product, cents in self._prices.items():\n             self._validate_product(product)\n             self._validate_price(cents)\n-        self._display_prices = {\n-            product: self._format_price(cents)\n-            for product, cents in self._prices.items()\n-        }\n \n     def update_price(self, product: str, cents: int) -> int:\n         \"\"\"Update an existing product and return its new price in cents.\"\"\"\n@@ -34,12 +30,15 @@\n         \"\"\"Return the customer-facing formatted price for a product.\"\"\"\n \n         self._require_known_product(product)\n-        return self._display_prices[product]\n+        return self._format_price(self._prices[product])\n \n     def catalog_rows(self) -> tuple[tuple[str, str], ...]:\n         \"\"\"Return product names and formatted prices in sorted order.\"\"\"\n \n-        return tuple(sorted(self._display_prices.items()))\n+        return tuple(sorted(\n+            (product, self._format_price(cents))\n+            for product, cents in self._prices.items()\n+        ))\n \n     @staticmethod\n     def _format_price(cents: int) -> str:\n",
+  "problem": "Catalog price updates are accepted and visible through direct price lookups, but customer-facing catalog views can continue showing earlier values. Correct this inconsistency while preserving validation, update return values, initial formatting, and the existing public API.",
+  "producer_model": "gemini-2.5-flash",
+  "started_at": "2026-08-20T03:33:00.848953+00:00",
+  "successful": true,
+  "task_id": "task08_catalog_updates",
+  "verification": {
+    "command": [
+      "python",
+      "-m",
+      "pytest",
+      "-q",
+      "test_catalog.py"
+    ],
+    "failed": 0,
+    "passed": 6
+  }
+}

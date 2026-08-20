@@ -176,7 +176,7 @@ def test_task09_has_no_experimental_artifact():
             assert TASK09_ID not in path.read_text(encoding="utf-8")
 
 
-def test_tasks_01_through_07_remain_frozen():
+def test_tasks_01_through_09_remain_frozen():
     expected = {
         "task01_exact": "b7c9cc3f8ad64c4a58aa039b540552b22797291225a297b08650f042d708aaa3",
         "task02_config_path": "de523163cd0bcba766f34ebe7d8f39d3d1dd67050ef496f658d4ad5544b6d56d",
@@ -185,19 +185,21 @@ def test_tasks_01_through_07_remain_frozen():
         "task05_identifier_normalization": "72b04b3d69327da57e6cbfc1960e5319fba07d92bff5aa66f4d643efe3b7cb1c",
         "task06_retry_idempotency": "f56ba98316423c1a9617763711ec548adb1eb2353b2ce5d261b8a34fa975083d",
         "task07_retry_transfer": "c66e566fe8cc84b4cffa880fcce9ef66db1fc5368bccf9f5278571adf82eb619",
+        "task08_catalog_updates": "c272d3f3a9128e0fe3d836af908f65d037cd15f500412e3fd96522777d66d74a",
+        "task09_role_changes": "c46bfd946da1242b031af87c3419686022ed43560d261bd15733a6ad7c33b437",
     }
     for task_id, expected_hash in expected.items():
         assert _tree_hash(REPO_ROOT / "tasks" / task_id) == expected_hash
 
 
-def test_existing_artifacts_and_frozen_analysis_remain_unchanged():
+def test_current_artifacts_and_frozen_analysis_are_frozen():
     expected = {
-        "experiences": "ff9d42573ed968bf0513ab3e615688a37b31cae9743173d0f6f914466181edd8",
-        "recipes": "6c82bf1115c96becdd5d98babb38fd7add9896c096b94021810613682bec15eb",
-        "transfer_knowledge": "7baac13966f30ed7bbc208c7be0533bfc7167e260f9f71ee23d942afcd814e30",
+        "experiences": "77cc9dcce5e35b3f091fe76c1d239ef465d54bc925ed177db67d33f7eec40f2c",
+        "recipes": "65126b6652aff3ef87564efa601d94512cb456cd55a39d1befdeb4fbf4518eac",
+        "transfer_knowledge": "57efab4d8f4dd226db3f07ee2a3fedf01494bd38bd2bc3d83402c4f89af2224f",
         "scout_handoffs": "ec6b59715d943ddac0ed96e96b1a06db5088bccaba1bad2791bd41b2a45d403d",
         "compact_scouts": "4a338d750d9354e93dfc0b3c0c4a7c8345406cc87438793f0259504d223fcfd1",
-        "results": "a7a58e72591f685bec72fdfbe4dd7bbcf94cc20cfdee3a54bbaa5e5f3827a5be",
+        "results": "15680c57bd26e79a614b0f0d5c026fba0766803843d7ca606d07a624296c611b",
         "analysis": "b15c10e72549ee6b73bcd79894acfbfbcc5104d58047628793e325869226f9be",
     }
     for directory, expected_hash in expected.items():

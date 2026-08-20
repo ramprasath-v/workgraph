@@ -1,0 +1,11 @@
+{
+  "implementation_concepts": [
+    "After mutating authoritative state, refresh or invalidate any dependent derived representation before it can serve later reads."
+  ],
+  "principles": [
+    "When authoritative state changes, dependent derived representations must not continue serving stale information."
+  ],
+  "source_recipe_id": "recipe_89564f793e86b9c23e0841461f1e6a60",
+  "transfer_knowledge_id": "transfer_6b80e8c84cf89a2f7ceec3a2278cf531",
+  "transfer_version": "0.1"
+}
