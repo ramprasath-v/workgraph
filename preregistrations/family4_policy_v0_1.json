@@ -1,0 +1,239 @@
+{
+  "cases": [
+    {
+      "legal_policy_input": {
+        "compact_scout": {
+          "already_acquired": false,
+          "available": false,
+          "condition_permits_use": false,
+          "estimated_context_tokens": 0,
+          "schema_valid": false
+        },
+        "historical_transfer": {
+          "available": false,
+          "estimated_context_tokens": 0,
+          "portable_abstractions": [],
+          "verified": false
+        },
+        "public_task_description": "Back-to-back bookings that meet exactly at a boundary are rejected even though their occupied time does not overlap. Correct this behavior while preserving business-hour validation, true overlap rejection, booking identifiers, ordering, and the existing public API.",
+        "source_files": [
+          "booking_calendar.py"
+        ],
+        "target_model": {
+          "capability_tier": "high",
+          "context_window_tokens": 1048576,
+          "model_identity": "gemini-2.5-flash",
+          "supported_languages": [
+            "python"
+          ]
+        },
+        "task_language": "python"
+      },
+      "policy_output": {
+        "decision": "NO_ASSISTANCE",
+        "policy_version": "0.1",
+        "rationale_codes": [
+          "HIGH_CAPABILITY_PRESERVE_UNAIDED"
+        ],
+        "signals": {
+          "compact_scout_already_acquired": false,
+          "compact_scout_available": false,
+          "compact_scout_context_ratio": 0.0,
+          "compact_scout_permitted": false,
+          "compact_scout_qualified": false,
+          "historical_transfer_available": false,
+          "historical_transfer_verified": false,
+          "source_file_count": 1,
+          "source_type_count": 1,
+          "target_language_supported": true,
+          "target_model_capability_tier": "high",
+          "transfer_context_ratio": 0.0,
+          "transfer_public_overlap": 0.0,
+          "transfer_qualified": false,
+          "workspace_uncertainty": "low"
+        }
+      },
+      "stratum": "A",
+      "task_id": "task10_booking_boundaries",
+      "transfer_candidates_considered": [],
+      "workspace_structural_profile": {
+        "source_file_count": 1,
+        "source_type_count": 1,
+        "workspace_uncertainty": "low"
+      }
+    },
+    {
+      "legal_policy_input": {
+        "compact_scout": {
+          "already_acquired": false,
+          "available": false,
+          "condition_permits_use": false,
+          "estimated_context_tokens": 0,
+          "schema_valid": false
+        },
+        "historical_transfer": {
+          "available": true,
+          "estimated_context_tokens": 65,
+          "portable_abstractions": [
+            "Retry delivery can invoke the same logical operation more than once, so repeated execution must not duplicate its side effect.",
+            "Record completed logical-operation identities and outcomes; on retry, reuse the recorded outcome before repeating the side effect."
+          ],
+          "verified": true
+        },
+        "public_task_description": "Notification submissions may be retried with the same request key. The service currently sends an additional outbound message instead of reusing the original receipt, and conflicting reuse of a request key is accepted. Correct these behaviors while preserving validation, recipient history, receipt values, and the existing public API.",
+        "source_files": [
+          "delivery_gateway.py",
+          "notification_service.py",
+          "receipt_store.py"
+        ],
+        "target_model": {
+          "capability_tier": "standard",
+          "context_window_tokens": 32768,
+          "model_identity": "Qwen/Qwen2.5-7B-Instruct",
+          "supported_languages": [
+            "python"
+          ]
+        },
+        "task_language": "python"
+      },
+      "policy_output": {
+        "decision": "NO_ASSISTANCE",
+        "policy_version": "0.1",
+        "rationale_codes": [
+          "DEFAULT_PRESERVE_UNAIDED"
+        ],
+        "signals": {
+          "compact_scout_already_acquired": false,
+          "compact_scout_available": false,
+          "compact_scout_context_ratio": 0.0,
+          "compact_scout_permitted": false,
+          "compact_scout_qualified": false,
+          "historical_transfer_available": true,
+          "historical_transfer_verified": true,
+          "source_file_count": 3,
+          "source_type_count": 1,
+          "target_language_supported": true,
+          "target_model_capability_tier": "standard",
+          "transfer_context_ratio": 0.001984,
+          "transfer_public_overlap": 0.086957,
+          "transfer_qualified": false,
+          "workspace_uncertainty": "low"
+        }
+      },
+      "stratum": "B",
+      "task_id": "task11_notification_retries",
+      "transfer_candidates_considered": [
+        {
+          "artifact_path": "transfer_knowledge/transfer_93a42588ddd62085a6289d9b12613079.json",
+          "artifact_sha256": "83b26d53a73b764f8670f447d9c56cd6295e88d15027fc50a6d22b8a6d214933",
+          "context_ratio": 0.001984,
+          "estimated_context_tokens": 65,
+          "portable_abstractions": [
+            "Retry delivery can invoke the same logical operation more than once, so repeated execution must not duplicate its side effect.",
+            "Record completed logical-operation identities and outcomes; on retry, reuse the recorded outcome before repeating the side effect."
+          ],
+          "public_lexical_overlap": 0.086957,
+          "transfer_knowledge_id": "transfer_93a42588ddd62085a6289d9b12613079",
+          "verified": true
+        }
+      ],
+      "workspace_structural_profile": {
+        "source_file_count": 3,
+        "source_type_count": 1,
+        "workspace_uncertainty": "low"
+      }
+    },
+    {
+      "legal_policy_input": {
+        "compact_scout": {
+          "already_acquired": false,
+          "available": false,
+          "condition_permits_use": true,
+          "estimated_context_tokens": 0,
+          "schema_valid": false
+        },
+        "historical_transfer": {
+          "available": false,
+          "estimated_context_tokens": 0,
+          "portable_abstractions": [],
+          "verified": false
+        },
+        "public_task_description": "Invoices without discounts are calculated correctly, but percentage-discounted invoices charge tax using the undiscounted merchandise amount. Correct the discounted tax calculation while preserving monetary rounding, validation, persistence, audit and notification behavior, and the existing public API.",
+        "source_files": [
+          "audit_log.py",
+          "catalog.py",
+          "discount_policy.py",
+          "invoice_models.py",
+          "invoice_repository.py",
+          "invoice_service.py",
+          "money.py",
+          "notification_sink.py",
+          "tax_policy.py"
+        ],
+        "target_model": {
+          "capability_tier": "standard",
+          "context_window_tokens": 32768,
+          "model_identity": "Qwen/Qwen2.5-7B-Instruct",
+          "supported_languages": [
+            "python"
+          ]
+        },
+        "task_language": "python"
+      },
+      "policy_output": {
+        "decision": "ESCALATE",
+        "policy_version": "0.1",
+        "rationale_codes": [
+          "HIGH_STRUCTURAL_UNCERTAINTY"
+        ],
+        "signals": {
+          "compact_scout_already_acquired": false,
+          "compact_scout_available": false,
+          "compact_scout_context_ratio": 0.0,
+          "compact_scout_permitted": true,
+          "compact_scout_qualified": false,
+          "historical_transfer_available": false,
+          "historical_transfer_verified": false,
+          "source_file_count": 9,
+          "source_type_count": 1,
+          "target_language_supported": true,
+          "target_model_capability_tier": "standard",
+          "transfer_context_ratio": 0.0,
+          "transfer_public_overlap": 0.0,
+          "transfer_qualified": false,
+          "workspace_uncertainty": "high"
+        }
+      },
+      "stratum": "C",
+      "task_id": "task12_discounted_tax",
+      "transfer_candidates_considered": [],
+      "workspace_structural_profile": {
+        "source_file_count": 9,
+        "source_type_count": 1,
+        "workspace_uncertainty": "high"
+      }
+    }
+  ],
+  "cost_accounting": "Include frozen scout and escalation acquisition costs whenever the applicable condition incurs them.",
+  "decision_timing": "before any Family 4 target-model execution",
+  "future_conditions": [
+    "POLICY_V0_1",
+    "ALWAYS_NO_ASSISTANCE",
+    "ALWAYS_HISTORICAL_TRANSFER",
+    "ALWAYS_COMPACT_CURRENT_TASK_SCOUT",
+    "ALWAYS_ESCALATE"
+  ],
+  "hypothesis": "A leakage-free assistance-selection policy can outperform unconditional assistance by preserving unaided success when the model is already sufficient while still using assistance or escalation when unaided capability is uncertain or insufficient.",
+  "policy_spec_sha256": "8d936bb727ad5acbdf54b4d62f950b06682452c5dfac7825595eb111c3bf58c7",
+  "policy_version": "0.1",
+  "preregistration_version": "0.1",
+  "primary_outcomes": [
+    "verified_task_success",
+    "total_inference_tokens",
+    "elapsed_time",
+    "escalation_rate",
+    "unexpected_file_write_rate",
+    "passing_test_regression_count",
+    "cost_per_verified_success"
+  ]
+}

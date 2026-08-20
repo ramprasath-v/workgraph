@@ -1,0 +1,18 @@
+{
+  "task_id": "task10_booking_boundaries",
+  "description": "Back-to-back bookings that meet exactly at a boundary are rejected even though their occupied time does not overlap. Correct this behavior while preserving business-hour validation, true overlap rejection, booking identifiers, ordering, and the existing public API.",
+  "environment": {
+    "language": "python"
+  },
+  "test_command": ["python", "-m", "pytest", "-q", "test_booking_calendar.py"],
+  "analysis_contract": {
+    "relevant_source_files": [
+      "booking_calendar.py"
+    ],
+    "allowed_output_files": [
+      "booking_calendar.py"
+    ],
+    "pristine_tests_passed": 4,
+    "pristine_tests_failed": 2
+  }
+}

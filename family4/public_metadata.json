@@ -1,0 +1,76 @@
+{
+  "cases": [
+    {
+      "compact_scout": {
+        "already_acquired": false,
+        "available": false,
+        "condition_permits_use": false,
+        "estimated_context_tokens": 0,
+        "schema_valid": false
+      },
+      "historical_transfer_candidate": null,
+      "public_task_description": "Back-to-back bookings that meet exactly at a boundary are rejected even though their occupied time does not overlap. Correct this behavior while preserving business-hour validation, true overlap rejection, booking identifiers, ordering, and the existing public API.",
+      "stratum": "A",
+      "target_model": {
+        "capability_tier": "high",
+        "context_window_tokens": 1048576,
+        "model_identity": "gemini-2.5-flash",
+        "supported_languages": [
+          "python"
+        ]
+      },
+      "task_id": "task10_booking_boundaries",
+      "task_language": "python"
+    },
+    {
+      "compact_scout": {
+        "already_acquired": false,
+        "available": false,
+        "condition_permits_use": false,
+        "estimated_context_tokens": 0,
+        "schema_valid": false
+      },
+      "historical_transfer_candidate": {
+        "artifact_path": "transfer_knowledge/transfer_93a42588ddd62085a6289d9b12613079.json",
+        "artifact_sha256": "83b26d53a73b764f8670f447d9c56cd6295e88d15027fc50a6d22b8a6d214933",
+        "transfer_knowledge_id": "transfer_93a42588ddd62085a6289d9b12613079",
+        "verified": true
+      },
+      "public_task_description": "Notification submissions may be retried with the same request key. The service currently sends an additional outbound message instead of reusing the original receipt, and conflicting reuse of a request key is accepted. Correct these behaviors while preserving validation, recipient history, receipt values, and the existing public API.",
+      "stratum": "B",
+      "target_model": {
+        "capability_tier": "standard",
+        "context_window_tokens": 32768,
+        "model_identity": "Qwen/Qwen2.5-7B-Instruct",
+        "supported_languages": [
+          "python"
+        ]
+      },
+      "task_id": "task11_notification_retries",
+      "task_language": "python"
+    },
+    {
+      "compact_scout": {
+        "already_acquired": false,
+        "available": false,
+        "condition_permits_use": true,
+        "estimated_context_tokens": 0,
+        "schema_valid": false
+      },
+      "historical_transfer_candidate": null,
+      "public_task_description": "Invoices without discounts are calculated correctly, but percentage-discounted invoices charge tax using the undiscounted merchandise amount. Correct the discounted tax calculation while preserving monetary rounding, validation, persistence, audit and notification behavior, and the existing public API.",
+      "stratum": "C",
+      "target_model": {
+        "capability_tier": "standard",
+        "context_window_tokens": 32768,
+        "model_identity": "Qwen/Qwen2.5-7B-Instruct",
+        "supported_languages": [
+          "python"
+        ]
+      },
+      "task_id": "task12_discounted_tax",
+      "task_language": "python"
+    }
+  ],
+  "metadata_version": "0.1"
+}

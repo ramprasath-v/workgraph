@@ -262,8 +262,18 @@ def test_policy_makes_no_model_or_provider_call(monkeypatch):
 
 
 def test_tasks_and_frozen_artifacts_remain_unchanged():
-    expected = {
-        "tasks": "f7ec955ff1f49289199cda21c7786c5aabefa1e6a2b61f22761db02f62bfb955",
+    expected_tasks = {
+        "task01_exact": "b7c9cc3f8ad64c4a58aa039b540552b22797291225a297b08650f042d708aaa3",
+        "task02_config_path": "de523163cd0bcba766f34ebe7d8f39d3d1dd67050ef496f658d4ad5544b6d56d",
+        "task03_resource_path": "ce29a013d68169ffd20ab3e9fb626161c7c05dbf76eeea0b176484bd58e96f44",
+        "task04_report_resources": "f8bd943eabc383371a17af7de97e83ec6850f43d9686b7b7454fa58742d6f91d",
+        "task05_identifier_normalization": "72b04b3d69327da57e6cbfc1960e5319fba07d92bff5aa66f4d643efe3b7cb1c",
+        "task06_retry_idempotency": "f56ba98316423c1a9617763711ec548adb1eb2353b2ce5d261b8a34fa975083d",
+        "task07_retry_transfer": "c66e566fe8cc84b4cffa880fcce9ef66db1fc5368bccf9f5278571adf82eb619",
+        "task08_catalog_updates": "c272d3f3a9128e0fe3d836af908f65d037cd15f500412e3fd96522777d66d74a",
+        "task09_role_changes": "c46bfd946da1242b031af87c3419686022ed43560d261bd15733a6ad7c33b437",
+    }
+    expected_artifacts = {
         "experiences": "77cc9dcce5e35b3f091fe76c1d239ef465d54bc925ed177db67d33f7eec40f2c",
         "recipes": "65126b6652aff3ef87564efa601d94512cb456cd55a39d1befdeb4fbf4518eac",
         "transfer_knowledge": "57efab4d8f4dd226db3f07ee2a3fedf01494bd38bd2bc3d83402c4f89af2224f",
@@ -271,5 +281,7 @@ def test_tasks_and_frozen_artifacts_remain_unchanged():
         "compact_scouts": "4ec85c19412d83decb6ecd788b6e2a077f1a5f2bedb4afc015b6eb97ff176770",
         "results": "a8fb5853898e0f486c11c44a1f4aed64a10f94afc8023c0bd7fc0108801a50f9",
     }
-    for directory, expected_hash in expected.items():
+    for task_id, expected_hash in expected_tasks.items():
+        assert _tree_hash(REPO_ROOT / "tasks" / task_id) == expected_hash
+    for directory, expected_hash in expected_artifacts.items():
         assert _tree_hash(REPO_ROOT / directory) == expected_hash

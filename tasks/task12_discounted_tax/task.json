@@ -1,0 +1,22 @@
+{
+  "task_id": "task12_discounted_tax",
+  "description": "Invoices without discounts are calculated correctly, but percentage-discounted invoices charge tax using the undiscounted merchandise amount. Correct the discounted tax calculation while preserving monetary rounding, validation, persistence, audit and notification behavior, and the existing public API.",
+  "environment": {
+    "language": "python"
+  },
+  "test_command": ["python", "-m", "pytest", "-q", "test_invoice_service.py"],
+  "analysis_contract": {
+    "relevant_source_files": [
+      "discount_policy.py",
+      "invoice_service.py",
+      "tax_policy.py"
+    ],
+    "allowed_output_files": [
+      "discount_policy.py",
+      "invoice_service.py",
+      "tax_policy.py"
+    ],
+    "pristine_tests_passed": 4,
+    "pristine_tests_failed": 2
+  }
+}

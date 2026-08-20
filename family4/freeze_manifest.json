@@ -1,0 +1,64 @@
+{
+  "analysis_contracts": {
+    "task10_booking_boundaries": {
+      "allowed_output_files": [
+        "booking_calendar.py"
+      ],
+      "pristine_tests_failed": 2,
+      "pristine_tests_passed": 4,
+      "relevant_source_files": [
+        "booking_calendar.py"
+      ]
+    },
+    "task11_notification_retries": {
+      "allowed_output_files": [
+        "notification_service.py",
+        "receipt_store.py"
+      ],
+      "pristine_tests_failed": 2,
+      "pristine_tests_passed": 4,
+      "relevant_source_files": [
+        "notification_service.py",
+        "receipt_store.py"
+      ]
+    },
+    "task12_discounted_tax": {
+      "allowed_output_files": [
+        "discount_policy.py",
+        "invoice_service.py",
+        "tax_policy.py"
+      ],
+      "pristine_tests_failed": 2,
+      "pristine_tests_passed": 4,
+      "relevant_source_files": [
+        "discount_policy.py",
+        "invoice_service.py",
+        "tax_policy.py"
+      ]
+    }
+  },
+  "family4_task_hashes": {
+    "task10_booking_boundaries": "9d1d06ef163e57505c10f6e4ec54526cfcc14d6d7ff838e5f251a05731b8f56d",
+    "task11_notification_retries": "612abef01526dc094fd78a2ce199d2b2edc66d5e1af2845a06c41add223339db",
+    "task12_discounted_tax": "eed4fcb03bb615b890b2783285ea673a0d9f96326258510bb19fad20b15debb0"
+  },
+  "freeze_version": "0.1",
+  "policy_spec_sha256": "8d936bb727ad5acbdf54b4d62f950b06682452c5dfac7825595eb111c3bf58c7",
+  "pristine_evaluators": {
+    "task10_booking_boundaries": {
+      "failed": 2,
+      "passed": 4,
+      "returncode": 1
+    },
+    "task11_notification_retries": {
+      "failed": 2,
+      "passed": 4,
+      "returncode": 1
+    },
+    "task12_discounted_tax": {
+      "failed": 2,
+      "passed": 4,
+      "returncode": 1
+    }
+  }
+}
