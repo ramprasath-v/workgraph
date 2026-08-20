@@ -1,0 +1,518 @@
+{
+  "accounting_definitions": {
+    "assistance_acquisition": [
+      "detailed_scout_input_tokens",
+      "detailed_scout_output_tokens",
+      "detailed_scout_provider_total_tokens",
+      "detailed_scout_elapsed_seconds"
+    ],
+    "compact_scout": "zero model-inference cost; report artifact characters and estimated context tokens separately",
+    "escalation": [
+      "escalation_input_tokens",
+      "escalation_output_tokens",
+      "escalation_provider_total_tokens_when_available",
+      "escalation_elapsed_seconds"
+    ],
+    "scout_reuse_reporting": {
+      "frozen_experiment_total": "one scout acquisition plus all five target executions",
+      "per_new_task_deployment": "one scout acquisition plus one target execution"
+    },
+    "strategy_total": "sum every inference component required to deploy the strategy",
+    "target_execution": [
+      "input_tokens",
+      "output_tokens",
+      "provider_total_tokens_when_available",
+      "elapsed_seconds"
+    ]
+  },
+  "compact_scout_protocol": {
+    "allowed_source_fields": [
+      "observations",
+      "suspected_area",
+      "recommended_investigation",
+      "constraints"
+    ],
+    "artifact_schema_version": "0.1",
+    "compiler": "family4.compact_protocol.compile_family4_compact_scout",
+    "compiler_version": "family4-generic-0.1",
+    "deterministic_compilation_model_inference_cost": 0,
+    "forbidden_content": [
+      "filenames and paths",
+      "class, function, and variable identifiers",
+      "source expressions",
+      "patches and diffs",
+      "code blocks",
+      "evaluator and test identifiers",
+      "historical outcomes and trajectories"
+    ],
+    "provenance_fields": [
+      "source_scout_handoff_id",
+      "scout_provider",
+      "scout_model",
+      "scout_input_tokens",
+      "scout_output_tokens",
+      "scout_total_tokens",
+      "scout_elapsed_seconds"
+    ]
+  },
+  "duplicate_execution_rule": "Execute each unique run set once. Strategy labels that resolve to the same run-set ID reuse that exact frozen run set and are not treated as independent evidence.",
+  "escalation_protocol": {
+    "assistance_artifact": null,
+    "direct_from_pristine": true,
+    "generation_settings": {
+      "seed": "not exposed by the adapter",
+      "temperature": 0,
+      "top_k": "omitted; provider default",
+      "top_p": "omitted; provider default"
+    },
+    "max_steps": 8,
+    "model": "gemini-2.5-pro",
+    "provider": "vertex",
+    "repetitions": 5
+  },
+  "execution_order": {
+    "phase_1_detailed_scout_acquisition": [
+      "task10_booking_boundaries",
+      "task11_notification_retries",
+      "task12_discounted_tax"
+    ],
+    "phase_2_deterministic_compaction": [
+      "task10_booking_boundaries",
+      "task11_notification_retries",
+      "task12_discounted_tax"
+    ],
+    "phase_3_unique_run_sets": [
+      "task10_no_assistance",
+      "task10_historical_transfer",
+      "task10_compact_scout",
+      "task10_escalate",
+      "task11_no_assistance",
+      "task11_historical_transfer",
+      "task11_compact_scout",
+      "task11_escalate",
+      "task12_no_assistance",
+      "task12_historical_transfer",
+      "task12_compact_scout",
+      "task12_escalate"
+    ]
+  },
+  "forbidden_adaptations": [
+    "rerunning Policy v0.1 after assistance acquisition",
+    "changing tasks, prompts, step budgets, repetitions, models, assignments, settings, or order after observing outcomes",
+    "selecting transfers from solutions, tests, evaluator behavior, trajectories, or benchmark results",
+    "rescuing a failed target attempt with escalation",
+    "carrying workspace state across runs or conditions",
+    "treating aliased strategy conditions as independent evidence",
+    "omitting assistance acquisition or escalation cost from strategy totals",
+    "claiming statistical significance from five repetitions"
+  ],
+  "generation_settings": {
+    "escalation": {
+      "seed": "not exposed by the adapter",
+      "temperature": 0,
+      "top_k": "omitted; provider default",
+      "top_p": "omitted; provider default"
+    },
+    "scout": {
+      "seed": "not exposed by the adapter",
+      "temperature": 0,
+      "top_k": "omitted; provider default",
+      "top_p": "omitted; provider default"
+    },
+    "target_models": {
+      "task10_booking_boundaries": {
+        "response_format": "JSON Schema structured action",
+        "seed": "not exposed by the adapter",
+        "temperature": 0,
+        "top_k": "omitted; provider default",
+        "top_p": "omitted; provider default"
+      },
+      "task11_notification_retries": {
+        "do_sample": false,
+        "max_new_tokens": 512,
+        "seed": "not passed or used when sampling is disabled",
+        "temperature": 0,
+        "top_k": "not passed",
+        "top_p": "not passed"
+      },
+      "task12_discounted_tax": {
+        "do_sample": false,
+        "max_new_tokens": 512,
+        "seed": "not passed or used when sampling is disabled",
+        "temperature": 0,
+        "top_k": "not passed",
+        "top_p": "not passed"
+      }
+    }
+  },
+  "historical_transfer_selection": {
+    "assignments": {
+      "task10_booking_boundaries": {
+        "artifact_path": "transfer_knowledge/transfer_56c07e702add42b7a04b9c7f7a4a7230.json",
+        "artifact_sha256": "9f210e3e275109035cb7e9e8ce482b2f7f55f55c9c439be542946e05d5fb260c",
+        "existed_before_family4": true,
+        "policy_qualification_not_required": true,
+        "public_lexical_overlap": 0.238095,
+        "selection_rationale": "highest deterministic public lexical overlap; transfer ID breaks ties",
+        "transfer_knowledge_id": "transfer_56c07e702add42b7a04b9c7f7a4a7230"
+      },
+      "task11_notification_retries": {
+        "artifact_path": "transfer_knowledge/transfer_93a42588ddd62085a6289d9b12613079.json",
+        "artifact_sha256": "83b26d53a73b764f8670f447d9c56cd6295e88d15027fc50a6d22b8a6d214933",
+        "existed_before_family4": true,
+        "policy_qualification_not_required": true,
+        "public_lexical_overlap": 0.086957,
+        "selection_rationale": "candidate identity already frozen in the Policy v0.1 preregistration",
+        "transfer_knowledge_id": "transfer_93a42588ddd62085a6289d9b12613079"
+      },
+      "task12_discounted_tax": {
+        "artifact_path": "transfer_knowledge/transfer_56c07e702add42b7a04b9c7f7a4a7230.json",
+        "artifact_sha256": "9f210e3e275109035cb7e9e8ce482b2f7f55f55c9c439be542946e05d5fb260c",
+        "existed_before_family4": true,
+        "policy_qualification_not_required": true,
+        "public_lexical_overlap": 0.190476,
+        "selection_rationale": "highest deterministic public lexical overlap; transfer ID breaks ties",
+        "transfer_knowledge_id": "transfer_56c07e702add42b7a04b9c7f7a4a7230"
+      }
+    },
+    "candidate_universe_frozen_before_family4": true,
+    "procedure": "For Tasks 10 and 12, score every pre-Family-4 frozen transfer with Policy v0.1 public_overlap and select the maximum, breaking ties by transfer ID. Task 11 retains its earlier frozen candidate.",
+    "rankings": {
+      "task10_booking_boundaries": [
+        {
+          "artifact_path": "transfer_knowledge/transfer_56c07e702add42b7a04b9c7f7a4a7230.json",
+          "artifact_sha256": "9f210e3e275109035cb7e9e8ce482b2f7f55f55c9c439be542946e05d5fb260c",
+          "existed_before_family4": true,
+          "public_lexical_overlap": 0.238095,
+          "transfer_knowledge_id": "transfer_56c07e702add42b7a04b9c7f7a4a7230"
+        },
+        {
+          "artifact_path": "transfer_knowledge/transfer_6b80e8c84cf89a2f7ceec3a2278cf531.json",
+          "artifact_sha256": "3a15fe9109db04b625fd96bbc2c2bf639076d4f498a0ae89aa3fcaca415097b6",
+          "existed_before_family4": true,
+          "public_lexical_overlap": 0.0,
+          "transfer_knowledge_id": "transfer_6b80e8c84cf89a2f7ceec3a2278cf531"
+        },
+        {
+          "artifact_path": "transfer_knowledge/transfer_93a42588ddd62085a6289d9b12613079.json",
+          "artifact_sha256": "83b26d53a73b764f8670f447d9c56cd6295e88d15027fc50a6d22b8a6d214933",
+          "existed_before_family4": true,
+          "public_lexical_overlap": 0.0,
+          "transfer_knowledge_id": "transfer_93a42588ddd62085a6289d9b12613079"
+        },
+        {
+          "artifact_path": "transfer_knowledge/transfer_a4142b399f8684e6a75fda4a625ed4d8.json",
+          "artifact_sha256": "3f75b116a400961ee5897bdc5f72e01bec1579034d4718b578a0d426a5290587",
+          "existed_before_family4": true,
+          "public_lexical_overlap": 0.0,
+          "transfer_knowledge_id": "transfer_a4142b399f8684e6a75fda4a625ed4d8"
+        }
+      ],
+      "task11_notification_retries": [
+        {
+          "artifact_path": "transfer_knowledge/transfer_93a42588ddd62085a6289d9b12613079.json",
+          "artifact_sha256": "83b26d53a73b764f8670f447d9c56cd6295e88d15027fc50a6d22b8a6d214933",
+          "existed_before_family4": true,
+          "public_lexical_overlap": 0.086957,
+          "transfer_knowledge_id": "transfer_93a42588ddd62085a6289d9b12613079"
+        }
+      ],
+      "task12_discounted_tax": [
+        {
+          "artifact_path": "transfer_knowledge/transfer_56c07e702add42b7a04b9c7f7a4a7230.json",
+          "artifact_sha256": "9f210e3e275109035cb7e9e8ce482b2f7f55f55c9c439be542946e05d5fb260c",
+          "existed_before_family4": true,
+          "public_lexical_overlap": 0.190476,
+          "transfer_knowledge_id": "transfer_56c07e702add42b7a04b9c7f7a4a7230"
+        },
+        {
+          "artifact_path": "transfer_knowledge/transfer_6b80e8c84cf89a2f7ceec3a2278cf531.json",
+          "artifact_sha256": "3a15fe9109db04b625fd96bbc2c2bf639076d4f498a0ae89aa3fcaca415097b6",
+          "existed_before_family4": true,
+          "public_lexical_overlap": 0.0,
+          "transfer_knowledge_id": "transfer_6b80e8c84cf89a2f7ceec3a2278cf531"
+        },
+        {
+          "artifact_path": "transfer_knowledge/transfer_93a42588ddd62085a6289d9b12613079.json",
+          "artifact_sha256": "83b26d53a73b764f8670f447d9c56cd6295e88d15027fc50a6d22b8a6d214933",
+          "existed_before_family4": true,
+          "public_lexical_overlap": 0.0,
+          "transfer_knowledge_id": "transfer_93a42588ddd62085a6289d9b12613079"
+        },
+        {
+          "artifact_path": "transfer_knowledge/transfer_a4142b399f8684e6a75fda4a625ed4d8.json",
+          "artifact_sha256": "3f75b116a400961ee5897bdc5f72e01bec1579034d4718b578a0d426a5290587",
+          "existed_before_family4": true,
+          "public_lexical_overlap": 0.0,
+          "transfer_knowledge_id": "transfer_a4142b399f8684e6a75fda4a625ed4d8"
+        }
+      ]
+    }
+  },
+  "manifest_version": "0.1",
+  "max_steps": 8,
+  "policy_preregistration_sha256": "8b9cf3e0f3e933c662ab1e7c310ffe525cd8c7c545e6f7025f6605a460c09695",
+  "policy_version": "0.1",
+  "primary_metrics": {
+    "cost_per_verified_success": "strategy total cost divided by verified successes; null when successes are zero",
+    "elapsed_inference_time": "target, scout, and escalation elapsed time reported separately and in total",
+    "escalation_rate": "runs executed by the escalation model divided by repetitions",
+    "invalid_tool_action_rate": "tool-validation-error actions divided by all tool actions",
+    "malformed_output_rate": "malformed model-output steps divided by all agent steps",
+    "max_step_exhaustion_rate": "max-step-exhausted runs divided by repetitions",
+    "passing_test_regression_count": "predeclared passing tests that fail after a run",
+    "relevant_source_read_write_rate": "runs reading or writing an analysis-contract relevant source divided by repetitions, reported separately for reads and writes",
+    "statistical_claims": "descriptive only; no significance claim from n=5",
+    "successes_per_repetitions": "integer successes and frozen denominator",
+    "target_inference_tokens": "sum of target input, output, and provider totals reported separately",
+    "total_inference_tokens": "all target, scout, and escalation inference required by the strategy",
+    "unexpected_file_write_rate": "runs writing outside analysis-contract allowed outputs divided by repetitions",
+    "verification_use_rate": "runs with at least one run_tests tool action before the final deterministic evaluator divided by repetitions",
+    "verified_success_rate": "verified successes divided by repetitions"
+  },
+  "pristine_reset": {
+    "before_each_independent_run": true,
+    "hash_check_after_each_run": true,
+    "hash_check_before_each_run": true,
+    "reset_source": "exact frozen task workspace",
+    "state_carryover_allowed": false
+  },
+  "repetitions": 5,
+  "scout_acquisition_protocol": {
+    "actions": [
+      "list_files",
+      "read_file",
+      "run_tests"
+    ],
+    "allowed_material": [
+      "public task description",
+      "files and tests inside the copied public task workspace",
+      "deterministic public test output"
+    ],
+    "count_per_task": 1,
+    "forbidden_inputs": [
+      "analysis_contract",
+      "hidden evaluator information",
+      "historical transfer artifacts",
+      "Family 4 target outcomes",
+      "prior trajectories",
+      "expected patches or corrected source",
+      "unrelated repository content"
+    ],
+    "handoff_schema": "scout.schema.ScoutHandoff v0.1",
+    "model": "gemini-2.5-flash",
+    "provider": "vertex",
+    "read_only": true,
+    "temperature": 0,
+    "workspace": "fresh copy of the frozen task workspace"
+  },
+  "strategy_definitions": {
+    "ALWAYS_COMPACT_CURRENT_TASK_SCOUT": "acquire one frozen detailed scout, compile deterministically, then run the target model from pristine state with that compact scout",
+    "ALWAYS_ESCALATE": "frozen escalation model directly from pristine state with no assistance artifact or prior target attempt",
+    "ALWAYS_HISTORICAL_TRANSFER": "target model from pristine state with its frozen assigned transfer regardless of qualification",
+    "ALWAYS_NO_ASSISTANCE": "target model from pristine state with no context artifact",
+    "POLICY_V0_1": "execute the already-frozen policy decision without reevaluation"
+  },
+  "strategy_run_set_aliases": {
+    "task10_booking_boundaries": {
+      "ALWAYS_COMPACT_CURRENT_TASK_SCOUT": "task10_compact_scout",
+      "ALWAYS_ESCALATE": "task10_escalate",
+      "ALWAYS_HISTORICAL_TRANSFER": "task10_historical_transfer",
+      "ALWAYS_NO_ASSISTANCE": "task10_no_assistance",
+      "POLICY_V0_1": "task10_no_assistance"
+    },
+    "task11_notification_retries": {
+      "ALWAYS_COMPACT_CURRENT_TASK_SCOUT": "task11_compact_scout",
+      "ALWAYS_ESCALATE": "task11_escalate",
+      "ALWAYS_HISTORICAL_TRANSFER": "task11_historical_transfer",
+      "ALWAYS_NO_ASSISTANCE": "task11_no_assistance",
+      "POLICY_V0_1": "task11_no_assistance"
+    },
+    "task12_discounted_tax": {
+      "ALWAYS_COMPACT_CURRENT_TASK_SCOUT": "task12_compact_scout",
+      "ALWAYS_ESCALATE": "task12_escalate",
+      "ALWAYS_HISTORICAL_TRANSFER": "task12_historical_transfer",
+      "ALWAYS_NO_ASSISTANCE": "task12_no_assistance",
+      "POLICY_V0_1": "task12_escalate"
+    }
+  },
+  "target_models": {
+    "task10_booking_boundaries": {
+      "capability_tier": "high",
+      "generation_settings": {
+        "response_format": "JSON Schema structured action",
+        "seed": "not exposed by the adapter",
+        "temperature": 0,
+        "top_k": "omitted; provider default",
+        "top_p": "omitted; provider default"
+      },
+      "model": "gemini-2.5-flash",
+      "provider": "vertex"
+    },
+    "task11_notification_retries": {
+      "capability_tier": "standard",
+      "generation_settings": {
+        "do_sample": false,
+        "max_new_tokens": 512,
+        "seed": "not passed or used when sampling is disabled",
+        "temperature": 0,
+        "top_k": "not passed",
+        "top_p": "not passed"
+      },
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "provider": "transformers"
+    },
+    "task12_discounted_tax": {
+      "capability_tier": "standard",
+      "generation_settings": {
+        "do_sample": false,
+        "max_new_tokens": 512,
+        "seed": "not passed or used when sampling is disabled",
+        "temperature": 0,
+        "top_k": "not passed",
+        "top_p": "not passed"
+      },
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "provider": "transformers"
+    }
+  },
+  "task_hashes": {
+    "task10_booking_boundaries": "9d1d06ef163e57505c10f6e4ec54526cfcc14d6d7ff838e5f251a05731b8f56d",
+    "task11_notification_retries": "612abef01526dc094fd78a2ce199d2b2edc66d5e1af2845a06c41add223339db",
+    "task12_discounted_tax": "eed4fcb03bb615b890b2783285ea673a0d9f96326258510bb19fad20b15debb0"
+  },
+  "unique_run_sets": {
+    "task10_compact_scout": {
+      "assistance_artifact": "TO_BE_ACQUIRED_UNDER_FROZEN_PROTOCOL",
+      "context_mode": "compact_scout",
+      "fresh_pristine_reset_each_run": true,
+      "max_steps": 8,
+      "model": "gemini-2.5-flash",
+      "provider": "vertex",
+      "repetitions": 5,
+      "run_set_id": "task10_compact_scout",
+      "task_id": "task10_booking_boundaries"
+    },
+    "task10_escalate": {
+      "assistance_artifact": null,
+      "context_mode": "none",
+      "fresh_pristine_reset_each_run": true,
+      "max_steps": 8,
+      "model": "gemini-2.5-pro",
+      "provider": "vertex",
+      "repetitions": 5,
+      "run_set_id": "task10_escalate",
+      "task_id": "task10_booking_boundaries"
+    },
+    "task10_historical_transfer": {
+      "assistance_artifact": "transfer_knowledge/transfer_56c07e702add42b7a04b9c7f7a4a7230.json",
+      "context_mode": "transfer_knowledge",
+      "fresh_pristine_reset_each_run": true,
+      "max_steps": 8,
+      "model": "gemini-2.5-flash",
+      "provider": "vertex",
+      "repetitions": 5,
+      "run_set_id": "task10_historical_transfer",
+      "task_id": "task10_booking_boundaries"
+    },
+    "task10_no_assistance": {
+      "assistance_artifact": null,
+      "context_mode": "none",
+      "fresh_pristine_reset_each_run": true,
+      "max_steps": 8,
+      "model": "gemini-2.5-flash",
+      "provider": "vertex",
+      "repetitions": 5,
+      "run_set_id": "task10_no_assistance",
+      "task_id": "task10_booking_boundaries"
+    },
+    "task11_compact_scout": {
+      "assistance_artifact": "TO_BE_ACQUIRED_UNDER_FROZEN_PROTOCOL",
+      "context_mode": "compact_scout",
+      "fresh_pristine_reset_each_run": true,
+      "max_steps": 8,
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "provider": "transformers",
+      "repetitions": 5,
+      "run_set_id": "task11_compact_scout",
+      "task_id": "task11_notification_retries"
+    },
+    "task11_escalate": {
+      "assistance_artifact": null,
+      "context_mode": "none",
+      "fresh_pristine_reset_each_run": true,
+      "max_steps": 8,
+      "model": "gemini-2.5-pro",
+      "provider": "vertex",
+      "repetitions": 5,
+      "run_set_id": "task11_escalate",
+      "task_id": "task11_notification_retries"
+    },
+    "task11_historical_transfer": {
+      "assistance_artifact": "transfer_knowledge/transfer_93a42588ddd62085a6289d9b12613079.json",
+      "context_mode": "transfer_knowledge",
+      "fresh_pristine_reset_each_run": true,
+      "max_steps": 8,
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "provider": "transformers",
+      "repetitions": 5,
+      "run_set_id": "task11_historical_transfer",
+      "task_id": "task11_notification_retries"
+    },
+    "task11_no_assistance": {
+      "assistance_artifact": null,
+      "context_mode": "none",
+      "fresh_pristine_reset_each_run": true,
+      "max_steps": 8,
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "provider": "transformers",
+      "repetitions": 5,
+      "run_set_id": "task11_no_assistance",
+      "task_id": "task11_notification_retries"
+    },
+    "task12_compact_scout": {
+      "assistance_artifact": "TO_BE_ACQUIRED_UNDER_FROZEN_PROTOCOL",
+      "context_mode": "compact_scout",
+      "fresh_pristine_reset_each_run": true,
+      "max_steps": 8,
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "provider": "transformers",
+      "repetitions": 5,
+      "run_set_id": "task12_compact_scout",
+      "task_id": "task12_discounted_tax"
+    },
+    "task12_escalate": {
+      "assistance_artifact": null,
+      "context_mode": "none",
+      "fresh_pristine_reset_each_run": true,
+      "max_steps": 8,
+      "model": "gemini-2.5-pro",
+      "provider": "vertex",
+      "repetitions": 5,
+      "run_set_id": "task12_escalate",
+      "task_id": "task12_discounted_tax"
+    },
+    "task12_historical_transfer": {
+      "assistance_artifact": "transfer_knowledge/transfer_56c07e702add42b7a04b9c7f7a4a7230.json",
+      "context_mode": "transfer_knowledge",
+      "fresh_pristine_reset_each_run": true,
+      "max_steps": 8,
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "provider": "transformers",
+      "repetitions": 5,
+      "run_set_id": "task12_historical_transfer",
+      "task_id": "task12_discounted_tax"
+    },
+    "task12_no_assistance": {
+      "assistance_artifact": null,
+      "context_mode": "none",
+      "fresh_pristine_reset_each_run": true,
+      "max_steps": 8,
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "provider": "transformers",
+      "repetitions": 5,
+      "run_set_id": "task12_no_assistance",
+      "task_id": "task12_discounted_tax"
+    }
+  }
+}
