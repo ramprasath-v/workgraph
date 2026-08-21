@@ -1,0 +1,94 @@
+{
+  "agent_steps": 6,
+  "compact_scout_id": null,
+  "context_mode": "transfer_knowledge",
+  "elapsed_seconds": 228.755691,
+  "end_time": "2026-08-21T03:46:07.348006+00:00",
+  "estimated_cost_usd": 0.0,
+  "experience_id": null,
+  "experience_used": true,
+  "failure_message": null,
+  "failure_type": null,
+  "generated_experience_id": "exp_9588c6491c76488fbd660b361905add5",
+  "generated_experience_path": "/teamspace/studios/this_studio/workgraph/experiences/exp_9588c6491c76488fbd660b361905add5.json",
+  "input_tokens": 3393,
+  "max_steps": 8,
+  "model_name": "Qwen/Qwen2.5-7B-Instruct",
+  "model_provider": "transformers",
+  "output_tokens": 309,
+  "recipe_id": null,
+  "run_id": "repeat_task04_report_resources_729e34487d81-run-04",
+  "scout_accounting_mode": null,
+  "scout_elapsed_seconds": 0.0,
+  "scout_handoff_id": null,
+  "scout_input_tokens": 0,
+  "scout_model": null,
+  "scout_output_tokens": 0,
+  "scout_total_tokens": 0,
+  "source_experience_id": null,
+  "source_recipe_id": "recipe_98832e7c414d8cb42300e4dbc80d7535",
+  "source_scout_handoff_id": null,
+  "start_time": "2026-08-21T03:42:18.592308+00:00",
+  "success": true,
+  "task_id": "task04_report_resources",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "test_report_renderer.py"
+  ],
+  "tests_failed": 0,
+  "tests_passed": 5,
+  "tool_calls": 4,
+  "total_inference_elapsed_seconds": 228.755691,
+  "total_inference_tokens": 3702,
+  "total_tokens": 3702,
+  "trajectory": [
+    {
+      "action": "model_output_error",
+      "outcome": "malformed model output",
+      "step": 1,
+      "target": null
+    },
+    {
+      "action": "list_files",
+      "outcome": "success (5 files)",
+      "step": 2,
+      "target": null
+    },
+    {
+      "action": "read_file",
+      "outcome": "success",
+      "step": 3,
+      "target": "report_renderer/loader.py"
+    },
+    {
+      "action": "write_file",
+      "outcome": "success",
+      "step": 4,
+      "target": "report_renderer/loader.py"
+    },
+    {
+      "action": "run_tests",
+      "outcome": "5 passed / 0 failed",
+      "step": 5,
+      "target": null
+    },
+    {
+      "action": "finish",
+      "outcome": "success",
+      "step": 6,
+      "target": null
+    }
+  ],
+  "trajectory_diagnostics": {
+    "file_reads": 1,
+    "file_writes": 1,
+    "most_repeated_action": null,
+    "repeated_identical_actions": 0,
+    "test_runs": 1,
+    "unique_actions": 6
+  },
+  "transfer_knowledge_id": "transfer_a4142b399f8684e6a75fda4a625ed4d8"
+}
