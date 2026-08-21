@@ -1,0 +1,169 @@
+{
+  "classification_rule": {
+    "FULL_HISTORICAL_PATTERN_REPRODUCTION": "baseline 0/5, relevant transfer 0/5, and retained trajectory metrics reproduce the recorded qualitative distinction that relevant transfer changes execution behavior in a more task-directed and iterative way",
+    "NON_REPRODUCTION": "retained evidence materially contradicts the historical pattern",
+    "PARTIAL_REPRODUCTION": "success remains 0/5 in both conditions but the retained trajectory distinction is weaker or inconsistent",
+    "thresholds_frozen_before_execution": true
+  },
+  "conditions_in_execution_order": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "harness.runner",
+        "--task",
+        "task07_retry_transfer",
+        "--provider",
+        "transformers",
+        "--model",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "--max-steps",
+        "8",
+        "--repeat",
+        "5"
+      ],
+      "condition_id": "F2R_BASELINE",
+      "context_mode": "none",
+      "transfer_knowledge_id": null
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "harness.runner",
+        "--task",
+        "task07_retry_transfer",
+        "--provider",
+        "transformers",
+        "--model",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "--max-steps",
+        "8",
+        "--repeat",
+        "5",
+        "--transfer-knowledge",
+        "transfer_knowledge/transfer_93a42588ddd62085a6289d9b12613079.json"
+      ],
+      "condition_id": "F2R_RELEVANT_TRANSFER",
+      "context_mode": "transfer_knowledge",
+      "transfer_knowledge_id": "transfer_93a42588ddd62085a6289d9b12613079"
+    }
+  ],
+  "consumer_task": "task07_retry_transfer",
+  "evidence_status": "new_retained_evidence_reproduction_not_original_recovery",
+  "forbidden_conditions": [
+    "irrelevant transfer",
+    "detailed scout",
+    "compact scout",
+    "new Gemini scout",
+    "new transfer generation",
+    "Family 4 execution"
+  ],
+  "frozen_inputs": {
+    "harness": {
+      "combined_sha256": "929a52289dbaee9e0424db4c40a0a9a0d4a5ab28b3df32f56f15592d69de349f",
+      "files": {
+        "harness/action_normalization.py": "925f8a08aad7a5103497fe503045185f68c7348175e44ece0277561fc402c667",
+        "harness/agent.py": "3f727311fcc45e4649b790c697ceee712768762b594e47837ea14beff622fce4",
+        "harness/prompting.py": "6a660e9115cd931a9a84af57ba44717cabdb149c96d2f5296c55ae03eba19515",
+        "harness/runner.py": "5c1992650a6f1ce11d49787b36d8b24e24157aff0d65f4b533b462fe1aca3c33",
+        "harness/tools.py": "f872524937b338fb8cc6c87f23c8547f4e94461cefb0c3c6e9e6cac64c61cf14",
+        "harness/transformers_adapter.py": "8550cd89bacb39eba85e61190bbaa35c35a5061000c6446519190657d2e15404"
+      }
+    },
+    "task_hash": "c66e566fe8cc84b4cffa880fcce9ef66db1fc5368bccf9f5278571adf82eb619",
+    "transfer": {
+      "path": "transfer_knowledge/transfer_93a42588ddd62085a6289d9b12613079.json",
+      "sha256": "83b26d53a73b764f8670f447d9c56cd6295e88d15027fc50a6d22b8a6d214933",
+      "source_experience_id": "exp_101aa9645ab34d46ad1d3fbf4f7dcae7",
+      "source_experience_path": "experiences/exp_101aa9645ab34d46ad1d3fbf4f7dcae7.json",
+      "source_experience_sha256": "a6ba1ec453955ce189fe4286e57f3bf31ab70d8485a0229943031f82ba97c6b5",
+      "source_experience_verified": true,
+      "source_recipe_id": "recipe_da7d5db67724045643eb513a5c8192e4",
+      "source_recipe_path": "recipes/recipe_da7d5db67724045643eb513a5c8192e4.json",
+      "source_recipe_sha256": "a7594a703e553314d426785ed431b52650d894b50520ab73324a65ed48f6bf53",
+      "transfer_knowledge_id": "transfer_93a42588ddd62085a6289d9b12613079"
+    }
+  },
+  "generation_settings": {
+    "TRANSFORMERS_MAX_NEW_TOKENS": "512",
+    "TRANSFORMERS_TEMPERATURE": "0",
+    "do_sample": false,
+    "max_new_tokens": 512,
+    "replication_note": "Repeated trajectories may be identical and are not assumed to be statistically independent.",
+    "seed": "not passed or used because sampling is disabled",
+    "temperature": 0,
+    "top_k": "not passed",
+    "top_p": "not passed"
+  },
+  "historical_observation": {
+    "baseline_successes": 0,
+    "machine_recomputed": false,
+    "original_raw_evidence_retained": false,
+    "qualitative_observation": "Historical trajectories suggested more grounded and iterative execution under relevant transfer.",
+    "relevant_transfer_successes": 0,
+    "repetitions": 5
+  },
+  "no_adaptation_rule": "After baseline execution, do not change the task, transfer, prompt, harness, generation settings, max steps, repetitions, or condition order.",
+  "offline_analysis": {
+    "analyzer": "analysis.trajectory_metrics",
+    "metrics": [
+      "success_rate",
+      "final_tests_passed_failed",
+      "verification_use_rate",
+      "revision_after_failure_rate",
+      "max_step_exhaustion_rate",
+      "malformed_output_rate",
+      "invalid_tool_action_rate",
+      "repeated_identical_actions",
+      "agent_steps",
+      "tool_calls",
+      "input_output_total_tokens",
+      "elapsed_seconds",
+      "directly_measurable_file_read_write_behavior"
+    ],
+    "retroactive_analysis_contract": false
+  },
+  "pristine_reset": {
+    "fresh_reset_before_every_repetition": true,
+    "source": "exact frozen Task 07 workspace",
+    "state_carryover_allowed": false,
+    "task_hash_check_after_reproduction": true,
+    "task_hash_check_before_reproduction": true
+  },
+  "reproduction_id": "f2r_task07_core_v1",
+  "reproduction_version": "0.1",
+  "retention": {
+    "expected_primary_files_per_condition": {
+      "aggregate_json": 1,
+      "individual_result_json": 5
+    },
+    "immutability_rule": "Do not rename or rewrite result JSON after creation. Retain and hash any generated experience, but do not compile or inject it.",
+    "manifest_fields": [
+      "condition identity and exact aggregate/run paths",
+      "SHA-256 for every aggregate and run JSON",
+      "task hash before and after",
+      "transfer and harness hashes",
+      "generation settings",
+      "any normally generated verified-experience side artifacts"
+    ],
+    "postexecution_manifest": "reproductions/family2_v1/evidence_manifest.json",
+    "result_location": "results/",
+    "retain_fields": [
+      "trajectory",
+      "final test counts and failure type/message",
+      "model/provider and context mode/transfer ID",
+      "steps/tool calls and token counts",
+      "elapsed time"
+    ]
+  },
+  "source_family": "family_2",
+  "target": {
+    "max_steps": 8,
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "provider": "transformers",
+    "repetitions": 5
+  }
+}
+
+
