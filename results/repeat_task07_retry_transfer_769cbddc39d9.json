@@ -1,0 +1,75 @@
+{
+  "aggregate_id": "repeat_task07_retry_transfer_769cbddc39d9",
+  "average_agent_steps": 2.0,
+  "average_elapsed_seconds": 47.897673,
+  "average_input_tokens": 253.0,
+  "average_output_tokens": 15.0,
+  "average_tool_calls": 0.0,
+  "average_total_inference_elapsed_seconds": 47.897673,
+  "average_total_inference_tokens": 268.0,
+  "average_total_tokens": 268.0,
+  "compact_scout_id": null,
+  "context_mode": "none",
+  "created_at": "2026-08-21T04:13:29.850493+00:00",
+  "estimated_deployment_total_inference_elapsed_seconds": 239.488367,
+  "estimated_deployment_total_inference_tokens": 1340,
+  "failed_runs": 5,
+  "failure_type_counts": {
+    "unspecified": 5
+  },
+  "frozen_experiment_total_inference_elapsed_seconds": 239.488367,
+  "frozen_experiment_total_inference_tokens": 1340,
+  "individual_runs": [
+    {
+      "failure_type": null,
+      "result_path": "/teamspace/studios/this_studio/workgraph/results/repeat_task07_retry_transfer_769cbddc39d9-run-01.json",
+      "run_id": "repeat_task07_retry_transfer_769cbddc39d9-run-01",
+      "success": false
+    },
+    {
+      "failure_type": null,
+      "result_path": "/teamspace/studios/this_studio/workgraph/results/repeat_task07_retry_transfer_769cbddc39d9-run-02.json",
+      "run_id": "repeat_task07_retry_transfer_769cbddc39d9-run-02",
+      "success": false
+    },
+    {
+      "failure_type": null,
+      "result_path": "/teamspace/studios/this_studio/workgraph/results/repeat_task07_retry_transfer_769cbddc39d9-run-03.json",
+      "run_id": "repeat_task07_retry_transfer_769cbddc39d9-run-03",
+      "success": false
+    },
+    {
+      "failure_type": null,
+      "result_path": "/teamspace/studios/this_studio/workgraph/results/repeat_task07_retry_transfer_769cbddc39d9-run-04.json",
+      "run_id": "repeat_task07_retry_transfer_769cbddc39d9-run-04",
+      "success": false
+    },
+    {
+      "failure_type": null,
+      "result_path": "/teamspace/studios/this_studio/workgraph/results/repeat_task07_retry_transfer_769cbddc39d9-run-05.json",
+      "run_id": "repeat_task07_retry_transfer_769cbddc39d9-run-05",
+      "success": false
+    }
+  ],
+  "max_elapsed_seconds": 81.166423,
+  "max_steps": 8,
+  "min_elapsed_seconds": 39.468111,
+  "model_name": "Qwen/Qwen2.5-7B-Instruct",
+  "model_provider": "transformers",
+  "recipe_id": null,
+  "scout_accounting_mode": null,
+  "scout_elapsed_seconds": 0.0,
+  "scout_handoff_id": null,
+  "scout_input_tokens": 0,
+  "scout_model": null,
+  "scout_output_tokens": 0,
+  "scout_total_tokens": 0,
+  "source_experience_id": null,
+  "source_recipe_id": null,
+  "source_scout_handoff_id": null,
+  "success_rate": 0.0,
+  "successful_runs": 0,
+  "task_id": "task07_retry_transfer",
+  "total_runs": 5,
+  "transfer_knowledge_id": null
+}

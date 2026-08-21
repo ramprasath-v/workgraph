@@ -1,0 +1,70 @@
+{
+  "agent_steps": 2,
+  "compact_scout_id": null,
+  "context_mode": "none",
+  "elapsed_seconds": 39.75986,
+  "end_time": "2026-08-21T04:12:50.254363+00:00",
+  "estimated_cost_usd": 0.0,
+  "experience_id": null,
+  "experience_used": false,
+  "failure_message": null,
+  "failure_type": null,
+  "generated_experience_id": null,
+  "generated_experience_path": null,
+  "input_tokens": 253,
+  "max_steps": 8,
+  "model_name": "Qwen/Qwen2.5-7B-Instruct",
+  "model_provider": "transformers",
+  "output_tokens": 15,
+  "recipe_id": null,
+  "run_id": "repeat_task07_retry_transfer_769cbddc39d9-run-04",
+  "scout_accounting_mode": null,
+  "scout_elapsed_seconds": 0.0,
+  "scout_handoff_id": null,
+  "scout_input_tokens": 0,
+  "scout_model": null,
+  "scout_output_tokens": 0,
+  "scout_total_tokens": 0,
+  "source_experience_id": null,
+  "source_recipe_id": null,
+  "source_scout_handoff_id": null,
+  "start_time": "2026-08-21T04:12:10.494497+00:00",
+  "success": false,
+  "task_id": "task07_retry_transfer",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "test_delivery_receiver.py"
+  ],
+  "tests_failed": 2,
+  "tests_passed": 4,
+  "tool_calls": 0,
+  "total_inference_elapsed_seconds": 39.75986,
+  "total_inference_tokens": 268,
+  "total_tokens": 268,
+  "trajectory": [
+    {
+      "action": "model_output_error",
+      "outcome": "malformed model output",
+      "step": 1,
+      "target": null
+    },
+    {
+      "action": "finish",
+      "outcome": "success",
+      "step": 2,
+      "target": null
+    }
+  ],
+  "trajectory_diagnostics": {
+    "file_reads": 0,
+    "file_writes": 0,
+    "most_repeated_action": null,
+    "repeated_identical_actions": 0,
+    "test_runs": 0,
+    "unique_actions": 2
+  },
+  "transfer_knowledge_id": null
+}
