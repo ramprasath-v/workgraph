@@ -1,28 +1,144 @@
 {
-  "checkpoint_version": "0.1",
+  "checkpoint_version": "0.2",
   "falsified_naive_hypothesis": "If retrieved guidance is relevant and correct, injecting it cannot hurt.",
   "families": [
     {
       "conditions": [
         {
           "condition_id": "baseline",
-          "evidence": null,
+          "evidence": {
+            "aggregate_result": "results/repeat_task04_report_resources_28b2a9415bb0.json",
+            "run_results": [
+              "results/repeat_task04_report_resources_28b2a9415bb0-run-01.json",
+              "results/repeat_task04_report_resources_28b2a9415bb0-run-02.json",
+              "results/repeat_task04_report_resources_28b2a9415bb0-run-03.json",
+              "results/repeat_task04_report_resources_28b2a9415bb0-run-04.json",
+              "results/repeat_task04_report_resources_28b2a9415bb0-run-05.json"
+            ],
+            "sha256": {
+              "results/repeat_task04_report_resources_28b2a9415bb0-run-01.json": "8843bdd058164cd4fd5a7ca212f3c619e6a99ada898d4e4d0f7b5d67d19f91e8",
+              "results/repeat_task04_report_resources_28b2a9415bb0-run-02.json": "15c01650f5e557f325fef7e9ce37c8b1eef41976c13973bfdd400229f5b13b71",
+              "results/repeat_task04_report_resources_28b2a9415bb0-run-03.json": "1c7948ff4456945cb5bce4d7ca07da6da5a92dece17d207354ee1258b18c312f",
+              "results/repeat_task04_report_resources_28b2a9415bb0-run-04.json": "685d6ee95d306b73b994bf2ecde3edf5397e7d05d5259514695623d24cffa7cf",
+              "results/repeat_task04_report_resources_28b2a9415bb0-run-05.json": "ee5d6db38164bb217f315f89be37c014dc2fbc86f57bac650e62578bbf361e9e",
+              "results/repeat_task04_report_resources_28b2a9415bb0.json": "493c74d7e89a139bd904d63f9790ceb18178721a606b24caaed6d0a47095c7ee"
+            }
+          },
           "label": "Baseline / no context",
-          "outcome": null,
-          "persisted_total_inference_accounting": null,
-          "qwen_only_efficiency": null,
-          "retention_status": "raw_results_not_retained",
-          "trajectory_metrics": null
+          "outcome": {
+            "failed_runs": 5,
+            "success_rate": 0.0,
+            "successful_runs": 0,
+            "total_runs": 5
+          },
+          "persisted_total_inference_accounting": {
+            "average_total_inference_elapsed_seconds": 412.668231,
+            "average_total_inference_tokens": 6520.0,
+            "estimated_deployment_total_inference_elapsed_seconds": 2063.341156,
+            "estimated_deployment_total_inference_tokens": 32600,
+            "frozen_experiment_total_inference_elapsed_seconds": 2063.341156,
+            "frozen_experiment_total_inference_tokens": 32600,
+            "scout_elapsed_seconds": 0.0,
+            "scout_input_tokens": 0,
+            "scout_output_tokens": 0,
+            "scout_total_tokens": 0
+          },
+          "qwen_only_efficiency": {
+            "mean_elapsed_seconds": 412.668231,
+            "mean_input_tokens": 5976,
+            "mean_output_tokens": 544,
+            "mean_total_tokens": 6520
+          },
+          "retention_status": "complete_raw_and_aggregate",
+          "trajectory_metrics": {
+            "invalid_tool_action_rate": 1.0,
+            "malformed_output_rate": 1.0,
+            "max_step_exhaustion_rate": 0.0,
+            "mean_agent_steps": 8,
+            "mean_elapsed_seconds": 412.668231,
+            "mean_final_tests_failed": 2.8,
+            "mean_final_tests_passed": 2.2,
+            "mean_input_tokens": 5976,
+            "mean_output_tokens": 544,
+            "mean_repeated_identical_actions": 0,
+            "mean_tool_calls": 6,
+            "mean_total_tokens": 6520,
+            "median_final_tests_failed": 3.0,
+            "median_final_tests_passed": 2.0,
+            "number_of_runs": 5,
+            "revision_after_failure_rate": 1.0,
+            "success_rate": 0.0,
+            "verification_after_revision_rate": 0.0,
+            "verification_use_rate": 1.0
+          }
         },
         {
           "condition_id": "relevant_historical_transfer",
-          "evidence": null,
+          "evidence": {
+            "aggregate_result": "results/repeat_task04_report_resources_729e34487d81.json",
+            "run_results": [
+              "results/repeat_task04_report_resources_729e34487d81-run-01.json",
+              "results/repeat_task04_report_resources_729e34487d81-run-02.json",
+              "results/repeat_task04_report_resources_729e34487d81-run-03.json",
+              "results/repeat_task04_report_resources_729e34487d81-run-04.json",
+              "results/repeat_task04_report_resources_729e34487d81-run-05.json"
+            ],
+            "sha256": {
+              "results/repeat_task04_report_resources_729e34487d81-run-01.json": "0a808a39f578085b31f58e09f4c4742193ff92e9272f68a07036f7006e6ea0a1",
+              "results/repeat_task04_report_resources_729e34487d81-run-02.json": "26ca8e2cb2505528308696e87f9c1c52ebcaf731b06d36b50bd2d891021df5b3",
+              "results/repeat_task04_report_resources_729e34487d81-run-03.json": "db439ed1083208f0812d3799adc23432d036acfaa49c52e976e72bc9e08840b7",
+              "results/repeat_task04_report_resources_729e34487d81-run-04.json": "5434a85c2cd96a3f141df7b5a6805755631d79af2c1c85bcde295ef8927a3bea",
+              "results/repeat_task04_report_resources_729e34487d81-run-05.json": "74f859a714f28cb1d8b6e528bee2ecbee680710dfa8d9569168dd4516802cc28",
+              "results/repeat_task04_report_resources_729e34487d81.json": "446028a663396257e823df9f435a85296fd42d8bfa100d313b394c9494d00c8a"
+            }
+          },
           "label": "Relevant Task 02 historical transfer",
-          "outcome": null,
-          "persisted_total_inference_accounting": null,
-          "qwen_only_efficiency": null,
-          "retention_status": "raw_results_not_retained",
-          "trajectory_metrics": null
+          "outcome": {
+            "failed_runs": 0,
+            "success_rate": 1.0,
+            "successful_runs": 5,
+            "total_runs": 5
+          },
+          "persisted_total_inference_accounting": {
+            "average_total_inference_elapsed_seconds": 237.29869,
+            "average_total_inference_tokens": 3702.0,
+            "estimated_deployment_total_inference_elapsed_seconds": 1186.49345,
+            "estimated_deployment_total_inference_tokens": 18510,
+            "frozen_experiment_total_inference_elapsed_seconds": 1186.49345,
+            "frozen_experiment_total_inference_tokens": 18510,
+            "scout_elapsed_seconds": 0.0,
+            "scout_input_tokens": 0,
+            "scout_output_tokens": 0,
+            "scout_total_tokens": 0
+          },
+          "qwen_only_efficiency": {
+            "mean_elapsed_seconds": 237.29869,
+            "mean_input_tokens": 3393,
+            "mean_output_tokens": 309,
+            "mean_total_tokens": 3702
+          },
+          "retention_status": "complete_raw_and_aggregate",
+          "trajectory_metrics": {
+            "invalid_tool_action_rate": 0.0,
+            "malformed_output_rate": 1.0,
+            "max_step_exhaustion_rate": 0.0,
+            "mean_agent_steps": 6,
+            "mean_elapsed_seconds": 237.29869,
+            "mean_final_tests_failed": 0,
+            "mean_final_tests_passed": 5,
+            "mean_input_tokens": 3393,
+            "mean_output_tokens": 309,
+            "mean_repeated_identical_actions": 0,
+            "mean_tool_calls": 4,
+            "mean_total_tokens": 3702,
+            "median_final_tests_failed": 0.0,
+            "median_final_tests_passed": 5.0,
+            "number_of_runs": 5,
+            "revision_after_failure_rate": 0.0,
+            "success_rate": 1.0,
+            "verification_after_revision_rate": 0.0,
+            "verification_use_rate": 1.0
+          }
         },
         {
           "condition_id": "irrelevant_historical_transfer",
@@ -56,12 +172,12 @@
         }
       ],
       "domain": "resource/path transfer",
-      "evidence_level": "historical_observation_without_raw_results",
+      "evidence_level": "retained_core_reproduction_with_unretained_historical_conditions",
       "family_id": "family_1",
       "historical_observation": {
         "machine_derived": false,
         "outcome_class": "capability_enabling_assistance",
-        "statement": "The frozen project record classifies Task 04 as baseline failure with successful relevant and compact assistance. Original per-run Kaggle evidence was not retained, so this checkpoint reports no numerical or trajectory metrics for that claim."
+        "statement": "The original Task 04 Kaggle evidence was not retained. A separately versioned reproduction now retains baseline 0/5 and relevant-transfer 5/5 raw evidence."
       },
       "task_id": "task04_report_resources"
     },
@@ -69,23 +185,139 @@
       "conditions": [
         {
           "condition_id": "baseline",
-          "evidence": null,
+          "evidence": {
+            "aggregate_result": "results/repeat_task07_retry_transfer_769cbddc39d9.json",
+            "run_results": [
+              "results/repeat_task07_retry_transfer_769cbddc39d9-run-01.json",
+              "results/repeat_task07_retry_transfer_769cbddc39d9-run-02.json",
+              "results/repeat_task07_retry_transfer_769cbddc39d9-run-03.json",
+              "results/repeat_task07_retry_transfer_769cbddc39d9-run-04.json",
+              "results/repeat_task07_retry_transfer_769cbddc39d9-run-05.json"
+            ],
+            "sha256": {
+              "results/repeat_task07_retry_transfer_769cbddc39d9-run-01.json": "a5b88dc290f84930b020146cf1a70c1d124d33b6691ab1e77d05ccec88e51789",
+              "results/repeat_task07_retry_transfer_769cbddc39d9-run-02.json": "1897bf22869910b7c98d8d7a53bd1a8872f4bb7bb60b824b817966aca5098fc3",
+              "results/repeat_task07_retry_transfer_769cbddc39d9-run-03.json": "f9fc85f5ce59f33a4677b51a4c0baec78fd1992b904530dc391fa7cbd7ed0e18",
+              "results/repeat_task07_retry_transfer_769cbddc39d9-run-04.json": "225b48bacc787a43d6de19f623fc83ca3ef832e7eeb54c081c8f83e1abc7b0a9",
+              "results/repeat_task07_retry_transfer_769cbddc39d9-run-05.json": "d14fb82630b64a7060e5fb284077a881c44f0daa43df4981597dc206edcb85d1",
+              "results/repeat_task07_retry_transfer_769cbddc39d9.json": "ecc0584a6c18e976d9e14c515ae75321deb7af653ca46936c7e53499eb045812"
+            }
+          },
           "label": "Baseline / no context",
-          "outcome": null,
-          "persisted_total_inference_accounting": null,
-          "qwen_only_efficiency": null,
-          "retention_status": "raw_results_not_retained",
-          "trajectory_metrics": null
+          "outcome": {
+            "failed_runs": 5,
+            "success_rate": 0.0,
+            "successful_runs": 0,
+            "total_runs": 5
+          },
+          "persisted_total_inference_accounting": {
+            "average_total_inference_elapsed_seconds": 47.897673,
+            "average_total_inference_tokens": 268.0,
+            "estimated_deployment_total_inference_elapsed_seconds": 239.488367,
+            "estimated_deployment_total_inference_tokens": 1340,
+            "frozen_experiment_total_inference_elapsed_seconds": 239.488367,
+            "frozen_experiment_total_inference_tokens": 1340,
+            "scout_elapsed_seconds": 0.0,
+            "scout_input_tokens": 0,
+            "scout_output_tokens": 0,
+            "scout_total_tokens": 0
+          },
+          "qwen_only_efficiency": {
+            "mean_elapsed_seconds": 47.897673,
+            "mean_input_tokens": 253,
+            "mean_output_tokens": 15,
+            "mean_total_tokens": 268
+          },
+          "retention_status": "complete_raw_and_aggregate",
+          "trajectory_metrics": {
+            "invalid_tool_action_rate": 0.0,
+            "malformed_output_rate": 1.0,
+            "max_step_exhaustion_rate": 0.0,
+            "mean_agent_steps": 2,
+            "mean_elapsed_seconds": 47.897673,
+            "mean_final_tests_failed": 2,
+            "mean_final_tests_passed": 4,
+            "mean_input_tokens": 253,
+            "mean_output_tokens": 15,
+            "mean_repeated_identical_actions": 0,
+            "mean_tool_calls": 0,
+            "mean_total_tokens": 268,
+            "median_final_tests_failed": 2.0,
+            "median_final_tests_passed": 4.0,
+            "number_of_runs": 5,
+            "revision_after_failure_rate": 0.0,
+            "success_rate": 0.0,
+            "verification_after_revision_rate": 0.0,
+            "verification_use_rate": 0.0
+          }
         },
         {
           "condition_id": "relevant_historical_transfer",
-          "evidence": null,
+          "evidence": {
+            "aggregate_result": "results/repeat_task07_retry_transfer_f0c2446e7222.json",
+            "run_results": [
+              "results/repeat_task07_retry_transfer_f0c2446e7222-run-01.json",
+              "results/repeat_task07_retry_transfer_f0c2446e7222-run-02.json",
+              "results/repeat_task07_retry_transfer_f0c2446e7222-run-03.json",
+              "results/repeat_task07_retry_transfer_f0c2446e7222-run-04.json",
+              "results/repeat_task07_retry_transfer_f0c2446e7222-run-05.json"
+            ],
+            "sha256": {
+              "results/repeat_task07_retry_transfer_f0c2446e7222-run-01.json": "dcf0a3cc40ed7fdcd20c0d734acbef8dbe26148ef309a316b68edfb6d3bb8217",
+              "results/repeat_task07_retry_transfer_f0c2446e7222-run-02.json": "9d3a6268927a18eaf1dee4f917e53c8f9e49ee9794a13ceefde16070d3b49c48",
+              "results/repeat_task07_retry_transfer_f0c2446e7222-run-03.json": "789b6cc60e4a2526ab4a8308f4175639b6453918bdc33d13f879e8e4d201f54c",
+              "results/repeat_task07_retry_transfer_f0c2446e7222-run-04.json": "4d8e7fe8987c710dc8a60b15e3f45ff79113d83ee880516149dd84295f085a68",
+              "results/repeat_task07_retry_transfer_f0c2446e7222-run-05.json": "ce16040a215dad9014a4ce274644d88e8a54bc5cea774cbb8e4a39b7de241823",
+              "results/repeat_task07_retry_transfer_f0c2446e7222.json": "4cde3800bea3e08df75a632332c167469b983baa68e55a2a0c0eec9f6792dc74"
+            }
+          },
           "label": "Relevant Task 06 historical transfer",
-          "outcome": null,
-          "persisted_total_inference_accounting": null,
-          "qwen_only_efficiency": null,
-          "retention_status": "raw_results_not_retained",
-          "trajectory_metrics": null
+          "outcome": {
+            "failed_runs": 0,
+            "success_rate": 1.0,
+            "successful_runs": 5,
+            "total_runs": 5
+          },
+          "persisted_total_inference_accounting": {
+            "average_total_inference_elapsed_seconds": 413.97686,
+            "average_total_inference_tokens": 7829.0,
+            "estimated_deployment_total_inference_elapsed_seconds": 2069.884299,
+            "estimated_deployment_total_inference_tokens": 39145,
+            "frozen_experiment_total_inference_elapsed_seconds": 2069.884299,
+            "frozen_experiment_total_inference_tokens": 39145,
+            "scout_elapsed_seconds": 0.0,
+            "scout_input_tokens": 0,
+            "scout_output_tokens": 0,
+            "scout_total_tokens": 0
+          },
+          "qwen_only_efficiency": {
+            "mean_elapsed_seconds": 413.97686,
+            "mean_input_tokens": 7280,
+            "mean_output_tokens": 549,
+            "mean_total_tokens": 7829
+          },
+          "retention_status": "complete_raw_and_aggregate",
+          "trajectory_metrics": {
+            "invalid_tool_action_rate": 0.0,
+            "malformed_output_rate": 1.0,
+            "max_step_exhaustion_rate": 0.0,
+            "mean_agent_steps": 8,
+            "mean_elapsed_seconds": 413.97686,
+            "mean_final_tests_failed": 0,
+            "mean_final_tests_passed": 1,
+            "mean_input_tokens": 7280,
+            "mean_output_tokens": 549,
+            "mean_repeated_identical_actions": 1,
+            "mean_tool_calls": 6,
+            "mean_total_tokens": 7829,
+            "median_final_tests_failed": 0.0,
+            "median_final_tests_passed": 1.0,
+            "number_of_runs": 5,
+            "revision_after_failure_rate": 1.0,
+            "success_rate": 1.0,
+            "verification_after_revision_rate": 1.0,
+            "verification_use_rate": 1.0
+          }
         },
         {
           "condition_id": "irrelevant_historical_transfer",
@@ -119,12 +351,12 @@
         }
       ],
       "domain": "retry/idempotency",
-      "evidence_level": "historical_observation_without_raw_results",
+      "evidence_level": "retained_core_reproduction_with_unretained_historical_conditions",
       "family_id": "family_2",
       "historical_observation": {
         "machine_derived": false,
         "outcome_class": "assistance_insufficient",
-        "statement": "The frozen project record classifies Task 07 as baseline and assistance failure, with some assisted trajectories described as more task-directed. Original per-run Kaggle evidence was not retained, so this checkpoint reports no numerical or trajectory metrics for that claim."
+        "statement": "The original Task 07 Kaggle evidence was not retained. A separately versioned reproduction retains baseline 0/5 and harness-recorded relevant-transfer 5/5, contradicting the historical 0/5 to 0/5 pattern; all assisted reproduction runs rewrote the task test file."
       },
       "task_id": "task07_retry_transfer"
     },
@@ -503,18 +735,19 @@
       "task_id": "task09_role_changes"
     }
   ],
+  "mechanism_status": "Family 3's mechanism is unresolved; prompt-wrapper, context-length, authority-framing, token, and placement effects require ablation.",
   "observed_outcome_classes": [
     {
       "class": "capability_enabling_assistance",
-      "evidence_limitation": "original Task 04 raw results not retained",
+      "evidence_limitation": "derived from the new versioned reproduction; original Task 04 raw results remain unretained",
       "family_id": "family_1",
-      "machine_derived": false
+      "machine_derived": true
     },
     {
-      "class": "assistance_insufficient",
-      "evidence_limitation": "original Task 07 raw results not retained",
+      "class": "historical_pattern_not_reproduced",
+      "evidence_limitation": "the reproduction records 5/5 assisted harness success, but all five runs rewrote the test file and ended with only one passing test",
       "family_id": "family_2",
-      "machine_derived": false
+      "machine_derived": true
     },
     {
       "class": "assistance_induced_interference",
@@ -525,5 +758,6 @@
   ],
   "predeclared_next_hypothesis": "A policy that decides whether to use no assistance, historical verified experience, current-task scouting, or model escalation can outperform unconditional experience injection in reliability and/or resource efficiency.",
   "source_manifest": "analysis/cross_family_manifest.json",
-  "source_manifest_sha256": "f0b519c380d6eb8112cb117a768bda672b92e5280aa91f898029622ca3b5ce25"
+  "source_manifest_sha256": "fb337e125eae381915c1045ab58ae0a022dca3b5b803d10d4b1fb99cec14bbce",
+  "strongest_supported_claim": "Verified external assistance can enable a consumer that fails unaided, while assistance injection can also interfere with a consumer that succeeds unaided; assistance utility is conditional rather than monotonic."
 }

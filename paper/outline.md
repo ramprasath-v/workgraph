@@ -18,13 +18,12 @@ need not improve execution. We present WorkGraph, an experimental harness that
 captures successful executions as verification-backed artifacts and measures how
 different assistance representations affect a downstream coding agent. Across three
 small, hand-built task families using Qwen 2.5 7B as the principal consumer, the
-frozen project record contains three qualitatively different regimes. Family 1 is a
-historical observation in which relevant assistance was associated with a change
-from zero to five successful runs and capability-enabling behavior; its original
-per-run Kaggle evidence was not retained, so this result is not machine-recomputed.
-Family 2 is a historical observation in which assistance remained insufficient,
-although recorded trajectories differed; its original raw evidence is likewise
-unavailable. Family 3 retains complete raw evidence: on Task 09, unaided Qwen
+retained evidence contains two contrasting regimes. A new Family 1 reproduction
+records baseline failure in 5/5 runs and relevant-transfer success in 5/5, without
+test-file writes. A new Family 2 reproduction records the same harness-level rates
+but all assisted runs rewrote the test file and finished with only one passing test;
+it therefore exposes a verification-integrity threat rather than a clean second
+replication. Family 3 retains complete original evidence: on Task 09, unaided Qwen
 succeeded in 5/5 runs, whereas relevant historical transfer, irrelevant historical
 transfer, a detailed current-task scout, and a compact scout each succeeded in 0/5.
 The retained trajectories show representation-dependent regressions, unexpected
@@ -121,13 +120,14 @@ workspace differences and deterministic evaluation.
 - Explain the predeclared Task 09 analysis contract and trajectory definitions.
 - Report Qwen generation as deterministic (`temperature=0`, `do_sample=false`), so
   repeated runs must not automatically be treated as independent random samples.
-- State retention: complete Family 3 raw/aggregate evidence; missing original raw
-  Family 1/2 Kaggle evidence.
+- State retention: complete new Family 1/2 core reproductions and complete original
+  Family 3 evidence; original Family 1/2 Kaggle evidence remains unavailable.
 
 ## 6. Results
 
 - Use `paper/evidence-table.md` as the authoritative presentation table.
-- Present Families 1/2 as provenance-labeled historical observations only.
+- Present Family 1/2 historical observations separately from their new versioned,
+  provenance-labeled reproductions, including Family 2's test-write finding.
 - Present Family 3 numerical values from `paper/evidence-summary.json`, which is a
   deterministic projection of the frozen checkpoint/results.
 - Do not pool the three hand-built families into a population estimate.
@@ -150,14 +150,13 @@ workspace differences and deterministic evaluation.
 
 Strongest defensible claim:
 
-> In these controlled tool-using-agent experiments, external assistance was not
-> monotonically beneficial. Depending on the task/model setting, assistance was
-> observed to enable success, fail to overcome execution limitations, or interfere
-> with an agent that succeeded unaided.
+> Verified external assistance can enable a consumer that fails unaided, while
+> assistance injection can also interfere with a consumer that succeeds unaided;
+> assistance utility is conditional rather than monotonic.
 
-The enabling and insufficient portions are historical observations without retained
-raw runs. The interference result is machine-derived for Task 09 with Qwen 2.5 7B,
-this harness, and an eight-step budget.
+The enabling contrast is machine-derived from the new Family 1 reproduction. The
+interference result is machine-derived from Task 09 with Qwen 2.5 7B, this harness,
+and an eight-step budget. Family 2's historical 0/5→0/5 pattern did not reproduce.
 
 Discuss plausible mechanisms as hypotheses only: context competition, anchoring,
 premature editing, reduced exploration, tool-schema friction, or consumer-capability
@@ -186,12 +185,14 @@ unconditional memory injection. This is positioning, not established novelty.
 ## 10. Threats to Validity
 
 Use `paper/reviewer-risks.md`. Emphasize task-construction bias, one principal small
-consumer, deterministic repeats, missing raw evidence, prompt interference,
+consumer, deterministic repeats, missing original evidence, test-write integrity,
+prompt interference,
 harness-specific behavior, and weak comparison baselines.
 
 ## 11. Limitations
 
-- Three small hand-built families; only one family has complete raw evidence.
+- Three small hand-built families; only Family 3 has complete original evidence,
+  while Families 1/2 have separately versioned core reproductions.
 - Primarily Qwen 2.5 7B as consumer; no model-size frontier.
 - Five largely deterministic repetitions per condition.
 - No closest skill/memory, automatic retrieval, or routing baseline.
@@ -201,7 +202,7 @@ harness-specific behavior, and weak comparison baselines.
 
 ## 12. Future Work
 
-Prioritize evidence restoration, alternative-explanation ablations, policy validation,
+Prioritize alternative-explanation ablations, verification hardening, policy validation,
 model breadth, and established baselines. Keep automatic retrieval and learned policy
 work separate from the first controlled claim.
 

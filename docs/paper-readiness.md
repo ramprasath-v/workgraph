@@ -2,140 +2,76 @@
 
 ## Bottom line
 
-WorkGraph is ready as a rigorous internal research note and conditionally ready for
-a transparent technical report. It is not yet supported as a full conference paper.
-The strongest current contribution is not “experience improves agents,” but a
-controlled demonstration that assistance was non-monotonic across the observed
-settings. Two of the three regimes remain historical observations without original
-raw evidence; only Family 3 supports machine-derived numerical and trajectory claims.
-
-Recommended working title:
-
-> **When Agent Experience Helps, Fails, and Hurts: Conditional Assistance in
-> Tool-Using Language-Model Agents**
-
-This broader title fits the cross-family evidence better than treating capability
-displacement as the sole or universal mechanism.
-
-Working materials:
-
-- [`paper/outline.md`](../paper/outline.md): full paper skeleton, abstract, RQs,
-  definitions, positioning, limitations, and proposed figures.
-- [`paper/evidence-table.md`](../paper/evidence-table.md): central cross-family and
-  Family 3 numerical tables.
-- [`paper/reviewer-risks.md`](../paper/reviewer-risks.md): risks, experiment ranking,
-  publication readiness, and scorecard.
-- [`paper/evidence-summary.json`](../paper/evidence-summary.json): deterministic
-  provenance-preserving projection of the frozen checkpoint.
-
-## Abstract draft
-
-Tool-using language-model agents can receive prior verified experience, distilled
-transfer knowledge, or current-task scouting, but injecting more relevant context
-need not improve execution. We present WorkGraph, an experimental harness that
-captures successful executions as verification-backed artifacts and measures how
-different assistance representations affect a downstream coding agent. Across three
-small, hand-built task families using Qwen 2.5 7B as the principal consumer, the
-frozen project record contains three qualitatively different regimes. Family 1 is a
-historical observation in which relevant assistance was associated with a change
-from zero to five successful runs and capability-enabling behavior; its original
-per-run Kaggle evidence was not retained, so this result is not machine-recomputed.
-Family 2 is a historical observation in which assistance remained insufficient,
-although recorded trajectories differed; its original raw evidence is likewise
-unavailable. Family 3 retains complete raw evidence: on Task 09, unaided Qwen
-succeeded in 5/5 runs, whereas relevant historical transfer, irrelevant historical
-transfer, a detailed current-task scout, and a compact scout each succeeded in 0/5.
-The retained trajectories show representation-dependent regressions, unexpected
-writes, verification behavior, and inference costs, but do not establish hidden
-reasoning quality. These controlled cases show that external assistance was not
-monotonically beneficial in this harness. They do not establish population-level
-generalization. We preregistered a deterministic policy that selects no assistance,
-historical transfer, compact scouting, or escalation, together with a held-out
-Family 4 protocol; that policy has not yet been evaluated.
-
-## Research questions
-
-1. Can verified prior experience enable a target model that fails unaided?
-2. When does assistance fail to overcome consumer execution limitations?
-3. Can relevant assistance interfere with a model that succeeds unaided?
-4. How do assistance representations change observable behavior and inference cost?
-5. Can a leakage-free pre-execution policy select assistance, scouting, unaided
-   execution, or escalation? **Not evaluated; Family 4 remains unrun.**
+WorkGraph is ready for a rigorous internal report and is closer to a transparent
+technical report. It is still not ready for a strong general conference claim.
+The evidence asymmetry improved: Family 1 now has a clean retained reproduction of
+an enabling contrast, and Family 3 retains an interference contrast. Family 2's
+new reproduction did not reproduce its historical pattern and uncovered a serious
+verification-integrity threat because assisted runs changed the test file.
 
 ## Strongest supported claim
 
-> In these controlled tool-using-agent experiments, external assistance was not
-> monotonically beneficial. Depending on the task/model setting, assistance was
-> observed to enable success, fail to overcome execution limitations, or interfere
-> with an agent that succeeded unaided.
+> Verified external assistance can enable a consumer that fails unaided, while
+> assistance injection can also interfere with a consumer that succeeds unaided;
+> assistance utility is conditional rather than monotonic.
 
-The enabling and insufficient regimes are historical project observations whose raw
-runs were not retained. The interference result is machine-derived for Task 09,
-Qwen 2.5 7B, this harness, and an eight-step budget. This division must remain visible
-in the abstract, results, figures, captions, and conclusion.
+This is a conditional observation across the retained Task 04 and Task 09 settings,
+not a universal memory result. The mechanism behind Family 3 is unresolved.
+Prompt-wrapper structure, context length, placement, authority framing, and token or
+latency effects are live alternatives requiring ablation.
+
+## Evidence status
+
+- **Family 1:** new retained reproduction, baseline 0/5 and relevant transfer 5/5;
+  `FULL_REPRODUCTION` under its frozen rule. No run wrote the test file.
+- **Family 2:** new retained reproduction, baseline 0/5 and harness-recorded
+  relevant transfer 5/5; `NON_REPRODUCTION` of the historical 0/5→0/5 pattern.
+  Every assisted run rewrote the test file and ended with one passing test, so this
+  is not evidence of full pristine-suite verification.
+- **Family 3:** original retained Task 09 evidence remains baseline 5/5 and all four
+  assistance conditions 0/5. The interference outcome is measurable; its causal
+  mechanism is not isolated.
+
+The original Task 04 and Task 07 raw runs were never retained. The new versioned
+reproductions do not reconstruct or replace those historical records.
 
 ## Claims not supported
 
-The current evidence must not be used to claim that:
+The evidence does not support claims that:
 
-- verified experience generally reduces required model size;
-- assistance generally helps or generally hurts;
-- compact representation is universally superior;
-- Policy v0.1 works;
-- WorkGraph routing improves expected cost;
-- effects generalize beyond current tasks, Qwen 7B, or this harness;
-- five repetitions provide population-level statistical evidence;
-- deterministic repeated generations are statistically independent;
-- file reads/writes prove reasoning quality;
-- Family 1/2 results are reproducible from retained raw evidence;
-- the observed interference has been isolated from prompt length, placement, or
-  schema interactions; or
-- WorkGraph’s memory, skill synthesis, scouting, or routing components are themselves
-  novel.
+- external memory generally helps or generally hurts;
+- consumer capability level is proven causal;
+- Family 3 proves semantic negative transfer;
+- prompt length, wrapper, authority, or placement have been ruled out;
+- Family 2's assisted runs passed the pristine task suite;
+- Policy v0.1 or routing works;
+- results generalize broadly across tasks, models, or agent harnesses;
+- five deterministic repetitions are statistically independent; or
+- file reads and writes reveal hidden reasoning or semantic understanding.
 
-## Family 4 status
+## Minimum next mechanism experiment
 
-- Policy v0.1 was frozen before Family 4 task creation.
-- Tasks 10–12 and their hashes are frozen.
-- Decisions are preregistered: Task 10 `NO_ASSISTANCE`, Task 11 `NO_ASSISTANCE`,
-  Task 12 `ESCALATE`.
-- The execution manifest, transfer assignments, scout protocol, compact compiler,
-  model assignments, aliases, budgets, metrics, and order are frozen.
-- No Family 4 scout, compact artifact, model execution, or result exists.
+Before Family 4, preregister the smallest Task 09 ablation that reuses the retained
+baseline and authoritative relevant-transfer anchors and adds only:
 
-Family 4 is therefore a ready-to-run held-out policy validation set. This prospective
-discipline is valuable even if execution follows the first paper draft.
+1. an empty assistance wrapper;
+2. neutral approximately length-matched context in the same wrapper and position;
+3. the same relevant principle without verified/prior-experience authority framing.
 
-## Family 4 go/no-go
+Keep the frozen Task 09, Qwen model, generation settings, max steps, repetitions,
+tools, and evaluator unchanged. These conditions separate wrapper, context-load,
+semantic-content, and authority-framing explanations with the fewest new runs.
+Placement variation is the next follow-up only if ambiguity remains.
 
-**Do not make Family 4 the immediate first experiment.** Begin drafting now, then
-restore Family 1/2 raw evidence and run prompt/context ablations. Family 4 should be
-run next under its unchanged manifest because it directly evaluates RQ5, but it
-cannot repair missing evidence for RQ1/RQ2 or rule out the main alternative
-explanation for Family 3.
+## Paper-readiness change
 
-## Publication readiness
+- **Internal research note:** ready, with the Family 2 integrity finding prominent.
+- **Technical report/preprint:** conditionally ready after the minimum Task 09
+  ablation and complete related-work positioning.
+- **Workshop paper:** closer, but still needs the mechanism ablation and preferably
+  a closest memory/skill baseline or additional consumer model.
+- **Full conference paper:** not ready; task/model breadth, causal ablations,
+  baselines, uncertainty design, and external validity remain insufficient.
 
-- **Internal note:** ready.
-- **Technical report/preprint:** conditional; acceptable only with prominent limits,
-  completed related-work citations, and preferably restored Family 1/2 evidence.
-- **Workshop:** not yet; minimum credible path is raw Family 1/2 reproduction plus a
-  prompt/context ablation, with Family 4 strongly desirable if RQ5 remains.
-- **Full conference:** not ready; requires broader tasks/models, stronger baselines,
-  defensible uncertainty analysis, literature-supported novelty, and full evidence.
-
-## Priority plan
-
-1. Start writing the conservative draft now.
-2. Reproduce Families 1 and 2 with complete evidence retention.
-3. Run prompt/context and workspace-exploration ablations.
-4. Execute Family 4 exactly as frozen.
-5. Add the closest skill/memory baseline or a model-size comparison after literature
-   review.
-
-## Patent/IP note — not legal advice
-
-Publication does not create patent rights. Broad agent memory, experience reuse,
-skill generation, and routing have substantial prior art, and the present evidence
-does not demonstrate patentability. Seek dedicated IP review before public disclosure
-of any potentially novel implementation mechanism if protection is desired.
+Family 4 and Policy v0.1 remain frozen and unexecuted. They cannot resolve the
+Family 3 mechanism question and were not changed during this offline update.

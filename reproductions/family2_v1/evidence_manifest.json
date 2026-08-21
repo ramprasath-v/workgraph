@@ -1,0 +1,464 @@
+{
+  "classification": {
+    "basis": "retained 0/5 to 5/5 harness outcomes materially contradict the historical 0/5 to 0/5 pattern",
+    "rule_source": "reproductions/family2_v1/preregistration.json",
+    "value": "NON_REPRODUCTION"
+  },
+  "conditions": [
+    {
+      "aggregate": {
+        "aggregate_id": "repeat_task07_retry_transfer_769cbddc39d9",
+        "path": "results/repeat_task07_retry_transfer_769cbddc39d9.json",
+        "sha256": "ecc0584a6c18e976d9e14c515ae75321deb7af653ca46936c7e53499eb045812"
+      },
+      "aggregate_elapsed": {
+        "average_seconds": 47.897673,
+        "max_seconds": 81.166423,
+        "min_seconds": 39.468111
+      },
+      "condition_id": "F2R_BASELINE",
+      "directly_measured_file_behavior": {
+        "test_file_written_run_count": 0,
+        "unexpected_write_metric": null,
+        "unexpected_write_note": "No predeclared analysis_contract exists for this task.",
+        "unique_files_read": [],
+        "unique_files_written": []
+      },
+      "generated_experiences": [],
+      "identity": {
+        "context_mode": "none",
+        "max_steps": 8,
+        "model_name": "Qwen/Qwen2.5-7B-Instruct",
+        "model_provider": "transformers",
+        "task_id": "task07_retry_transfer",
+        "transfer_knowledge_id": null
+      },
+      "outcome": {
+        "failed_runs": 5,
+        "failure_type_counts": {
+          "unspecified": 5
+        },
+        "final_tests_failed": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "final_tests_passed": [
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "total_runs": 5
+      },
+      "runs": [
+        {
+          "agent_steps": 2,
+          "elapsed_seconds": 81.166423,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": null,
+          "input_tokens": 253,
+          "output_tokens": 15,
+          "path": "results/repeat_task07_retry_transfer_769cbddc39d9-run-01.json",
+          "run_id": "repeat_task07_retry_transfer_769cbddc39d9-run-01",
+          "sha256": "a5b88dc290f84930b020146cf1a70c1d124d33b6691ab1e77d05ccec88e51789",
+          "success": false,
+          "tests_failed": 2,
+          "tests_passed": 4,
+          "tool_calls": 0,
+          "total_tokens": 268
+        },
+        {
+          "agent_steps": 2,
+          "elapsed_seconds": 39.500918,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": null,
+          "input_tokens": 253,
+          "output_tokens": 15,
+          "path": "results/repeat_task07_retry_transfer_769cbddc39d9-run-02.json",
+          "run_id": "repeat_task07_retry_transfer_769cbddc39d9-run-02",
+          "sha256": "1897bf22869910b7c98d8d7a53bd1a8872f4bb7bb60b824b817966aca5098fc3",
+          "success": false,
+          "tests_failed": 2,
+          "tests_passed": 4,
+          "tool_calls": 0,
+          "total_tokens": 268
+        },
+        {
+          "agent_steps": 2,
+          "elapsed_seconds": 39.468111,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": null,
+          "input_tokens": 253,
+          "output_tokens": 15,
+          "path": "results/repeat_task07_retry_transfer_769cbddc39d9-run-03.json",
+          "run_id": "repeat_task07_retry_transfer_769cbddc39d9-run-03",
+          "sha256": "f9fc85f5ce59f33a4677b51a4c0baec78fd1992b904530dc391fa7cbd7ed0e18",
+          "success": false,
+          "tests_failed": 2,
+          "tests_passed": 4,
+          "tool_calls": 0,
+          "total_tokens": 268
+        },
+        {
+          "agent_steps": 2,
+          "elapsed_seconds": 39.75986,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": null,
+          "input_tokens": 253,
+          "output_tokens": 15,
+          "path": "results/repeat_task07_retry_transfer_769cbddc39d9-run-04.json",
+          "run_id": "repeat_task07_retry_transfer_769cbddc39d9-run-04",
+          "sha256": "225b48bacc787a43d6de19f623fc83ca3ef832e7eeb54c081c8f83e1abc7b0a9",
+          "success": false,
+          "tests_failed": 2,
+          "tests_passed": 4,
+          "tool_calls": 0,
+          "total_tokens": 268
+        },
+        {
+          "agent_steps": 2,
+          "elapsed_seconds": 39.593055,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": null,
+          "input_tokens": 253,
+          "output_tokens": 15,
+          "path": "results/repeat_task07_retry_transfer_769cbddc39d9-run-05.json",
+          "run_id": "repeat_task07_retry_transfer_769cbddc39d9-run-05",
+          "sha256": "d14fb82630b64a7060e5fb284077a881c44f0daa43df4981597dc206edcb85d1",
+          "success": false,
+          "tests_failed": 2,
+          "tests_passed": 4,
+          "tool_calls": 0,
+          "total_tokens": 268
+        }
+      ],
+      "trajectory_metrics": {
+        "invalid_tool_action_rate": 0.0,
+        "malformed_output_rate": 1.0,
+        "max_step_exhaustion_rate": 0.0,
+        "mean_agent_steps": 2,
+        "mean_elapsed_seconds": 47.897673,
+        "mean_final_tests_failed": 2,
+        "mean_final_tests_passed": 4,
+        "mean_input_tokens": 253,
+        "mean_output_tokens": 15,
+        "mean_repeated_identical_actions": 0,
+        "mean_tool_calls": 0,
+        "mean_total_tokens": 268,
+        "median_final_tests_failed": 2.0,
+        "median_final_tests_passed": 4.0,
+        "number_of_runs": 5,
+        "revision_after_failure_rate": 0.0,
+        "success_rate": 0.0,
+        "verification_after_revision_rate": 0.0,
+        "verification_use_rate": 0.0
+      }
+    },
+    {
+      "aggregate": {
+        "aggregate_id": "repeat_task07_retry_transfer_f0c2446e7222",
+        "path": "results/repeat_task07_retry_transfer_f0c2446e7222.json",
+        "sha256": "4cde3800bea3e08df75a632332c167469b983baa68e55a2a0c0eec9f6792dc74"
+      },
+      "aggregate_elapsed": {
+        "average_seconds": 413.97686,
+        "max_seconds": 442.827951,
+        "min_seconds": 406.422313
+      },
+      "condition_id": "F2R_RELEVANT_TRANSFER",
+      "directly_measured_file_behavior": {
+        "test_file_written_run_count": 5,
+        "unexpected_write_metric": null,
+        "unexpected_write_note": "No predeclared analysis_contract exists for this task.",
+        "unique_files_read": [
+          "delivery_receiver.py"
+        ],
+        "unique_files_written": [
+          "delivery_receiver.py",
+          "test_delivery_receiver.py"
+        ]
+      },
+      "generated_experiences": [
+        {
+          "experience_id": "exp_6e645bd7154e41e7bb90f1acc9e946bd",
+          "files_changed": [
+            "delivery_receiver.py",
+            "test_delivery_receiver.py"
+          ],
+          "path": "experiences/exp_6e645bd7154e41e7bb90f1acc9e946bd.json",
+          "sha256": "28b4b03a47960ce614adb25df7743e1a40fa9bb847395b8521bda126e6742064",
+          "source_run": "results/repeat_task07_retry_transfer_f0c2446e7222-run-01.json",
+          "verification": {
+            "command": [
+              "python",
+              "-m",
+              "pytest",
+              "-q",
+              "test_delivery_receiver.py"
+            ],
+            "failed": 0,
+            "passed": 1
+          }
+        },
+        {
+          "experience_id": "exp_5e39db9fae7f48398d3780a6ab59fe6d",
+          "files_changed": [
+            "delivery_receiver.py",
+            "test_delivery_receiver.py"
+          ],
+          "path": "experiences/exp_5e39db9fae7f48398d3780a6ab59fe6d.json",
+          "sha256": "efe2d418d2e35e1288ca7d61e02a5a5efdb508577806b1d1a9b55186f949ad41",
+          "source_run": "results/repeat_task07_retry_transfer_f0c2446e7222-run-02.json",
+          "verification": {
+            "command": [
+              "python",
+              "-m",
+              "pytest",
+              "-q",
+              "test_delivery_receiver.py"
+            ],
+            "failed": 0,
+            "passed": 1
+          }
+        },
+        {
+          "experience_id": "exp_c44c1e3a0fd14a55ac7949a7e4701f33",
+          "files_changed": [
+            "delivery_receiver.py",
+            "test_delivery_receiver.py"
+          ],
+          "path": "experiences/exp_c44c1e3a0fd14a55ac7949a7e4701f33.json",
+          "sha256": "0d8ddb5a46ac923f82b99fba71f8133bf9021bf6043b5d2f6c002090e93d3eca",
+          "source_run": "results/repeat_task07_retry_transfer_f0c2446e7222-run-03.json",
+          "verification": {
+            "command": [
+              "python",
+              "-m",
+              "pytest",
+              "-q",
+              "test_delivery_receiver.py"
+            ],
+            "failed": 0,
+            "passed": 1
+          }
+        },
+        {
+          "experience_id": "exp_250eab4118ca465ab256e0b3a2cea2f4",
+          "files_changed": [
+            "delivery_receiver.py",
+            "test_delivery_receiver.py"
+          ],
+          "path": "experiences/exp_250eab4118ca465ab256e0b3a2cea2f4.json",
+          "sha256": "73023df657ab8068d78d3904a5f96b0110cfc1d62dadfedb0ba28667d6414735",
+          "source_run": "results/repeat_task07_retry_transfer_f0c2446e7222-run-04.json",
+          "verification": {
+            "command": [
+              "python",
+              "-m",
+              "pytest",
+              "-q",
+              "test_delivery_receiver.py"
+            ],
+            "failed": 0,
+            "passed": 1
+          }
+        },
+        {
+          "experience_id": "exp_5ffc238543f045c29ecc0f29ae07c6a7",
+          "files_changed": [
+            "delivery_receiver.py",
+            "test_delivery_receiver.py"
+          ],
+          "path": "experiences/exp_5ffc238543f045c29ecc0f29ae07c6a7.json",
+          "sha256": "dfff104ec6eb168bd9228aac59e3c5a2119420618f7ae4570f94322dfd7e508e",
+          "source_run": "results/repeat_task07_retry_transfer_f0c2446e7222-run-05.json",
+          "verification": {
+            "command": [
+              "python",
+              "-m",
+              "pytest",
+              "-q",
+              "test_delivery_receiver.py"
+            ],
+            "failed": 0,
+            "passed": 1
+          }
+        }
+      ],
+      "identity": {
+        "context_mode": "transfer_knowledge",
+        "max_steps": 8,
+        "model_name": "Qwen/Qwen2.5-7B-Instruct",
+        "model_provider": "transformers",
+        "task_id": "task07_retry_transfer",
+        "transfer_knowledge_id": "transfer_93a42588ddd62085a6289d9b12613079"
+      },
+      "outcome": {
+        "failed_runs": 0,
+        "failure_type_counts": {},
+        "final_tests_failed": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "final_tests_passed": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "success_rate": 1.0,
+        "successful_runs": 5,
+        "total_runs": 5
+      },
+      "runs": [
+        {
+          "agent_steps": 8,
+          "elapsed_seconds": 442.827951,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": "exp_6e645bd7154e41e7bb90f1acc9e946bd",
+          "input_tokens": 7280,
+          "output_tokens": 549,
+          "path": "results/repeat_task07_retry_transfer_f0c2446e7222-run-01.json",
+          "run_id": "repeat_task07_retry_transfer_f0c2446e7222-run-01",
+          "sha256": "dcf0a3cc40ed7fdcd20c0d734acbef8dbe26148ef309a316b68edfb6d3bb8217",
+          "success": true,
+          "tests_failed": 0,
+          "tests_passed": 1,
+          "tool_calls": 6,
+          "total_tokens": 7829
+        },
+        {
+          "agent_steps": 8,
+          "elapsed_seconds": 407.601925,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": "exp_5e39db9fae7f48398d3780a6ab59fe6d",
+          "input_tokens": 7280,
+          "output_tokens": 549,
+          "path": "results/repeat_task07_retry_transfer_f0c2446e7222-run-02.json",
+          "run_id": "repeat_task07_retry_transfer_f0c2446e7222-run-02",
+          "sha256": "9d3a6268927a18eaf1dee4f917e53c8f9e49ee9794a13ceefde16070d3b49c48",
+          "success": true,
+          "tests_failed": 0,
+          "tests_passed": 1,
+          "tool_calls": 6,
+          "total_tokens": 7829
+        },
+        {
+          "agent_steps": 8,
+          "elapsed_seconds": 406.604739,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": "exp_c44c1e3a0fd14a55ac7949a7e4701f33",
+          "input_tokens": 7280,
+          "output_tokens": 549,
+          "path": "results/repeat_task07_retry_transfer_f0c2446e7222-run-03.json",
+          "run_id": "repeat_task07_retry_transfer_f0c2446e7222-run-03",
+          "sha256": "789b6cc60e4a2526ab4a8308f4175639b6453918bdc33d13f879e8e4d201f54c",
+          "success": true,
+          "tests_failed": 0,
+          "tests_passed": 1,
+          "tool_calls": 6,
+          "total_tokens": 7829
+        },
+        {
+          "agent_steps": 8,
+          "elapsed_seconds": 406.427371,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": "exp_250eab4118ca465ab256e0b3a2cea2f4",
+          "input_tokens": 7280,
+          "output_tokens": 549,
+          "path": "results/repeat_task07_retry_transfer_f0c2446e7222-run-04.json",
+          "run_id": "repeat_task07_retry_transfer_f0c2446e7222-run-04",
+          "sha256": "4d8e7fe8987c710dc8a60b15e3f45ff79113d83ee880516149dd84295f085a68",
+          "success": true,
+          "tests_failed": 0,
+          "tests_passed": 1,
+          "tool_calls": 6,
+          "total_tokens": 7829
+        },
+        {
+          "agent_steps": 8,
+          "elapsed_seconds": 406.422313,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": "exp_5ffc238543f045c29ecc0f29ae07c6a7",
+          "input_tokens": 7280,
+          "output_tokens": 549,
+          "path": "results/repeat_task07_retry_transfer_f0c2446e7222-run-05.json",
+          "run_id": "repeat_task07_retry_transfer_f0c2446e7222-run-05",
+          "sha256": "ce16040a215dad9014a4ce274644d88e8a54bc5cea774cbb8e4a39b7de241823",
+          "success": true,
+          "tests_failed": 0,
+          "tests_passed": 1,
+          "tool_calls": 6,
+          "total_tokens": 7829
+        }
+      ],
+      "trajectory_metrics": {
+        "invalid_tool_action_rate": 0.0,
+        "malformed_output_rate": 1.0,
+        "max_step_exhaustion_rate": 0.0,
+        "mean_agent_steps": 8,
+        "mean_elapsed_seconds": 413.97686,
+        "mean_final_tests_failed": 0,
+        "mean_final_tests_passed": 1,
+        "mean_input_tokens": 7280,
+        "mean_output_tokens": 549,
+        "mean_repeated_identical_actions": 1,
+        "mean_tool_calls": 6,
+        "mean_total_tokens": 7829,
+        "median_final_tests_failed": 0.0,
+        "median_final_tests_passed": 1.0,
+        "number_of_runs": 5,
+        "revision_after_failure_rate": 1.0,
+        "success_rate": 1.0,
+        "verification_after_revision_rate": 1.0,
+        "verification_use_rate": 1.0
+      }
+    }
+  ],
+  "evidence_manifest_version": "0.1",
+  "family_id": "family_2",
+  "frozen_inputs": {
+    "preregistration_path": "reproductions/family2_v1/preregistration.json",
+    "preregistration_sha256": "033773271cbf78417743d47a36c109e5f288c845d35417e054110e96753f00e5",
+    "relevant_transfer_path": "transfer_knowledge/transfer_93a42588ddd62085a6289d9b12613079.json",
+    "relevant_transfer_sha256": "83b26d53a73b764f8670f447d9c56cd6295e88d15027fc50a6d22b8a6d214933",
+    "task_id": "task07_retry_transfer",
+    "task_sha256": "c66e566fe8cc84b4cffa880fcce9ef66db1fc5368bccf9f5278571adf82eb619"
+  },
+  "historical_observation": {
+    "baseline_successes": 0,
+    "machine_recomputed": false,
+    "original_raw_evidence_retained": false,
+    "qualitative_observation": "Historical trajectories suggested more grounded and iterative execution under relevant transfer.",
+    "relevant_transfer_successes": 0,
+    "repetitions": 5
+  },
+  "integrity_findings": {
+    "all_generated_experience_references_resolve": true,
+    "all_raw_aggregate_identities_match": true,
+    "interpretation": "Harness-recorded success must not be treated as full pristine-suite verification when the test file was rewritten.",
+    "test_file_write_detected": true
+  },
+  "reproduction_id": "f2r_task07_core_v1",
+  "source_status": "new_retained_evidence_reproduction"
+}

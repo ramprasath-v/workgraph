@@ -54,7 +54,7 @@ def _explicit_relative_path(value: object, name: str) -> str:
 
 
 def _validate_manifest(manifest: dict[str, Any]) -> list[dict[str, Any]]:
-    if manifest.get("checkpoint_version") != "0.1":
+    if manifest.get("checkpoint_version") != "0.2":
         raise ValueError("unsupported cross-family checkpoint version")
     families = manifest.get("families")
     if not isinstance(families, list) or len(families) != 3:
@@ -269,10 +269,12 @@ def build_checkpoint(repo_root: Path, manifest_path: Path) -> dict[str, Any]:
                 "task_id": family["task_id"],
                 "evidence_level": (
                     "complete_raw_and_aggregate"
-                    if all(
-                        item["retention_status"] == RETAINED for item in conditions
+                    if all(item["retention_status"] == RETAINED for item in conditions)
+                    else (
+                        "retained_core_reproduction_with_unretained_historical_conditions"
+                        if any(item["retention_status"] == RETAINED for item in conditions)
+                        else "historical_observation_without_raw_results"
                     )
-                    else "historical_observation_without_raw_results"
                 ),
                 "historical_observation": family.get("historical_observation"),
                 "conditions": conditions,
@@ -294,14 +296,18 @@ def build_checkpoint(repo_root: Path, manifest_path: Path) -> dict[str, Any]:
             {
                 "class": "capability_enabling_assistance",
                 "family_id": "family_1",
-                "machine_derived": False,
-                "evidence_limitation": "original Task 04 raw results not retained",
+                "machine_derived": True,
+                "evidence_limitation": (
+                    "derived from the new versioned reproduction; original Task 04 raw results remain unretained"
+                ),
             },
             {
-                "class": "assistance_insufficient",
+                "class": "historical_pattern_not_reproduced",
                 "family_id": "family_2",
-                "machine_derived": False,
-                "evidence_limitation": "original Task 07 raw results not retained",
+                "machine_derived": True,
+                "evidence_limitation": (
+                    "the reproduction records 5/5 assisted harness success, but all five runs rewrote the test file and ended with only one passing test"
+                ),
             },
             {
                 "class": "assistance_induced_interference",
@@ -318,6 +324,15 @@ def build_checkpoint(repo_root: Path, manifest_path: Path) -> dict[str, Any]:
         ),
         "falsified_naive_hypothesis": (
             "If retrieved guidance is relevant and correct, injecting it cannot hurt."
+        ),
+        "strongest_supported_claim": (
+            "Verified external assistance can enable a consumer that fails unaided, "
+            "while assistance injection can also interfere with a consumer that "
+            "succeeds unaided; assistance utility is conditional rather than monotonic."
+        ),
+        "mechanism_status": (
+            "Family 3's mechanism is unresolved; prompt-wrapper, context-length, "
+            "authority-framing, token, and placement effects require ablation."
         ),
     }
 

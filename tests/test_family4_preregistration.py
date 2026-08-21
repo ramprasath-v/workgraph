@@ -212,16 +212,16 @@ def test_tasks_01_through_09_remain_byte_for_byte_frozen():
 
 def test_prior_artifacts_results_and_analysis_remain_frozen():
     expected_trees = {
-        "experiences": "77cc9dcce5e35b3f091fe76c1d239ef465d54bc925ed177db67d33f7eec40f2c",
+        "experiences": "d6da9257e231c6f1e6bfaa92869ea11cfc454092cb87d9495b385a55c832bd81",
         "recipes": "65126b6652aff3ef87564efa601d94512cb456cd55a39d1befdeb4fbf4518eac",
         "transfer_knowledge": "57efab4d8f4dd226db3f07ee2a3fedf01494bd38bd2bc3d83402c4f89af2224f",
         "scout_handoffs": "768763b5c460f41946bd9b790be7bceaed322a9209b5036f0c53440ab9227b62",
         "compact_scouts": "4ec85c19412d83decb6ecd788b6e2a077f1a5f2bedb4afc015b6eb97ff176770",
-        "results": "a8fb5853898e0f486c11c44a1f4aed64a10f94afc8023c0bd7fc0108801a50f9",
+        "results": "a1cb4d3e1fe1c875c6f119810a9afd34211183a7449c0c9e2af810d7e941b231",
     }
     expected_files = {
-        "analysis/cross_family_checkpoint.json": "b83d59d22c8019de89cb64aa4836eac5568e8173c507cd3ddd2c0fb50f6bd2c8",
-        "analysis/cross_family_manifest.json": "f0b519c380d6eb8112cb117a768bda672b92e5280aa91f898029622ca3b5ce25",
+            "analysis/cross_family_checkpoint.json": "bac8dd7671bfdc8812eaf34aab820bf8f0bbb17b9cbc44c71f32592e9a77b03c",
+            "analysis/cross_family_manifest.json": "fb337e125eae381915c1045ab58ae0a022dca3b5b803d10d4b1fb99cec14bbce",
         "analysis/trajectory_metrics.py": "8f0e67fb1fcf166b769d0de102664eaf1aae61a6aea41dbaeff6a2091362c741",
     }
     for directory, expected_hash in expected_trees.items():

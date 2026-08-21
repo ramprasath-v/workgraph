@@ -1,30 +1,262 @@
 {
-  "evidence_rule": "Families 1 and 2 remain historical observations with null machine metrics; only Family 3 numerical values are projected.",
+  "evidence_rule": "Families 1 and 2 retain new versioned core reproductions while their original raw evidence remains unavailable; Family 3 remains fully retained.",
   "families": [
     {
-      "condition_metrics": null,
-      "evidence_status": "historical_observation_without_raw_results",
+      "condition_metrics": [
+        {
+          "condition_id": "baseline",
+          "label": "Baseline / no context",
+          "outcome": {
+            "failed_runs": 5,
+            "success_rate": 0.0,
+            "successful_runs": 0,
+            "total_runs": 5
+          },
+          "retention_status": "complete_raw_and_aggregate",
+          "target_model_efficiency": {
+            "mean_elapsed_seconds": 412.668231,
+            "mean_input_tokens": 5976,
+            "mean_output_tokens": 544,
+            "mean_total_tokens": 6520
+          },
+          "total_inference_accounting": {
+            "average_total_inference_elapsed_seconds": 412.668231,
+            "average_total_inference_tokens": 6520.0,
+            "estimated_deployment_total_inference_elapsed_seconds": 2063.341156,
+            "estimated_deployment_total_inference_tokens": 32600,
+            "frozen_experiment_total_inference_elapsed_seconds": 2063.341156,
+            "frozen_experiment_total_inference_tokens": 32600,
+            "scout_elapsed_seconds": 0.0,
+            "scout_input_tokens": 0,
+            "scout_output_tokens": 0,
+            "scout_total_tokens": 0
+          },
+          "trajectory_metrics": {
+            "invalid_tool_action_rate": 1.0,
+            "malformed_output_rate": 1.0,
+            "max_step_exhaustion_rate": 0.0,
+            "mean_agent_steps": 8,
+            "mean_elapsed_seconds": 412.668231,
+            "mean_final_tests_failed": 2.8,
+            "mean_final_tests_passed": 2.2,
+            "mean_input_tokens": 5976,
+            "mean_output_tokens": 544,
+            "mean_repeated_identical_actions": 0,
+            "mean_tool_calls": 6,
+            "mean_total_tokens": 6520,
+            "median_final_tests_failed": 3.0,
+            "median_final_tests_passed": 2.0,
+            "number_of_runs": 5,
+            "revision_after_failure_rate": 1.0,
+            "success_rate": 0.0,
+            "verification_after_revision_rate": 0.0,
+            "verification_use_rate": 1.0
+          }
+        },
+        {
+          "condition_id": "relevant_historical_transfer",
+          "label": "Relevant Task 02 historical transfer",
+          "outcome": {
+            "failed_runs": 0,
+            "success_rate": 1.0,
+            "successful_runs": 5,
+            "total_runs": 5
+          },
+          "retention_status": "complete_raw_and_aggregate",
+          "target_model_efficiency": {
+            "mean_elapsed_seconds": 237.29869,
+            "mean_input_tokens": 3393,
+            "mean_output_tokens": 309,
+            "mean_total_tokens": 3702
+          },
+          "total_inference_accounting": {
+            "average_total_inference_elapsed_seconds": 237.29869,
+            "average_total_inference_tokens": 3702.0,
+            "estimated_deployment_total_inference_elapsed_seconds": 1186.49345,
+            "estimated_deployment_total_inference_tokens": 18510,
+            "frozen_experiment_total_inference_elapsed_seconds": 1186.49345,
+            "frozen_experiment_total_inference_tokens": 18510,
+            "scout_elapsed_seconds": 0.0,
+            "scout_input_tokens": 0,
+            "scout_output_tokens": 0,
+            "scout_total_tokens": 0
+          },
+          "trajectory_metrics": {
+            "invalid_tool_action_rate": 0.0,
+            "malformed_output_rate": 1.0,
+            "max_step_exhaustion_rate": 0.0,
+            "mean_agent_steps": 6,
+            "mean_elapsed_seconds": 237.29869,
+            "mean_final_tests_failed": 0,
+            "mean_final_tests_passed": 5,
+            "mean_input_tokens": 3393,
+            "mean_output_tokens": 309,
+            "mean_repeated_identical_actions": 0,
+            "mean_tool_calls": 4,
+            "mean_total_tokens": 3702,
+            "median_final_tests_failed": 0.0,
+            "median_final_tests_passed": 5.0,
+            "number_of_runs": 5,
+            "revision_after_failure_rate": 0.0,
+            "success_rate": 1.0,
+            "verification_after_revision_rate": 0.0,
+            "verification_use_rate": 1.0
+          }
+        }
+      ],
+      "evidence_status": "machine_derived_from_retained_raw_results",
       "family_id": "family_1",
       "historical_observation": {
         "machine_derived": false,
         "outcome_class": "capability_enabling_assistance",
-        "statement": "The frozen project record classifies Task 04 as baseline failure with successful relevant and compact assistance. Original per-run Kaggle evidence was not retained, so this checkpoint reports no numerical or trajectory metrics for that claim."
+        "statement": "The original Task 04 Kaggle evidence was not retained. A separately versioned reproduction now retains baseline 0/5 and relevant-transfer 5/5 raw evidence."
       },
-      "machine_derived": false,
-      "raw_per_run_evidence_retained": false,
+      "machine_derived": true,
+      "raw_per_run_evidence_retained": true,
+      "reproduction_evidence": {
+        "classification": {
+          "basis": "baseline 0/5 and relevant transfer 5/5",
+          "rule_source": "reproductions/family1_v1/preregistration.json",
+          "value": "FULL_REPRODUCTION"
+        },
+        "integrity_findings": {
+          "all_generated_experience_references_resolve": true,
+          "all_raw_aggregate_identities_match": true,
+          "interpretation": "No retained trajectory wrote the task test file.",
+          "test_file_write_detected": false
+        },
+        "path": "reproductions/family1_v1/evidence_manifest.json",
+        "sha256": "0e50335cdd7590406ce8c93e80680d1df800d5fcc70e6196dd3cb833b5695bc6"
+      },
       "task_id": "task04_report_resources"
     },
     {
-      "condition_metrics": null,
-      "evidence_status": "historical_observation_without_raw_results",
+      "condition_metrics": [
+        {
+          "condition_id": "baseline",
+          "label": "Baseline / no context",
+          "outcome": {
+            "failed_runs": 5,
+            "success_rate": 0.0,
+            "successful_runs": 0,
+            "total_runs": 5
+          },
+          "retention_status": "complete_raw_and_aggregate",
+          "target_model_efficiency": {
+            "mean_elapsed_seconds": 47.897673,
+            "mean_input_tokens": 253,
+            "mean_output_tokens": 15,
+            "mean_total_tokens": 268
+          },
+          "total_inference_accounting": {
+            "average_total_inference_elapsed_seconds": 47.897673,
+            "average_total_inference_tokens": 268.0,
+            "estimated_deployment_total_inference_elapsed_seconds": 239.488367,
+            "estimated_deployment_total_inference_tokens": 1340,
+            "frozen_experiment_total_inference_elapsed_seconds": 239.488367,
+            "frozen_experiment_total_inference_tokens": 1340,
+            "scout_elapsed_seconds": 0.0,
+            "scout_input_tokens": 0,
+            "scout_output_tokens": 0,
+            "scout_total_tokens": 0
+          },
+          "trajectory_metrics": {
+            "invalid_tool_action_rate": 0.0,
+            "malformed_output_rate": 1.0,
+            "max_step_exhaustion_rate": 0.0,
+            "mean_agent_steps": 2,
+            "mean_elapsed_seconds": 47.897673,
+            "mean_final_tests_failed": 2,
+            "mean_final_tests_passed": 4,
+            "mean_input_tokens": 253,
+            "mean_output_tokens": 15,
+            "mean_repeated_identical_actions": 0,
+            "mean_tool_calls": 0,
+            "mean_total_tokens": 268,
+            "median_final_tests_failed": 2.0,
+            "median_final_tests_passed": 4.0,
+            "number_of_runs": 5,
+            "revision_after_failure_rate": 0.0,
+            "success_rate": 0.0,
+            "verification_after_revision_rate": 0.0,
+            "verification_use_rate": 0.0
+          }
+        },
+        {
+          "condition_id": "relevant_historical_transfer",
+          "label": "Relevant Task 06 historical transfer",
+          "outcome": {
+            "failed_runs": 0,
+            "success_rate": 1.0,
+            "successful_runs": 5,
+            "total_runs": 5
+          },
+          "retention_status": "complete_raw_and_aggregate",
+          "target_model_efficiency": {
+            "mean_elapsed_seconds": 413.97686,
+            "mean_input_tokens": 7280,
+            "mean_output_tokens": 549,
+            "mean_total_tokens": 7829
+          },
+          "total_inference_accounting": {
+            "average_total_inference_elapsed_seconds": 413.97686,
+            "average_total_inference_tokens": 7829.0,
+            "estimated_deployment_total_inference_elapsed_seconds": 2069.884299,
+            "estimated_deployment_total_inference_tokens": 39145,
+            "frozen_experiment_total_inference_elapsed_seconds": 2069.884299,
+            "frozen_experiment_total_inference_tokens": 39145,
+            "scout_elapsed_seconds": 0.0,
+            "scout_input_tokens": 0,
+            "scout_output_tokens": 0,
+            "scout_total_tokens": 0
+          },
+          "trajectory_metrics": {
+            "invalid_tool_action_rate": 0.0,
+            "malformed_output_rate": 1.0,
+            "max_step_exhaustion_rate": 0.0,
+            "mean_agent_steps": 8,
+            "mean_elapsed_seconds": 413.97686,
+            "mean_final_tests_failed": 0,
+            "mean_final_tests_passed": 1,
+            "mean_input_tokens": 7280,
+            "mean_output_tokens": 549,
+            "mean_repeated_identical_actions": 1,
+            "mean_tool_calls": 6,
+            "mean_total_tokens": 7829,
+            "median_final_tests_failed": 0.0,
+            "median_final_tests_passed": 1.0,
+            "number_of_runs": 5,
+            "revision_after_failure_rate": 1.0,
+            "success_rate": 1.0,
+            "verification_after_revision_rate": 1.0,
+            "verification_use_rate": 1.0
+          }
+        }
+      ],
+      "evidence_status": "machine_derived_from_retained_raw_results",
       "family_id": "family_2",
       "historical_observation": {
         "machine_derived": false,
         "outcome_class": "assistance_insufficient",
-        "statement": "The frozen project record classifies Task 07 as baseline and assistance failure, with some assisted trajectories described as more task-directed. Original per-run Kaggle evidence was not retained, so this checkpoint reports no numerical or trajectory metrics for that claim."
+        "statement": "The original Task 07 Kaggle evidence was not retained. A separately versioned reproduction retains baseline 0/5 and harness-recorded relevant-transfer 5/5, contradicting the historical 0/5 to 0/5 pattern; all assisted reproduction runs rewrote the task test file."
       },
-      "machine_derived": false,
-      "raw_per_run_evidence_retained": false,
+      "machine_derived": true,
+      "raw_per_run_evidence_retained": true,
+      "reproduction_evidence": {
+        "classification": {
+          "basis": "retained 0/5 to 5/5 harness outcomes materially contradict the historical 0/5 to 0/5 pattern",
+          "rule_source": "reproductions/family2_v1/preregistration.json",
+          "value": "NON_REPRODUCTION"
+        },
+        "integrity_findings": {
+          "all_generated_experience_references_resolve": true,
+          "all_raw_aggregate_identities_match": true,
+          "interpretation": "Harness-recorded success must not be treated as full pristine-suite verification when the test file was rewritten.",
+          "test_file_write_detected": true
+        },
+        "path": "reproductions/family2_v1/evidence_manifest.json",
+        "sha256": "3189234c57542d332c91f75457829b6f7ead3df4b6a76fcf4b02831cf359badf"
+      },
       "task_id": "task07_retry_transfer"
     },
     {
@@ -305,14 +537,17 @@
           }
         }
       ],
-      "evidence_status": "machine_derived_from_complete_frozen_raw_results",
+      "evidence_status": "machine_derived_from_retained_raw_results",
       "family_id": "family_3",
+      "historical_observation": null,
       "machine_derived": true,
       "raw_per_run_evidence_retained": true,
       "task_id": "task09_role_changes"
     }
   ],
-  "paper_evidence_version": "0.1",
+  "mechanism_status": "Family 3's mechanism is unresolved; prompt-wrapper, context-length, authority-framing, token, and placement effects require ablation.",
+  "paper_evidence_version": "0.2",
   "source_checkpoint": "analysis/cross_family_checkpoint.json",
-  "source_checkpoint_sha256": "b83d59d22c8019de89cb64aa4836eac5568e8173c507cd3ddd2c0fb50f6bd2c8"
+  "source_checkpoint_sha256": "bac8dd7671bfdc8812eaf34aab820bf8f0bbb17b9cbc44c71f32592e9a77b03c",
+  "strongest_supported_claim": "Verified external assistance can enable a consumer that fails unaided, while assistance injection can also interfere with a consumer that succeeds unaided; assistance utility is conditional rather than monotonic."
 }

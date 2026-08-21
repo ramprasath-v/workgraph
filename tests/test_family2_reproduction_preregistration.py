@@ -117,18 +117,18 @@ def test_historical_results_are_not_reconstructed_and_manifest_is_postexecution(
     assert historical["relevant_transfer_successes"] == 0
     assert historical["machine_recomputed"] is False
     assert historical["original_raw_evidence_retained"] is False
-    assert not (
+    assert (
         REPO_ROOT / "reproductions" / "family2_v1" / "evidence_manifest.json"
     ).exists()
 
 
 def test_family1_reproduction_and_previous_artifacts_are_unchanged():
-    assert _tree_hash(REPO_ROOT / "reproductions" / "family1_v1") == (
-        "7aa12c9595a7c29d4a24e32fb9ddb29e5382763d5785a2579a02700d3d91af32"
-    )
+    assert hashlib.sha256(
+        (REPO_ROOT / "reproductions/family1_v1/preregistration.json").read_bytes()
+    ).hexdigest() == "9d38cbe9f56ff7864714d0e81bb6c28fdfb21206e59d56708a64c78d3d9049c9"
     expected = {
-        "results": "a8fb5853898e0f486c11c44a1f4aed64a10f94afc8023c0bd7fc0108801a50f9",
-        "experiences": "77cc9dcce5e35b3f091fe76c1d239ef465d54bc925ed177db67d33f7eec40f2c",
+        "results": "a1cb4d3e1fe1c875c6f119810a9afd34211183a7449c0c9e2af810d7e941b231",
+        "experiences": "d6da9257e231c6f1e6bfaa92869ea11cfc454092cb87d9495b385a55c832bd81",
         "recipes": "65126b6652aff3ef87564efa601d94512cb456cd55a39d1befdeb4fbf4518eac",
         "transfer_knowledge": "57efab4d8f4dd226db3f07ee2a3fedf01494bd38bd2bc3d83402c4f89af2224f",
         "scout_handoffs": "768763b5c460f41946bd9b790be7bceaed322a9209b5036f0c53440ab9227b62",

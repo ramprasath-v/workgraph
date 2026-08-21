@@ -120,7 +120,7 @@ def test_historical_result_is_not_reconstructed_as_new_evidence():
         "machine_recomputed": False,
         "original_raw_evidence_retained": False,
     }
-    assert not (
+    assert (
         REPO_ROOT / "reproductions" / "family1_v1" / "evidence_manifest.json"
     ).exists()
     assert not list(
@@ -130,8 +130,8 @@ def test_historical_result_is_not_reconstructed_as_new_evidence():
 
 def test_existing_results_and_assistance_artifacts_are_unchanged_preexecution():
     expected = {
-        "results": "a8fb5853898e0f486c11c44a1f4aed64a10f94afc8023c0bd7fc0108801a50f9",
-        "experiences": "77cc9dcce5e35b3f091fe76c1d239ef465d54bc925ed177db67d33f7eec40f2c",
+        "results": "a1cb4d3e1fe1c875c6f119810a9afd34211183a7449c0c9e2af810d7e941b231",
+        "experiences": "d6da9257e231c6f1e6bfaa92869ea11cfc454092cb87d9495b385a55c832bd81",
         "recipes": "65126b6652aff3ef87564efa601d94512cb456cd55a39d1befdeb4fbf4518eac",
         "transfer_knowledge": "57efab4d8f4dd226db3f07ee2a3fedf01494bd38bd2bc3d83402c4f89af2224f",
         "scout_handoffs": "768763b5c460f41946bd9b790be7bceaed322a9209b5036f0c53440ab9227b62",

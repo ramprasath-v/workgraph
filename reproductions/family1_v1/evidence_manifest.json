@@ -1,0 +1,462 @@
+{
+  "classification": {
+    "basis": "baseline 0/5 and relevant transfer 5/5",
+    "rule_source": "reproductions/family1_v1/preregistration.json",
+    "value": "FULL_REPRODUCTION"
+  },
+  "conditions": [
+    {
+      "aggregate": {
+        "aggregate_id": "repeat_task04_report_resources_28b2a9415bb0",
+        "path": "results/repeat_task04_report_resources_28b2a9415bb0.json",
+        "sha256": "493c74d7e89a139bd904d63f9790ceb18178721a606b24caaed6d0a47095c7ee"
+      },
+      "aggregate_elapsed": {
+        "average_seconds": 412.668231,
+        "max_seconds": 477.222555,
+        "min_seconds": 395.577579
+      },
+      "condition_id": "F1R_BASELINE",
+      "directly_measured_file_behavior": {
+        "test_file_written_run_count": 0,
+        "unexpected_write_metric": null,
+        "unexpected_write_note": "No predeclared analysis_contract exists for this task.",
+        "unique_files_read": [
+          "report_renderer/loader.py"
+        ],
+        "unique_files_written": [
+          "report_renderer/loader.py",
+          "report_renderer/renderer.py"
+        ]
+      },
+      "generated_experiences": [],
+      "identity": {
+        "context_mode": "none",
+        "max_steps": 8,
+        "model_name": "Qwen/Qwen2.5-7B-Instruct",
+        "model_provider": "transformers",
+        "task_id": "task04_report_resources",
+        "transfer_knowledge_id": null
+      },
+      "outcome": {
+        "failed_runs": 5,
+        "failure_type_counts": {
+          "unspecified": 5
+        },
+        "final_tests_failed": [
+          3,
+          3,
+          3,
+          3,
+          2
+        ],
+        "final_tests_passed": [
+          2,
+          2,
+          2,
+          2,
+          3
+        ],
+        "success_rate": 0.0,
+        "successful_runs": 0,
+        "total_runs": 5
+      },
+      "runs": [
+        {
+          "agent_steps": 8,
+          "elapsed_seconds": 477.222555,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": null,
+          "input_tokens": 5976,
+          "output_tokens": 544,
+          "path": "results/repeat_task04_report_resources_28b2a9415bb0-run-01.json",
+          "run_id": "repeat_task04_report_resources_28b2a9415bb0-run-01",
+          "sha256": "8843bdd058164cd4fd5a7ca212f3c619e6a99ada898d4e4d0f7b5d67d19f91e8",
+          "success": false,
+          "tests_failed": 3,
+          "tests_passed": 2,
+          "tool_calls": 6,
+          "total_tokens": 6520
+        },
+        {
+          "agent_steps": 8,
+          "elapsed_seconds": 396.745245,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": null,
+          "input_tokens": 5976,
+          "output_tokens": 544,
+          "path": "results/repeat_task04_report_resources_28b2a9415bb0-run-02.json",
+          "run_id": "repeat_task04_report_resources_28b2a9415bb0-run-02",
+          "sha256": "15c01650f5e557f325fef7e9ce37c8b1eef41976c13973bfdd400229f5b13b71",
+          "success": false,
+          "tests_failed": 3,
+          "tests_passed": 2,
+          "tool_calls": 6,
+          "total_tokens": 6520
+        },
+        {
+          "agent_steps": 8,
+          "elapsed_seconds": 397.214994,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": null,
+          "input_tokens": 5976,
+          "output_tokens": 544,
+          "path": "results/repeat_task04_report_resources_28b2a9415bb0-run-03.json",
+          "run_id": "repeat_task04_report_resources_28b2a9415bb0-run-03",
+          "sha256": "1c7948ff4456945cb5bce4d7ca07da6da5a92dece17d207354ee1258b18c312f",
+          "success": false,
+          "tests_failed": 3,
+          "tests_passed": 2,
+          "tool_calls": 6,
+          "total_tokens": 6520
+        },
+        {
+          "agent_steps": 8,
+          "elapsed_seconds": 396.580783,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": null,
+          "input_tokens": 5976,
+          "output_tokens": 544,
+          "path": "results/repeat_task04_report_resources_28b2a9415bb0-run-04.json",
+          "run_id": "repeat_task04_report_resources_28b2a9415bb0-run-04",
+          "sha256": "685d6ee95d306b73b994bf2ecde3edf5397e7d05d5259514695623d24cffa7cf",
+          "success": false,
+          "tests_failed": 3,
+          "tests_passed": 2,
+          "tool_calls": 6,
+          "total_tokens": 6520
+        },
+        {
+          "agent_steps": 8,
+          "elapsed_seconds": 395.577579,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": null,
+          "input_tokens": 5976,
+          "output_tokens": 544,
+          "path": "results/repeat_task04_report_resources_28b2a9415bb0-run-05.json",
+          "run_id": "repeat_task04_report_resources_28b2a9415bb0-run-05",
+          "sha256": "ee5d6db38164bb217f315f89be37c014dc2fbc86f57bac650e62578bbf361e9e",
+          "success": false,
+          "tests_failed": 2,
+          "tests_passed": 3,
+          "tool_calls": 6,
+          "total_tokens": 6520
+        }
+      ],
+      "trajectory_metrics": {
+        "invalid_tool_action_rate": 1.0,
+        "malformed_output_rate": 1.0,
+        "max_step_exhaustion_rate": 0.0,
+        "mean_agent_steps": 8,
+        "mean_elapsed_seconds": 412.668231,
+        "mean_final_tests_failed": 2.8,
+        "mean_final_tests_passed": 2.2,
+        "mean_input_tokens": 5976,
+        "mean_output_tokens": 544,
+        "mean_repeated_identical_actions": 0,
+        "mean_tool_calls": 6,
+        "mean_total_tokens": 6520,
+        "median_final_tests_failed": 3.0,
+        "median_final_tests_passed": 2.0,
+        "number_of_runs": 5,
+        "revision_after_failure_rate": 1.0,
+        "success_rate": 0.0,
+        "verification_after_revision_rate": 0.0,
+        "verification_use_rate": 1.0
+      }
+    },
+    {
+      "aggregate": {
+        "aggregate_id": "repeat_task04_report_resources_729e34487d81",
+        "path": "results/repeat_task04_report_resources_729e34487d81.json",
+        "sha256": "446028a663396257e823df9f435a85296fd42d8bfa100d313b394c9494d00c8a"
+      },
+      "aggregate_elapsed": {
+        "average_seconds": 237.29869,
+        "max_seconds": 269.585694,
+        "min_seconds": 228.755691
+      },
+      "condition_id": "F1R_RELEVANT_TRANSFER",
+      "directly_measured_file_behavior": {
+        "test_file_written_run_count": 0,
+        "unexpected_write_metric": null,
+        "unexpected_write_note": "No predeclared analysis_contract exists for this task.",
+        "unique_files_read": [
+          "report_renderer/loader.py"
+        ],
+        "unique_files_written": [
+          "report_renderer/loader.py"
+        ]
+      },
+      "generated_experiences": [
+        {
+          "experience_id": "exp_0bf13b35dac64776beacad3f931d6128",
+          "files_changed": [
+            "report_renderer/loader.py"
+          ],
+          "path": "experiences/exp_0bf13b35dac64776beacad3f931d6128.json",
+          "sha256": "6ac2a65d5994be07cca6100c24f5da186b504496b39b71e68b98704ea64227f0",
+          "source_run": "results/repeat_task04_report_resources_729e34487d81-run-01.json",
+          "verification": {
+            "command": [
+              "python",
+              "-m",
+              "pytest",
+              "-q",
+              "test_report_renderer.py"
+            ],
+            "failed": 0,
+            "passed": 5
+          }
+        },
+        {
+          "experience_id": "exp_499c783a224840a3b880ebaf1e08b2c5",
+          "files_changed": [
+            "report_renderer/loader.py"
+          ],
+          "path": "experiences/exp_499c783a224840a3b880ebaf1e08b2c5.json",
+          "sha256": "16c8f9fd1f7d4ced697e61aad072b1379007186ce3e352686b677df36acfa278",
+          "source_run": "results/repeat_task04_report_resources_729e34487d81-run-02.json",
+          "verification": {
+            "command": [
+              "python",
+              "-m",
+              "pytest",
+              "-q",
+              "test_report_renderer.py"
+            ],
+            "failed": 0,
+            "passed": 5
+          }
+        },
+        {
+          "experience_id": "exp_e2137d8ad35e4112a282e0e88d776f2c",
+          "files_changed": [
+            "report_renderer/loader.py"
+          ],
+          "path": "experiences/exp_e2137d8ad35e4112a282e0e88d776f2c.json",
+          "sha256": "3175d60a74749be82d43d9e6b93fa2ec92270777d3e0333facc9a270e15a578a",
+          "source_run": "results/repeat_task04_report_resources_729e34487d81-run-03.json",
+          "verification": {
+            "command": [
+              "python",
+              "-m",
+              "pytest",
+              "-q",
+              "test_report_renderer.py"
+            ],
+            "failed": 0,
+            "passed": 5
+          }
+        },
+        {
+          "experience_id": "exp_9588c6491c76488fbd660b361905add5",
+          "files_changed": [
+            "report_renderer/loader.py"
+          ],
+          "path": "experiences/exp_9588c6491c76488fbd660b361905add5.json",
+          "sha256": "6b1a3f302b232d9493a09fd925ce7b492d469ce58a7cc054fe48db2235d91dbc",
+          "source_run": "results/repeat_task04_report_resources_729e34487d81-run-04.json",
+          "verification": {
+            "command": [
+              "python",
+              "-m",
+              "pytest",
+              "-q",
+              "test_report_renderer.py"
+            ],
+            "failed": 0,
+            "passed": 5
+          }
+        },
+        {
+          "experience_id": "exp_57d02fa3751e4c62a88c20347503edd0",
+          "files_changed": [
+            "report_renderer/loader.py"
+          ],
+          "path": "experiences/exp_57d02fa3751e4c62a88c20347503edd0.json",
+          "sha256": "753d759108e4c6fd274dc213a801e330c2a3a9e6cd848670d07262b380117c82",
+          "source_run": "results/repeat_task04_report_resources_729e34487d81-run-05.json",
+          "verification": {
+            "command": [
+              "python",
+              "-m",
+              "pytest",
+              "-q",
+              "test_report_renderer.py"
+            ],
+            "failed": 0,
+            "passed": 5
+          }
+        }
+      ],
+      "identity": {
+        "context_mode": "transfer_knowledge",
+        "max_steps": 8,
+        "model_name": "Qwen/Qwen2.5-7B-Instruct",
+        "model_provider": "transformers",
+        "task_id": "task04_report_resources",
+        "transfer_knowledge_id": "transfer_a4142b399f8684e6a75fda4a625ed4d8"
+      },
+      "outcome": {
+        "failed_runs": 0,
+        "failure_type_counts": {},
+        "final_tests_failed": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "final_tests_passed": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "success_rate": 1.0,
+        "successful_runs": 5,
+        "total_runs": 5
+      },
+      "runs": [
+        {
+          "agent_steps": 6,
+          "elapsed_seconds": 269.585694,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": "exp_0bf13b35dac64776beacad3f931d6128",
+          "input_tokens": 3393,
+          "output_tokens": 309,
+          "path": "results/repeat_task04_report_resources_729e34487d81-run-01.json",
+          "run_id": "repeat_task04_report_resources_729e34487d81-run-01",
+          "sha256": "0a808a39f578085b31f58e09f4c4742193ff92e9272f68a07036f7006e6ea0a1",
+          "success": true,
+          "tests_failed": 0,
+          "tests_passed": 5,
+          "tool_calls": 4,
+          "total_tokens": 3702
+        },
+        {
+          "agent_steps": 6,
+          "elapsed_seconds": 229.523741,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": "exp_499c783a224840a3b880ebaf1e08b2c5",
+          "input_tokens": 3393,
+          "output_tokens": 309,
+          "path": "results/repeat_task04_report_resources_729e34487d81-run-02.json",
+          "run_id": "repeat_task04_report_resources_729e34487d81-run-02",
+          "sha256": "26ca8e2cb2505528308696e87f9c1c52ebcaf731b06d36b50bd2d891021df5b3",
+          "success": true,
+          "tests_failed": 0,
+          "tests_passed": 5,
+          "tool_calls": 4,
+          "total_tokens": 3702
+        },
+        {
+          "agent_steps": 6,
+          "elapsed_seconds": 229.072059,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": "exp_e2137d8ad35e4112a282e0e88d776f2c",
+          "input_tokens": 3393,
+          "output_tokens": 309,
+          "path": "results/repeat_task04_report_resources_729e34487d81-run-03.json",
+          "run_id": "repeat_task04_report_resources_729e34487d81-run-03",
+          "sha256": "db439ed1083208f0812d3799adc23432d036acfaa49c52e976e72bc9e08840b7",
+          "success": true,
+          "tests_failed": 0,
+          "tests_passed": 5,
+          "tool_calls": 4,
+          "total_tokens": 3702
+        },
+        {
+          "agent_steps": 6,
+          "elapsed_seconds": 228.755691,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": "exp_9588c6491c76488fbd660b361905add5",
+          "input_tokens": 3393,
+          "output_tokens": 309,
+          "path": "results/repeat_task04_report_resources_729e34487d81-run-04.json",
+          "run_id": "repeat_task04_report_resources_729e34487d81-run-04",
+          "sha256": "5434a85c2cd96a3f141df7b5a6805755631d79af2c1c85bcde295ef8927a3bea",
+          "success": true,
+          "tests_failed": 0,
+          "tests_passed": 5,
+          "tool_calls": 4,
+          "total_tokens": 3702
+        },
+        {
+          "agent_steps": 6,
+          "elapsed_seconds": 229.556265,
+          "failure_message": null,
+          "failure_type": null,
+          "generated_experience_id": "exp_57d02fa3751e4c62a88c20347503edd0",
+          "input_tokens": 3393,
+          "output_tokens": 309,
+          "path": "results/repeat_task04_report_resources_729e34487d81-run-05.json",
+          "run_id": "repeat_task04_report_resources_729e34487d81-run-05",
+          "sha256": "74f859a714f28cb1d8b6e528bee2ecbee680710dfa8d9569168dd4516802cc28",
+          "success": true,
+          "tests_failed": 0,
+          "tests_passed": 5,
+          "tool_calls": 4,
+          "total_tokens": 3702
+        }
+      ],
+      "trajectory_metrics": {
+        "invalid_tool_action_rate": 0.0,
+        "malformed_output_rate": 1.0,
+        "max_step_exhaustion_rate": 0.0,
+        "mean_agent_steps": 6,
+        "mean_elapsed_seconds": 237.29869,
+        "mean_final_tests_failed": 0,
+        "mean_final_tests_passed": 5,
+        "mean_input_tokens": 3393,
+        "mean_output_tokens": 309,
+        "mean_repeated_identical_actions": 0,
+        "mean_tool_calls": 4,
+        "mean_total_tokens": 3702,
+        "median_final_tests_failed": 0.0,
+        "median_final_tests_passed": 5.0,
+        "number_of_runs": 5,
+        "revision_after_failure_rate": 0.0,
+        "success_rate": 1.0,
+        "verification_after_revision_rate": 0.0,
+        "verification_use_rate": 1.0
+      }
+    }
+  ],
+  "evidence_manifest_version": "0.1",
+  "family_id": "family_1",
+  "frozen_inputs": {
+    "preregistration_path": "reproductions/family1_v1/preregistration.json",
+    "preregistration_sha256": "9d38cbe9f56ff7864714d0e81bb6c28fdfb21206e59d56708a64c78d3d9049c9",
+    "relevant_transfer_path": "transfer_knowledge/transfer_a4142b399f8684e6a75fda4a625ed4d8.json",
+    "relevant_transfer_sha256": "3f75b116a400961ee5897bdc5f72e01bec1579034d4718b578a0d426a5290587",
+    "task_id": "task04_report_resources",
+    "task_sha256": "f8bd943eabc383371a17af7de97e83ec6850f43d9686b7b7454fa58742d6f91d"
+  },
+  "historical_observation": {
+    "baseline_successes": 0,
+    "machine_recomputed": false,
+    "original_raw_evidence_retained": false,
+    "relevant_transfer_successes": 5,
+    "repetitions": 5
+  },
+  "integrity_findings": {
+    "all_generated_experience_references_resolve": true,
+    "all_raw_aggregate_identities_match": true,
+    "interpretation": "No retained trajectory wrote the task test file.",
+    "test_file_write_detected": false
+  },
+  "reproduction_id": "f1r_task04_core_v1",
+  "source_status": "new_retained_evidence_reproduction"
+}

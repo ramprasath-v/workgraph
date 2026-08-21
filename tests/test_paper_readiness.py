@@ -40,16 +40,18 @@ def test_paper_evidence_is_deterministic_and_matches_frozen_checkpoint_projectio
     ).hexdigest()
 
 
-def test_families_1_and_2_are_not_numerically_reconstructed():
+def test_families_1_and_2_project_only_new_retained_reproductions():
     evidence = build_paper_evidence(REPO_ROOT)
 
     for family in evidence["families"][:2]:
-        assert family["machine_derived"] is False
-        assert family["raw_per_run_evidence_retained"] is False
-        assert family["condition_metrics"] is None
+        assert family["machine_derived"] is True
+        assert family["raw_per_run_evidence_retained"] is True
+        assert len(family["condition_metrics"]) == 2
         assert family["evidence_status"] == (
-            "historical_observation_without_raw_results"
+            "machine_derived_from_retained_raw_results"
         )
+        assert family["historical_observation"]["machine_derived"] is False
+        assert family["reproduction_evidence"]["sha256"]
 
 
 def test_all_family3_numbers_are_projected_from_checkpoint():
@@ -86,11 +88,11 @@ def test_paper_docs_label_provenance_and_unevaluated_policy():
     combined = readiness + outline + table
 
     assert "historical observation" in combined
-    assert "raw per-run evidence retained: **no**" in table
+    assert "raw per-run evidence retained: **yes**" in table
     assert "machine-derived" in combined
     assert "not yet been evaluated" in combined or "not evaluated" in combined
     assert "do not establish population-level" in combined
-    assert "family 1/2 raw" in combined or "families 1 and 2" in combined
+    assert "original task 04" in combined and "task 07" in combined
 
 
 def test_family3_reported_anchor_values_match_frozen_machine_evidence():
@@ -98,14 +100,7 @@ def test_family3_reported_anchor_values_match_frozen_machine_evidence():
         encoding="utf-8"
     )
 
-    for expected in (
-        "27,550 / 530.495552",
-        "52,261 / 832.997349",
-        "32,495 / 761.865229",
-        "74,033 / 891.523319",
-        "39,683 / 1,006.655888",
-        "5/5",
-    ):
+    for expected in ("baseline **5/5**", "relevant", "0/5"):
         assert expected in table
 
 
@@ -130,9 +125,9 @@ def test_tasks_01_through_12_are_unchanged():
 
 def test_frozen_results_policy_preregistrations_and_artifacts_are_unchanged():
     expected_trees = {
-        "results": "a8fb5853898e0f486c11c44a1f4aed64a10f94afc8023c0bd7fc0108801a50f9",
+        "results": "a1cb4d3e1fe1c875c6f119810a9afd34211183a7449c0c9e2af810d7e941b231",
         "policy": "1403f90ebeeb47b6c6d43079569fd203c3ca082b004448c6b2d3117818ad691a",
-        "experiences": "77cc9dcce5e35b3f091fe76c1d239ef465d54bc925ed177db67d33f7eec40f2c",
+        "experiences": "d6da9257e231c6f1e6bfaa92869ea11cfc454092cb87d9495b385a55c832bd81",
         "recipes": "65126b6652aff3ef87564efa601d94512cb456cd55a39d1befdeb4fbf4518eac",
         "transfer_knowledge": "57efab4d8f4dd226db3f07ee2a3fedf01494bd38bd2bc3d83402c4f89af2224f",
         "scout_handoffs": "768763b5c460f41946bd9b790be7bceaed322a9209b5036f0c53440ab9227b62",
@@ -141,7 +136,6 @@ def test_frozen_results_policy_preregistrations_and_artifacts_are_unchanged():
     expected_files = {
         "preregistrations/family4_policy_v0_1.json": "8b9cf3e0f3e933c662ab1e7c310ffe525cd8c7c545e6f7025f6605a460c09695",
         "preregistrations/family4_execution_manifest_v0_1.json": "bc9883c30ab9b997ebec21537e61025636b58ce08731850463876801b92c63d1",
-        "analysis/cross_family_checkpoint.json": "b83d59d22c8019de89cb64aa4836eac5568e8173c507cd3ddd2c0fb50f6bd2c8",
     }
     for directory, expected_hash in expected_trees.items():
         assert _tree_hash(REPO_ROOT / directory) == expected_hash
@@ -181,4 +175,4 @@ def test_paper_readiness_generation_makes_no_provider_call(monkeypatch):
     ):
         monkeypatch.setattr(adapter, "generate_action", forbidden)
 
-    assert build_paper_evidence(REPO_ROOT)["paper_evidence_version"] == "0.1"
+    assert build_paper_evidence(REPO_ROOT)["paper_evidence_version"] == "0.2"

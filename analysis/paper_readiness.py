@@ -9,6 +9,10 @@ from typing import Any
 
 
 CHECKPOINT_RELATIVE_PATH = Path("analysis/cross_family_checkpoint.json")
+REPRODUCTION_MANIFESTS = {
+    "family_1": Path("reproductions/family1_v1/evidence_manifest.json"),
+    "family_2": Path("reproductions/family2_v1/evidence_manifest.json"),
+}
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -31,21 +35,10 @@ def build_paper_evidence(repo_root: Path) -> dict[str, Any]:
         raise ValueError("paper evidence requires the frozen three-family checkpoint")
     projected = []
     for family in families:
-        if family["family_id"] in {"family_1", "family_2"}:
-            projected.append(
-                {
-                    "family_id": family["family_id"],
-                    "task_id": family["task_id"],
-                    "evidence_status": "historical_observation_without_raw_results",
-                    "raw_per_run_evidence_retained": False,
-                    "machine_derived": False,
-                    "historical_observation": family["historical_observation"],
-                    "condition_metrics": None,
-                }
-            )
-            continue
         conditions = []
         for condition in family["conditions"]:
+            if condition["retention_status"] != "complete_raw_and_aggregate":
+                continue
             conditions.append(
                 {
                     "condition_id": condition["condition_id"],
@@ -59,25 +52,38 @@ def build_paper_evidence(repo_root: Path) -> dict[str, Any]:
                     "retention_status": condition["retention_status"],
                 }
             )
-        projected.append(
-            {
-                "family_id": family["family_id"],
-                "task_id": family["task_id"],
-                "evidence_status": "machine_derived_from_complete_frozen_raw_results",
-                "raw_per_run_evidence_retained": True,
-                "machine_derived": True,
-                "condition_metrics": conditions,
+        entry = {
+            "family_id": family["family_id"],
+            "task_id": family["task_id"],
+            "evidence_status": "machine_derived_from_retained_raw_results",
+            "raw_per_run_evidence_retained": True,
+            "machine_derived": True,
+            "historical_observation": family.get("historical_observation"),
+            "condition_metrics": conditions,
+        }
+        reproduction_path = REPRODUCTION_MANIFESTS.get(family["family_id"])
+        if reproduction_path is not None:
+            reproduction = _load_json(repo_root / reproduction_path)
+            entry["reproduction_evidence"] = {
+                "path": reproduction_path.as_posix(),
+                "sha256": hashlib.sha256(
+                    (repo_root / reproduction_path).read_bytes()
+                ).hexdigest(),
+                "classification": reproduction["classification"],
+                "integrity_findings": reproduction["integrity_findings"],
             }
-        )
+        projected.append(entry)
     return {
-        "paper_evidence_version": "0.1",
+        "paper_evidence_version": "0.2",
         "source_checkpoint": CHECKPOINT_RELATIVE_PATH.as_posix(),
         "source_checkpoint_sha256": hashlib.sha256(
             checkpoint_path.read_bytes()
         ).hexdigest(),
         "families": projected,
         "evidence_rule": (
-            "Families 1 and 2 remain historical observations with null machine "
-            "metrics; only Family 3 numerical values are projected."
+            "Families 1 and 2 retain new versioned core reproductions while their "
+            "original raw evidence remains unavailable; Family 3 remains fully retained."
         ),
+        "strongest_supported_claim": checkpoint["strongest_supported_claim"],
+        "mechanism_status": checkpoint["mechanism_status"],
     }

@@ -1,147 +1,75 @@
-# Frozen cross-family research checkpoint
+# Cross-family retained-evidence checkpoint
 
-## Scope and evidence policy
+## Evidence boundary
 
-This checkpoint was defined after WorkGraph Families 1–3 and before any Family 4
-task or policy implementation. It is deterministic and offline. The machine-readable
-checkpoint is generated from the explicit mappings in
-`analysis/cross_family_manifest.json`; condition identity is never inferred from a
-filename.
+This checkpoint is deterministic and offline. The original Task 04 and Task 07
+Kaggle runs remain unavailable and are not reconstructed. Families 1 and 2 now
+have separately versioned retained-evidence reproductions; Family 3 retains its
+original five-condition Task 09 evidence. The machine-readable sources are
+`analysis/cross_family_manifest.json`, the two reproduction evidence manifests,
+and `analysis/cross_family_checkpoint.json`.
 
-The evidence boundary is important:
+## Exact retained outcomes
 
-- Family 3 retains each Task 09 aggregate and all five raw run JSON files for all
-  five conditions. Its numerical, efficiency, and trajectory claims below are
-  machine-derived from those files.
-- The original Task 04 and Task 07 Kaggle per-run results were not retained. The
-  repository retains their tasks and assistance artifacts, but not the benchmark
-  evidence needed to recompute outcomes. Families 1 and 2 therefore have no
-  numerical or trajectory metrics in this checkpoint.
-- The Family 1 and Family 2 outcome-class labels are frozen historical research
-  observations, not claims re-derived by this utility. They must not be used as if
-  they had the same evidentiary status as Family 3.
-- Missing measurements are represented as `null`; none are reconstructed from
-  narrative reports.
+| Family | Evidence | Baseline | Relevant transfer | Classification / interpretation |
+| --- | --- | ---: | ---: | --- |
+| 1 — Task 04 | New reproduction | 0/5 | 5/5 | `FULL_REPRODUCTION`; no trajectory wrote the test file |
+| 2 — Task 07 | New reproduction | 0/5 | 5/5 harness-recorded | `NON_REPRODUCTION` of the historical 0/5→0/5 pattern; all assisted runs rewrote the test file and ended with only 1 passing test |
+| 3 — Task 09 | Original retained experiment | 5/5 | 0/5 | Assistance interference observed; mechanism unresolved |
 
-## Cross-family summary
+Family 3's irrelevant-transfer, detailed-scout, and compact-scout conditions also
+remain 0/5. Family 2's 5/5 is an exact report of the persisted harness `success`
+field, not evidence that the pristine six-test suite passed. The original Family 2
+historical observation and the new reproduction are distinct records.
 
-| Family | Consumer task | Outcome class | Retained benchmark evidence | Machine-derived checkpoint result |
-| --- | --- | --- | --- | --- |
-| 1 — resource/path transfer | Task 04 | A. Capability-enabling assistance | Original raw results not retained | Unavailable; historical classification only |
-| 2 — retry/idempotency | Task 07 | B. Assistance insufficient | Original raw results not retained | Unavailable; historical classification only |
-| 3 — state/cache consistency | Task 09 | C. Assistance-induced interference | Five aggregates and 25 raw runs retained | Baseline 5/5; every tested assistance condition 0/5 |
+## Reproduction trajectory measurements
 
-These are observed outcome classes in the current experiments, not universal laws.
-In particular, the first two rows are qualitative project-history classifications
-with an explicit evidence-retention limitation.
+All values below come from the frozen `analysis.trajectory_metrics` analyzer.
+Family 1 and Task 07 have no predeclared `analysis_contract`, so an
+“unexpected-write rate” is not manufactured for them.
 
-## Family 3 outcome and inference accounting
-
-“Qwen-only” fields include only the downstream fixer. Total-inference fields use
-the accounting persisted by the repeated-run harness. For scout conditions, the
-average total-inference value represents per-deployment accounting, while the
-frozen-experiment total counts the one scout acquisition once across the five-run
-experiment.
-
-| Condition | Success | Mean Qwen input / output / total tokens | Mean Qwen elapsed (s) | Mean total-inference tokens / elapsed (s) | Frozen experiment total tokens / elapsed (s) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Baseline / no context | 5/5 (100%) | 4,978 / 532 / 5,510 | 106.099110 | 5,510 / 106.099110 | 27,550 / 530.495552 |
-| Relevant Task 08 transfer | 0/5 (0%) | 9,303.6 / 1,148.6 / 10,452.2 | 166.599470 | 10,452.2 / 166.599470 | 52,261 / 832.997349 |
-| Irrelevant Task 05 transfer | 0/5 (0%) | 5,878 / 621 / 6,499 | 152.373046 | 6,499 / 152.373046 | 32,495 / 761.865229 |
-| Detailed current-task scout | 0/5 (0%) | 11,544 / 825 / 12,369 | 173.820434 | 24,557 / 196.241585 | 74,033 / 891.523319 |
-| Compact current-task scout | 0/5 (0%) | 4,954 / 545 / 5,499 | 196.846947 | 17,687 / 219.268098 | 39,683 / 1,006.655888 |
-
-## Family 3 trajectory measurements
-
-Task 09’s `analysis_contract` was declared before model exposure. It permits exact
-measurement of relevant-source access, unexpected writes, and regression from the
-pristine four-passing-test state. Rates are run-level fractions across five runs.
-
-| Condition | Mean final pass / fail | Mean steps / calls | Verify rate | Malformed rate | Invalid-action rate | Max-step rate | Mean repeats | Relevant read / write rate | Unexpected-write rate | Mean passing-test regression |
+| Condition | Final pass/fail | Steps/calls | Verify | Revise after failure | Max-step | Malformed | Invalid action | Repeats | Input/output/total tokens | Elapsed (s) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Baseline | 6 / 0 | 8 / 6 | 100% | 100% | 100% | 0% | 1 | 100% / 100% | 0% | 0 |
-| Relevant transfer | 0 / 1 | 8 / 7 | 100% | 100% | 0% | 100% | 1 | 100% / 100% | 100% | 4 |
-| Irrelevant transfer | 4 / 2 | 8 / 6 | 100% | 100% | 100% | 100% | 1 | 100% / 100% | 0% | 0 |
-| Detailed scout | 0 / 6 | 7 / 5 | 100% | 100% | 0% | 0% | 2 | 0% / 100% | 0% | 4 |
-| Compact scout | 0 / 6 | 8 / 5 | 0% | 100% | 100% | 100% | 2 | 100% / 100% | 0% | 4 |
+| F1 baseline | 2.2 / 2.8 | 8 / 6 | 100% | 100% | 0% | 100% | 100% | 0 | 5,976 / 544 / 6,520 | 412.668231 |
+| F1 relevant | 5 / 0 | 6 / 4 | 100% | 0% | 0% | 100% | 0% | 0 | 3,393 / 309 / 3,702 | 237.298690 |
+| F2 baseline | 4 / 2 | 2 / 0 | 0% | 0% | 0% | 100% | 0% | 0 | 253 / 15 / 268 | 47.897673 |
+| F2 relevant | 1 / 0 | 8 / 6 | 100% | 100% | 0% | 100% | 0% | 1 | 7,280 / 549 / 7,829 | 413.976860 |
 
-Operational definitions are inherited unchanged from
-`docs/trajectory-measurement.md`. A relevant write is not evidence of a correct
-write, and malformed or invalid actions can coexist with eventual success.
+F1 baseline read `report_renderer/loader.py` and wrote it plus
+`report_renderer/renderer.py`; F1 relevant read and wrote only the loader. F2
+baseline read and wrote no files. F2 relevant read `delivery_receiver.py` and
+wrote both it and `test_delivery_receiver.py` in all five runs.
 
-## Interpretation
+## Strongest supported claim
 
-The strongest supported claim is narrow: for Task 09 with
-`Qwen/Qwen2.5-7B-Instruct`, this harness, and an eight-step budget, the unaided
-condition succeeded in all five retained runs while each of four assistance
-conditions succeeded in zero of five. Relevant Task 08 transfer was therefore not
-merely insufficient in this setting; its condition-level outcome was worse than
-no assistance, and its trajectories showed a four-test mean regression plus
-unexpected writes in every run.
+> Verified external assistance can enable a consumer that fails unaided, while
+> assistance injection can also interfere with a consumer that succeeds unaided;
+> assistance utility is conditional rather than monotonic.
 
-The retained evidence also distinguishes failure modes. Irrelevant transfer kept
-the pristine four passing tests on average, whereas relevant transfer and both
-scout representations regressed them. The detailed scout did not exhaust the
-recorded step budget but still ended with all six tests failing. The compact scout
-never invoked verification in any retained run.
+Family 1 supplies the new retained enabling contrast. Family 3 supplies the
+retained interference contrast. This does not establish a general benefit or harm,
+prove model capability as causal, prove semantic negative transfer, validate the
+routing policy, or support broad generalization. Family 3's mechanism remains
+unresolved: wrapper structure, context length, authoritative framing, placement,
+and token/latency effects remain alternative explanations.
 
-This evidence falsifies the naive hypothesis, for this model/harness/task setting:
+## Minimum next Task 09 mechanism ablation — recommendation only
 
-> If retrieved guidance is relevant and correct, injecting it cannot hurt.
+Reuse the already-retained baseline and authoritative relevant-transfer conditions
+as anchors. Preregister three new conditions under the same frozen task, model,
+budget, generation settings, repetitions, and evaluator:
 
-It does not establish that assistance is generally harmful, that one representation
-is universally superior, that the same outcomes hold for another model, or that a
-routing policy will outperform fixed strategies. With five runs per retained
-condition, this checkpoint also makes no population-level significance claim.
+1. **Empty assistance wrapper:** identical injection template with no knowledge.
+2. **Neutral length-matched context:** non-directive, task-irrelevant text matched
+   approximately to the relevant context's size in the same wrapper and position.
+3. **Unframed relevant principle:** the same relevant portable principle without
+   “verified,” “prior experience,” or other authority framing, in the same position.
 
-## Predeclared Next Hypothesis
-
-Verified experience should not be injected unconditionally. The utility of
-assistance depends on the target model's unaided capability, the task, and the
-representation of the retrieved experience.
-
-The next WorkGraph system hypothesis is:
-
-> A policy that decides whether to use no assistance, historical verified
-> experience, current-task scouting, or model escalation can outperform
-> unconditional experience injection in reliability and/or resource efficiency.
-
-This hypothesis is recorded before Family 4 design, implementation, or observation.
-
-## Proposed Family 4 decision-policy experiment — not implemented
-
-Family 4 should evaluate a frozen policy with four candidate actions:
-
-1. no assistance;
-2. historical verified transfer;
-3. compact current-task scout; or
-4. escalate to a stronger model.
-
-The policy must commit to its action before the target run and before deterministic
-evaluation. It must not see a solution, producer patch, hidden evaluator result,
-post-run outcome, or future trajectory.
-
-Legally observable pre-execution signals may include, if predeclared:
-
-- public task description, language, and declared environment;
-- read-only structural workspace facts such as file count and language mix;
-- target model identity and capability tier established independently of the
-  current task;
-- assistance provenance, verification status, representation type, and size;
-- source/target similarity computed only from public task descriptions and the
-  portable abstraction, never the producer patch;
-- estimated context, inference-token, latency, and escalation costs; and
-- whether a candidate artifact passes deterministic schema and leakage checks.
-
-Family 4 should use held-out tasks and freeze the policy, thresholds, primary
-reliability metric, resource metrics, and tie-breaking rules before any target
-outcomes are observed. It should compare the policy with each fixed action, report
-interference rate and resource use separately, and may calculate a retrospective
-oracle only as a labeled upper bound—not as a policy input. Public or hidden tests,
-target-run failures, and post-run trajectories must never become routing features.
-
-No Family 4 task, router, threshold, model-selection implementation, or experiment
-is created by this checkpoint.
+Baseline versus empty tests wrapper effects; empty versus neutral tests context
+load/length effects; neutral versus unframed relevant tests semantic content absent
+authority; unframed versus the retained authoritative condition tests authority
+framing. Placement variation should follow only if these minimum controls leave a
+placement ambiguity. Nothing in this checkpoint executes or implements the ablation.
 
 ## Reproduction
 
@@ -150,7 +78,3 @@ python3 -m analysis.cross_family_checkpoint \
   --manifest analysis/cross_family_manifest.json \
   --output analysis/cross_family_checkpoint.json
 ```
-
-The generated JSON includes every explicit evidence path and SHA-256 digest. The
-builder verifies aggregate/raw identity and accounting consistency before emitting
-the checkpoint.
