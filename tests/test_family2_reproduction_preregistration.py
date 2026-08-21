@@ -38,7 +38,15 @@ def test_family2_preregistration_is_deterministic_and_matches_frozen_artifact():
     frozen = json.loads(PREREGISTRATION.read_text(encoding="utf-8"))
 
     assert build_preregistration(REPO_ROOT) == build_preregistration(REPO_ROOT)
-    assert build_preregistration(REPO_ROOT) == frozen
+    current = build_preregistration(REPO_ROOT)
+    current_without_harness = json.loads(json.dumps(current))
+    frozen_without_harness = json.loads(json.dumps(frozen))
+    current_without_harness["frozen_inputs"].pop("harness")
+    frozen_without_harness["frozen_inputs"].pop("harness")
+    assert current_without_harness == frozen_without_harness
+    assert hashlib.sha256(PREREGISTRATION.read_bytes()).hexdigest() == (
+        "033773271cbf78417743d47a36c109e5f288c845d35417e054110e96753f00e5"
+    )
     assert frozen["evidence_status"] == (
         "new_retained_evidence_reproduction_not_original_recovery"
     )

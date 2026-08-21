@@ -24,6 +24,7 @@ from transfer.compiler import compile_transfer_knowledge
 from transfer.schema import TransferKnowledge, load_transfer_knowledge
 
 from .agent import AgentRun, CodingAgent
+from .assistance_control import AssistanceControl, load_assistance_control
 from .metrics import RunResult
 from .models import AgentContext, MockModelAdapter, ModelAdapter, ModelPricing
 from .ollama_adapter import (
@@ -36,6 +37,11 @@ from .prompting import build_model_prompt
 from .repeated import RepeatedRunSummary, aggregate_results
 from .tools import WorkspaceTools, reset_workspace
 from .trajectory import build_trajectory, trajectory_diagnostics
+from .verification_integrity import (
+    INTEGRITY_GUARD_VERSION,
+    capture_evaluator_hashes,
+    modified_protected_files,
+)
 from .transformers_adapter import (
     TransformersModelAdapter,
     TransformersProviderError,
@@ -81,6 +87,7 @@ def run_benchmark(
     transfer_knowledge: TransferKnowledge | None = None,
     scout_handoff: ScoutHandoff | None = None,
     compact_scout: CompactScoutKnowledge | None = None,
+    assistance_control: AssistanceControl | None = None,
     max_steps: int = 20,
 ) -> tuple[RunResult, Path]:
     if max_steps < 1:
@@ -93,6 +100,7 @@ def run_benchmark(
             transfer_knowledge,
             scout_handoff,
             compact_scout,
+            assistance_control,
         )
     ) > 1:
         raise ValueError("benchmark contexts are mutually exclusive")
@@ -102,6 +110,7 @@ def run_benchmark(
     prior_transfer = transfer_knowledge
     prior_scout = scout_handoff
     prior_compact_scout = compact_scout
+    prior_assistance_control = assistance_control
     if prior_recipe is not None and prior_recipe.task_id != task_id:
         raise ValueError("recipe task_id does not match the benchmark task")
     if prior_scout is not None and prior_scout.task_id != task_id:
@@ -117,6 +126,8 @@ def run_benchmark(
         if prior_scout is not None
         else "compact_scout"
         if prior_compact_scout is not None
+        else "assistance_control"
+        if prior_assistance_control is not None
         else "none"
     )
     source_experience_id = (
@@ -129,6 +140,18 @@ def run_benchmark(
     workspace = reset_workspace(
         repo_root / "tasks" / task_id / "workspace",
         repo_root / ".workspaces" / task_id,
+    )
+    protected_files = (
+        prior_assistance_control.protected_evaluator_files
+        if prior_assistance_control is not None
+        else None
+    )
+    original_evaluator_hashes = (
+        capture_evaluator_hashes(
+            workspace, protected_files, require_existing=True
+        )
+        if protected_files is not None
+        else None
     )
     tools = WorkspaceTools(workspace, task["test_command"])
     start_wall = datetime.now(timezone.utc)
@@ -149,6 +172,8 @@ def run_benchmark(
                 if prior_scout
                 else prior_compact_scout.to_dict()
                 if prior_compact_scout
+                else prior_assistance_control.to_dict()
+                if prior_assistance_control
                 else None
             ),
         )
@@ -170,14 +195,48 @@ def run_benchmark(
     end_wall = datetime.now(timezone.utc)
     combined_output = verification.stdout + "\n" + verification.stderr
     passed, failed = _test_counts(combined_output, verification.returncode)
-    successful = provider_failure is None and verification.returncode == 0
+    final_evaluator_hashes = (
+        capture_evaluator_hashes(
+            workspace, protected_files, require_existing=False
+        )
+        if protected_files is not None
+        else None
+    )
+    protected_files_modified = (
+        modified_protected_files(
+            original_evaluator_hashes, final_evaluator_hashes
+        )
+        if original_evaluator_hashes is not None
+        and final_evaluator_hashes is not None
+        else None
+    )
+    verification_integrity_passed = (
+        not protected_files_modified
+        if protected_files_modified is not None
+        else None
+    )
+    integrity_failure_reason = (
+        "Protected evaluator files changed during the run: "
+        + ", ".join(protected_files_modified)
+        if protected_files_modified
+        else None
+    )
+    successful = (
+        provider_failure is None
+        and verification.returncode == 0
+        and verification_integrity_passed is not False
+    )
     trajectory = build_trajectory(agent_run.history)
     diagnostics = trajectory_diagnostics(trajectory)
     failure_type = provider_failure.failure_type if provider_failure else None
     failure_message = str(provider_failure) if provider_failure else None
+    if verification_integrity_passed is False:
+        failure_type = "verification_integrity_failure"
+        failure_message = integrity_failure_reason
     if (
         not successful
         and provider_failure is None
+        and verification_integrity_passed is not False
         and agent_run.max_steps_exhausted
     ):
         failure_type = "max_steps_exhausted"
@@ -296,6 +355,27 @@ def run_benchmark(
         scout_accounting_mode=(
             "frozen_handoff_amortized" if prior_compact_scout else None
         ),
+        verification_integrity_passed=verification_integrity_passed,
+        protected_files_checked=(list(protected_files) if protected_files else None),
+        protected_files_modified=protected_files_modified,
+        original_evaluator_hashes=original_evaluator_hashes,
+        final_evaluator_hashes=final_evaluator_hashes,
+        integrity_failure_reason=integrity_failure_reason,
+        integrity_guard_version=(
+            INTEGRITY_GUARD_VERSION if protected_files is not None else None
+        ),
+        assistance_control_id=(
+            prior_assistance_control.assistance_control_id
+            if prior_assistance_control else None
+        ),
+        assistance_condition_id=(
+            prior_assistance_control.condition_id
+            if prior_assistance_control else None
+        ),
+        assistance_payload_sha256=(
+            prior_assistance_control.payload_sha256
+            if prior_assistance_control else None
+        ),
     )
     result_path = result.write_json(repo_root / "results")
     return result, result_path
@@ -370,6 +450,7 @@ def run_repeated_benchmark(
     transfer_knowledge: TransferKnowledge | None = None,
     scout_handoff: ScoutHandoff | None = None,
     compact_scout: CompactScoutKnowledge | None = None,
+    assistance_control: AssistanceControl | None = None,
     max_steps: int = 20,
 ) -> tuple[RepeatedRunSummary, Path]:
     """Repeat one unchanged benchmark condition from pristine workspaces."""
@@ -390,6 +471,7 @@ def run_repeated_benchmark(
                 transfer_knowledge=transfer_knowledge,
                 scout_handoff=scout_handoff,
                 compact_scout=compact_scout,
+                assistance_control=assistance_control,
                 max_steps=max_steps,
             )
         )
@@ -665,6 +747,7 @@ def main() -> int:
     parser.add_argument("--transfer-knowledge", type=Path)
     parser.add_argument("--scout-handoff", type=Path)
     parser.add_argument("--compact-scout", type=Path)
+    parser.add_argument("--assistance-control", type=Path)
     parser.add_argument("--generate-scout-handoff", action="store_true")
     parser.add_argument("--compare-representations", action="store_true")
     parser.add_argument("--compile-recipe", type=Path)
@@ -767,6 +850,10 @@ def main() -> int:
             parser.error(
                 "--compare-representations cannot use --compact-scout"
             )
+        if args.assistance_control is not None:
+            parser.error(
+                "--compare-representations cannot use --assistance-control"
+            )
     elif sum(
         context is not None
         for context in (
@@ -775,6 +862,7 @@ def main() -> int:
             args.transfer_knowledge,
             args.scout_handoff,
             args.compact_scout,
+            args.assistance_control,
         )
     ) > 1:
         parser.error("benchmark context options are mutually exclusive")
@@ -783,6 +871,7 @@ def main() -> int:
         or args.transfer_knowledge is not None
         or args.scout_handoff is not None
         or args.compact_scout is not None
+        or args.assistance_control is not None
     ):
         parser.error(
             "--compare-experience cannot be combined with another context"
@@ -812,6 +901,7 @@ def main() -> int:
                 args.transfer_knowledge,
                 args.scout_handoff,
                 args.compact_scout,
+                args.assistance_control,
             )
         ):
             parser.error("scout generation cannot use benchmark context")
@@ -872,6 +962,15 @@ def main() -> int:
             compact_scout = load_compact_scout(compact_path)
         except ValueError as exc:
             parser.error(str(exc))
+    assistance_control = None
+    if args.assistance_control:
+        control_path = args.assistance_control
+        if not control_path.is_absolute():
+            control_path = args.root / control_path
+        try:
+            assistance_control = load_assistance_control(control_path)
+        except ValueError as exc:
+            parser.error(str(exc))
     if args.compare_representations:
         assert experience is not None and recipe is not None
         try:
@@ -901,6 +1000,7 @@ def main() -> int:
             transfer_knowledge=transfer_knowledge,
             scout_handoff=scout_handoff,
             compact_scout=compact_scout,
+            assistance_control=assistance_control,
             max_steps=args.max_steps,
         )
         print_repeated_summary(summary)
@@ -928,6 +1028,7 @@ def main() -> int:
         transfer_knowledge=transfer_knowledge,
         scout_handoff=scout_handoff,
         compact_scout=compact_scout,
+        assistance_control=assistance_control,
         max_steps=args.max_steps,
     )
     status = "PASS" if result.success else "FAIL"

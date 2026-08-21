@@ -49,6 +49,16 @@ class RunResult:
     source_scout_handoff_id: str | None = None
     compact_scout_id: str | None = None
     scout_accounting_mode: str | None = None
+    verification_integrity_passed: bool | None = None
+    protected_files_checked: list[str] | None = None
+    protected_files_modified: list[str] | None = None
+    original_evaluator_hashes: dict[str, str | None] | None = None
+    final_evaluator_hashes: dict[str, str | None] | None = None
+    integrity_failure_reason: str | None = None
+    integrity_guard_version: str | None = None
+    assistance_control_id: str | None = None
+    assistance_condition_id: str | None = None
+    assistance_payload_sha256: str | None = None
 
     def to_dict(self) -> dict[str, object]:
         data = asdict(self)

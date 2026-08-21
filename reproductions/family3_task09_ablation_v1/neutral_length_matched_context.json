@@ -1,0 +1,13 @@
+{
+  "assistance_control_id": "task09_ablation_neutral_length_v1",
+  "assistance_control_version": "0.1",
+  "condition_id": "NEUTRAL_LENGTH_MATCHED_CONTEXT",
+  "payload": "At midday, sunlight crosses a quiet museum gallery. Visitors move between paintings while a wall clock marks the hour. Outside, clouds pass above the courtyard, leaves shift in a light breeze, and a fountain continues at an even pace today.",
+  "payload_approximate_tokens": 60,
+  "payload_character_count": 240,
+  "payload_sha256": "2f88d0a35b2d51b3bfddad967a3043f75758a8a15304eaf1357055eefec35c3d",
+  "protected_evaluator_files": [
+    "test_role_index.py"
+  ],
+  "wrapper_template_id": "optional-context-v1"
+}

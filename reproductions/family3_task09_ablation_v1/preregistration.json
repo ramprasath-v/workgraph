@@ -1,0 +1,208 @@
+{
+  "ablation_id": "family3_task09_assistance_interference_v1",
+  "ablation_version": "0.1",
+  "conditions_in_execution_order": [
+    {
+      "assistance_control_id": "task09_ablation_empty_wrapper_v1",
+      "command": [
+        "python3",
+        "-m",
+        "harness.runner",
+        "--task",
+        "task09_role_changes",
+        "--provider",
+        "transformers",
+        "--model",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "--max-steps",
+        "8",
+        "--repeat",
+        "5",
+        "--assistance-control",
+        "reproductions/family3_task09_ablation_v1/empty_assistance_wrapper.json"
+      ],
+      "condition_id": "EMPTY_ASSISTANCE_WRAPPER",
+      "control_path": "reproductions/family3_task09_ablation_v1/empty_assistance_wrapper.json",
+      "control_sha256": "acf44c2da9f8ad927f054ea1384dbd0d08fe533abd01cbbadaad7f04d617294f",
+      "payload": "Additional guidance: none.",
+      "payload_approximate_tokens": 7,
+      "payload_character_count": 26,
+      "payload_sha256": "83bc64818436fe53a79cdc31f4824f99cbdd3379edf43d4f4720b97a160e0f14",
+      "protected_evaluator_files": [
+        "test_role_index.py"
+      ],
+      "wrapper_template_id": "optional-context-v1"
+    },
+    {
+      "assistance_control_id": "task09_ablation_neutral_length_v1",
+      "command": [
+        "python3",
+        "-m",
+        "harness.runner",
+        "--task",
+        "task09_role_changes",
+        "--provider",
+        "transformers",
+        "--model",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "--max-steps",
+        "8",
+        "--repeat",
+        "5",
+        "--assistance-control",
+        "reproductions/family3_task09_ablation_v1/neutral_length_matched_context.json"
+      ],
+      "condition_id": "NEUTRAL_LENGTH_MATCHED_CONTEXT",
+      "control_path": "reproductions/family3_task09_ablation_v1/neutral_length_matched_context.json",
+      "control_sha256": "8c2883c684dda68c31e4ce7b127c429c35762e153341f24db3e885b4780c747b",
+      "payload": "At midday, sunlight crosses a quiet museum gallery. Visitors move between paintings while a wall clock marks the hour. Outside, clouds pass above the courtyard, leaves shift in a light breeze, and a fountain continues at an even pace today.",
+      "payload_approximate_tokens": 60,
+      "payload_character_count": 240,
+      "payload_sha256": "2f88d0a35b2d51b3bfddad967a3043f75758a8a15304eaf1357055eefec35c3d",
+      "protected_evaluator_files": [
+        "test_role_index.py"
+      ],
+      "wrapper_template_id": "optional-context-v1"
+    },
+    {
+      "assistance_control_id": "task09_ablation_relevant_no_authority_v1",
+      "command": [
+        "python3",
+        "-m",
+        "harness.runner",
+        "--task",
+        "task09_role_changes",
+        "--provider",
+        "transformers",
+        "--model",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "--max-steps",
+        "8",
+        "--repeat",
+        "5",
+        "--assistance-control",
+        "reproductions/family3_task09_ablation_v1/relevant_principle_no_authority.json"
+      ],
+      "condition_id": "RELEVANT_PRINCIPLE_NO_AUTHORITY",
+      "control_path": "reproductions/family3_task09_ablation_v1/relevant_principle_no_authority.json",
+      "control_sha256": "31d1b041b27e62a708f2e8e8c725ddde6c342ba0e26c3e233f662914fa4f6137",
+      "payload": "When authoritative state changes, dependent derived representations must not continue serving stale information.\nAfter mutating authoritative state, refresh or invalidate any dependent derived representation before it can serve later reads.",
+      "payload_approximate_tokens": 60,
+      "payload_character_count": 240,
+      "payload_sha256": "24524a721f4f95a39067b014a61a538518fc612a1a18a11ac503c9f1326d69ef",
+      "protected_evaluator_files": [
+        "test_role_index.py"
+      ],
+      "wrapper_template_id": "optional-context-v1"
+    }
+  ],
+  "execution_order_rule": "Run each condition five times in listed order and preserve its raw evidence before starting the next; do not adapt after outcomes.",
+  "forbidden_actions": [
+    "rerun retained anchors",
+    "run Family 4",
+    "modify Task 09",
+    "expose analysis_contract to the model",
+    "tune after outcomes"
+  ],
+  "generation_settings": {
+    "TRANSFORMERS_MAX_NEW_TOKENS": "512",
+    "TRANSFORMERS_TEMPERATURE": "0",
+    "do_sample": false,
+    "independence_note": "Repeated runs may be effectively deterministic and are not treated as independent statistical samples.",
+    "max_new_tokens": 512,
+    "seed": "not used",
+    "temperature": 0,
+    "top_k": "not passed",
+    "top_p": "not passed"
+  },
+  "interpretation_rules": {
+    "PATTERN_1": "Empty wrapper fails similarly to authoritative transfer: assistance pathway/template effect becomes a strong candidate.",
+    "PATTERN_2": "Empty wrapper succeeds and neutral context fails: context/token-load or added-context perturbation becomes a strong candidate.",
+    "PATTERN_3": "Empty and neutral succeed and no-authority relevant principle fails: semantic content/interference becomes a stronger candidate.",
+    "PATTERN_4": "All three new conditions succeed while authoritative relevant transfer remains failed: authority/provenance framing becomes a strong candidate.",
+    "PATTERN_5": "Mixed or inconsistent outcomes: mechanism remains unresolved; consider placement/formulation ablation next.",
+    "causal_claims_allowed": false
+  },
+  "prompt_control": {
+    "constant_components": [
+      "public task prompt",
+      "tool schema",
+      "system instructions",
+      "assistance section position",
+      "wrapper labels",
+      "model settings",
+      "pristine task state",
+      "step budget"
+    ],
+    "intended_variable": "exact assistance payload text and its control metadata",
+    "wrapper_template_id": "optional-context-v1"
+  },
+  "retained_anchors_not_rerun": [
+    {
+      "aggregate_id": "repeat_task09_role_changes_696038d25c92",
+      "condition": "BASELINE_NO_ASSISTANCE",
+      "path": "results/repeat_task09_role_changes_696038d25c92.json",
+      "sha256": "ee474ee6b9b787b3d1561412a31009e9149263e5c713cf6c73d8ffc1faee41f4",
+      "successful_runs": 5
+    },
+    {
+      "aggregate_id": "repeat_task09_role_changes_d826c0ae1567",
+      "condition": "AUTHORITATIVE_RELEVANT_TRANSFER",
+      "path": "results/repeat_task09_role_changes_d826c0ae1567.json",
+      "reference_semantic_payload_approximate_tokens": 60,
+      "reference_semantic_payload_character_count": 240,
+      "reference_semantic_payload_sha256": "24524a721f4f95a39067b014a61a538518fc612a1a18a11ac503c9f1326d69ef",
+      "sha256": "47a4e8f09e1cf7abaf35c7267f3e4f84dedc065f86407ae251bf118492d1e80c",
+      "successful_runs": 0,
+      "transfer_path": "transfer_knowledge/transfer_6b80e8c84cf89a2f7ceec3a2278cf531.json",
+      "transfer_sha256": "3a15fe9109db04b625fd96bbc2c2bf639076d4f498a0ae89aa3fcaca415097b6"
+    }
+  ],
+  "retention": {
+    "per_condition": {
+      "aggregate_json": 1,
+      "run_json": 5
+    },
+    "postexecution_manifest": "reproductions/family3_task09_ablation_v1/evidence_manifest.json",
+    "raw_immutability": "Do not rename or rewrite raw result JSON.",
+    "retain": [
+      "full trajectory",
+      "test counts",
+      "integrity fields and hashes",
+      "condition and context identity",
+      "payload hash",
+      "model/provider",
+      "steps/tool calls",
+      "tokens",
+      "elapsed time",
+      "generated experiences if any"
+    ]
+  },
+  "status": "preregistered_not_executed",
+  "target": {
+    "max_steps": 8,
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "provider": "transformers",
+    "repeat": 5
+  },
+  "task": {
+    "analysis_contract_model_visible": false,
+    "sha256": "c46bfd946da1242b031af87c3419686022ed43560d261bd15733a6ad7c33b437",
+    "task_id": "task09_role_changes"
+  },
+  "verification_integrity": {
+    "guard_files": {
+      "harness/assistance_control.py": "f6391bd644bf05c1b8724251ee431d9cde013e22d778d4c5ff90793b6a3878d7",
+      "harness/metrics.py": "25e9940271069b08ec95208eda5737d1747eeb8876928ce2f4eaf692fc8c06be",
+      "harness/prompting.py": "80a1e9d7beac2040f9f03d76b0490c349dd431867119e4a70ede3bcfe022661b",
+      "harness/repeated.py": "1417fa2fe83452942deeff49bdc4bbcde581c5c39a6db17f05c21a20d12d0587",
+      "harness/runner.py": "7f0f9c5302b89406c5148c9b492b891b94f8058babc5ae4e8ca08d7a073a8b7e",
+      "harness/verification_integrity.py": "d74fe449ed021dcc4ff49ee39cd9ce3de2b775bbc96263c7d3471c299fc4ba21"
+    },
+    "guard_version": "1.0",
+    "protected_evaluators": {
+      "test_role_index.py": "94ac60054ff4650da8f98710cb894f6f0d222505b9af2da26a2a53df21da4d4d"
+    },
+    "success_rule": "evaluator return code passes and every protected evaluator hash matches its pre-run hash"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "assistance_control_id": "task09_ablation_empty_wrapper_v1",
+  "assistance_control_version": "0.1",
+  "condition_id": "EMPTY_ASSISTANCE_WRAPPER",
+  "payload": "Additional guidance: none.",
+  "payload_approximate_tokens": 7,
+  "payload_character_count": 26,
+  "payload_sha256": "83bc64818436fe53a79cdc31f4824f99cbdd3379edf43d4f4720b97a160e0f14",
+  "protected_evaluator_files": [
+    "test_role_index.py"
+  ],
+  "wrapper_template_id": "optional-context-v1"
+}

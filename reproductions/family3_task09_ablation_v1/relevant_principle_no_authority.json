@@ -1,0 +1,13 @@
+{
+  "assistance_control_id": "task09_ablation_relevant_no_authority_v1",
+  "assistance_control_version": "0.1",
+  "condition_id": "RELEVANT_PRINCIPLE_NO_AUTHORITY",
+  "payload": "When authoritative state changes, dependent derived representations must not continue serving stale information.\nAfter mutating authoritative state, refresh or invalidate any dependent derived representation before it can serve later reads.",
+  "payload_approximate_tokens": 60,
+  "payload_character_count": 240,
+  "payload_sha256": "24524a721f4f95a39067b014a61a538518fc612a1a18a11ac503c9f1326d69ef",
+  "protected_evaluator_files": [
+    "test_role_index.py"
+  ],
+  "wrapper_template_id": "optional-context-v1"
+}

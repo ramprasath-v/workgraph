@@ -211,6 +211,19 @@ def format_compact_scout(knowledge: dict[str, Any]) -> str:
     )
 
 
+def format_assistance_control(control: dict[str, Any]) -> str:
+    """Render the frozen wrapper; only the payload varies across controls."""
+
+    return (
+        "ADDITIONAL OPTIONAL CONTEXT\n"
+        "--- BEGIN ADDITIONAL CONTEXT ---\n"
+        f"{control['payload']}\n"
+        "--- END ADDITIONAL CONTEXT ---\n"
+        "Use this context only if it is useful for the current task.\n"
+        "Choose ONLY the next single tool action."
+    )
+
+
 def build_model_prompt(context: AgentContext) -> str:
     tools = {
         name: TOOL_DEFINITIONS[name]
@@ -228,7 +241,9 @@ def build_model_prompt(context: AgentContext) -> str:
         ),
     ]
     if context.prior_experience is not None:
-        if "compact_scout_version" in context.prior_experience:
+        if "assistance_control_version" in context.prior_experience:
+            sections.append(format_assistance_control(context.prior_experience))
+        elif "compact_scout_version" in context.prior_experience:
             sections.append(format_compact_scout(context.prior_experience))
         elif "scout_handoff_version" in context.prior_experience:
             sections.append(format_scout_handoff(context.prior_experience))

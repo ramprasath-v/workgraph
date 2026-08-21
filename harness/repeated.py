@@ -39,6 +39,11 @@ class RepeatedRunSummary:
     source_scout_handoff_id: str | None
     compact_scout_id: str | None
     scout_accounting_mode: str | None
+    assistance_control_id: str | None
+    assistance_condition_id: str | None
+    assistance_payload_sha256: str | None
+    integrity_guard_version: str | None
+    protected_files_checked: list[str] | None
     max_steps: int
     created_at: str
     total_runs: int
@@ -106,6 +111,11 @@ def aggregate_results(
         first.source_scout_handoff_id,
         first.compact_scout_id,
         first.scout_accounting_mode,
+        first.assistance_control_id,
+        first.assistance_condition_id,
+        first.assistance_payload_sha256,
+        first.integrity_guard_version,
+        first.protected_files_checked,
         first.max_steps,
     )
     if any(
@@ -127,6 +137,11 @@ def aggregate_results(
             result.source_scout_handoff_id,
             result.compact_scout_id,
             result.scout_accounting_mode,
+            result.assistance_control_id,
+            result.assistance_condition_id,
+            result.assistance_payload_sha256,
+            result.integrity_guard_version,
+            result.protected_files_checked,
             result.max_steps,
         )
         != identity
@@ -160,6 +175,11 @@ def aggregate_results(
         source_scout_handoff_id=first.source_scout_handoff_id,
         compact_scout_id=first.compact_scout_id,
         scout_accounting_mode=first.scout_accounting_mode,
+        assistance_control_id=first.assistance_control_id,
+        assistance_condition_id=first.assistance_condition_id,
+        assistance_payload_sha256=first.assistance_payload_sha256,
+        integrity_guard_version=first.integrity_guard_version,
+        protected_files_checked=first.protected_files_checked,
         max_steps=first.max_steps,
         created_at=created_at,
         total_runs=len(results),
